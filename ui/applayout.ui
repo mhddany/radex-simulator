@@ -64,6 +64,103 @@ QWidget {
     background-color: transparent;
 }
 
+#maintitleSimulationPage{
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+    font-size: 14pt;      /* Larger size for title */
+    font-weight: normal;     /* Make it bold */
+    color: #CBF5F9;       /* Dark text color */
+    background-color: transparent;
+}
+
+#subtitleSimulationPage{
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+    font-size: 10pt;      /* Larger size for title */
+    font-weight: normal;     /* Make it bold */
+    color: #90A1B9;       /* Dark text color */
+    background-color: transparent;
+}
+
+#maintitleResultsPage{
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+    font-size: 14pt;      /* Larger size for title */
+    font-weight: normal;     /* Make it bold */
+    color: #CBF5F9;       /* Dark text color */
+    background-color: transparent;
+}
+
+#subtitleResultsPage{
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+    font-size: 10pt;      /* Larger size for title */
+    font-weight: normal;     /* Make it bold */
+    color: #90A1B9;       /* Dark text color */
+    background-color: transparent;
+}
+
+#maintitlePositioningPage{
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+    font-size: 14pt;      /* Larger size for title */
+    font-weight: normal;     /* Make it bold */
+    color: #CBF5F9;       /* Dark text color */
+    background-color: transparent;
+}
+
+#subtitlePositioningPage{
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+    font-size: 10pt;      /* Larger size for title */
+    font-weight: normal;     /* Make it bold */
+    color: #90A1B9;       /* Dark text color */
+    background-color: transparent;
+}
+
+#maintitleMeshingPage{
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+    font-size: 14pt;      /* Larger size for title */
+    font-weight: normal;     /* Make it bold */
+    color: #CBF5F9;       /* Dark text color */
+    background-color: transparent;
+}
+
+#subtitleMeshingPage{
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+    font-size: 10pt;      /* Larger size for title */
+    font-weight: normal;     /* Make it bold */
+    color: #90A1B9;       /* Dark text color */
+    background-color: transparent;
+}
+
+#maintitleMaterialsPage{
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+    font-size: 14pt;      /* Larger size for title */
+    font-weight: normal;     /* Make it bold */
+    color: #CBF5F9;       /* Dark text color */
+    background-color: transparent;
+}
+
+#subtitleMaterialsPage{
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+    font-size: 10pt;      /* Larger size for title */
+    font-weight: normal;     /* Make it bold */
+    color: #90A1B9;       /* Dark text color */
+    background-color: transparent;
+}
+
+#maintitleGeometryPage{
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+    font-size: 14pt;      /* Larger size for title */
+    font-weight: normal;     /* Make it bold */
+    color: #CBF5F9;       /* Dark text color */
+    background-color: transparent;
+}
+
+#subtitleGeometryPage{
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+    font-size: 10pt;      /* Larger size for title */
+    font-weight: normal;     /* Make it bold */
+    color: #90A1B9;       /* Dark text color */
+    background-color: transparent;
+}
+
+
 /* Layouts*/
 
 #titleLayout {
@@ -76,6 +173,7 @@ QWidget {
 
 #settingsLayout {
     border: 1px solid #314158;
+	background-color: #0f172b;
 }
 
 #pipelineLayout {
@@ -94,6 +192,91 @@ QWidget {
     border: 1px solid #314158;
 	background-color: #162556;
 }
+
+#simulationPageLayout{
+	background-color: #0f172b;
+}
+
+#titleSimulationPage {
+    /*border: 1px solid #314158;*/
+	background-color: transparent;
+}
+
+#settingsSimulationPage {
+	border-top: 1px solid #314158;
+	background-color: transparent
+}
+
+#resultsPageLayout{
+	background-color: #0f172b;
+}
+
+#titleResultsPage {
+    /*border: 1px solid #314158;*/
+	background-color: transparent;
+}
+
+#settingsResultsPage {
+	border-top: 1px solid #314158;
+	background-color: transparent
+}
+
+#positioningPageLayout{
+	background-color: #0f172b;
+}
+
+#titlePositioningPage {
+    /*border: 1px solid #314158;*/
+	background-color: transparent;
+}
+
+#settingsPositioningPage {
+	border-top: 1px solid #314158;
+	background-color: transparent
+}
+
+#meshingPageLayout{
+	background-color: #0f172b;
+}
+
+#titleMeshingPage {
+    /*border: 1px solid #314158;*/
+	background-color: transparent;
+}
+
+#settingsMeshingPage {
+	border-top: 1px solid #314158;
+	background-color: transparent
+}
+
+#materialsPageLayout{
+	background-color: #0f172b;
+}
+
+#titleMaterialsPage {
+    /*border: 1px solid #314158;*/
+	background-color: transparent;
+}
+
+#settingsMaterialsPage {
+	border-top: 1px solid #314158;
+	background-color: transparent
+}
+
+#geometryPageLayout{
+	background-color: #0f172b;
+}
+
+#titleGeometryPage {
+    /*border: 1px solid #314158;*/
+	background-color: transparent;
+}
+
+#settingsGeometryPage {
+	border-top: 1px solid #314158;
+	background-color: transparent
+}
+
 
 </string>
   </property>
@@ -161,6 +344,9 @@ QWidget {
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
            </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
            <property name="margin">
             <number>0</number>
            </property>
@@ -175,6 +361,9 @@ QWidget {
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
          </property>
          <property name="margin">
           <number>20</number>
@@ -204,6 +393,9 @@ QWidget {
         <item>
          <widget class="QWidget" name="pipelineLayout" native="true">
           <layout class="QVBoxLayout" name="verticalLayout_2">
+           <property name="spacing">
+            <number>0</number>
+           </property>
            <property name="leftMargin">
             <number>0</number>
            </property>
@@ -268,6 +460,9 @@ QWidget {
                 </property>
                 <property name="text">
                  <string>SIMULATION PIPELINE</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -438,10 +633,25 @@ QWidget {
         <item>
          <widget class="QWidget" name="settingsLayout" native="true">
           <layout class="QVBoxLayout" name="verticalLayout_5">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
            <item>
             <widget class="QStackedWidget" name="stackedWidget">
              <property name="currentIndex">
-              <number>3</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="geometryPage">
               <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -460,12 +670,67 @@ QWidget {
                <item>
                 <widget class="QWidget" name="geometryPageLayout" native="true">
                  <layout class="QVBoxLayout" name="verticalLayout_7">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
                   <item>
-                   <widget class="QLabel" name="label">
-                    <property name="text">
-                     <string>geometry Page</string>
+                   <widget class="QWidget" name="titleGeometryPage" native="true">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>70</height>
+                     </size>
                     </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_23">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>10</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>10</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="maintitleGeometryPage">
+                       <property name="text">
+                        <string>Step 1: Geometry</string>
+                       </property>
+                       <property name="wordWrap">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="subtitleGeometryPage">
+                       <property name="text">
+                        <string>Load STL files for both objects</string>
+                       </property>
+                       <property name="wordWrap">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </widget>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="settingsGeometryPage" native="true"/>
                   </item>
                  </layout>
                 </widget>
@@ -489,12 +754,67 @@ QWidget {
                <item>
                 <widget class="QWidget" name="meshingPageLayout" native="true">
                  <layout class="QVBoxLayout" name="verticalLayout_14">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
                   <item>
-                   <widget class="QLabel" name="label_3">
-                    <property name="text">
-                     <string>meshing Page</string>
+                   <widget class="QWidget" name="titleMeshingPage" native="true">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>70</height>
+                     </size>
                     </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_21">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>10</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>10</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="maintitleMeshingPage">
+                       <property name="text">
+                        <string>Step 3: Meshing</string>
+                       </property>
+                       <property name="wordWrap">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="subtitleMeshingPage">
+                       <property name="text">
+                        <string>Generate tetrahedral meshes for finite element analysis</string>
+                       </property>
+                       <property name="wordWrap">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </widget>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="settingsMeshingPage" native="true"/>
                   </item>
                  </layout>
                 </widget>
@@ -518,12 +838,67 @@ QWidget {
                <item>
                 <widget class="QWidget" name="materialsPageLayout" native="true">
                  <layout class="QVBoxLayout" name="verticalLayout_9">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
                   <item>
-                   <widget class="QLabel" name="label_2">
-                    <property name="text">
-                     <string>material Page</string>
+                   <widget class="QWidget" name="titleMaterialsPage" native="true">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>70</height>
+                     </size>
                     </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_22">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>10</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>10</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="maintitleMaterialsPage">
+                       <property name="text">
+                        <string>Step 4: Materials</string>
+                       </property>
+                       <property name="wordWrap">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="subtitleMaterialsPage">
+                       <property name="text">
+                        <string>Define thermal and material parameters for each object</string>
+                       </property>
+                       <property name="wordWrap">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </widget>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="settingsMaterialsPage" native="true"/>
                   </item>
                  </layout>
                 </widget>
@@ -547,12 +922,67 @@ QWidget {
                <item>
                 <widget class="QWidget" name="simulationPageLayout" native="true">
                  <layout class="QVBoxLayout" name="verticalLayout_17">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
                   <item>
-                   <widget class="QLabel" name="label_6">
-                    <property name="text">
-                     <string>simulation Page</string>
+                   <widget class="QWidget" name="titleSimulationPage" native="true">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>70</height>
+                     </size>
                     </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_18">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>10</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>10</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="maintitleSimulationPage">
+                       <property name="text">
+                        <string>Step 5: Simulation</string>
+                       </property>
+                       <property name="wordWrap">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="subtitleSimulationPage">
+                       <property name="text">
+                        <string>Configure and run the transient thermal radiation simulation</string>
+                       </property>
+                       <property name="wordWrap">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </widget>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="settingsSimulationPage" native="true"/>
                   </item>
                  </layout>
                 </widget>
@@ -576,12 +1006,67 @@ QWidget {
                <item>
                 <widget class="QWidget" name="resultsPageLayout" native="true">
                  <layout class="QVBoxLayout" name="verticalLayout_16">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
                   <item>
-                   <widget class="QLabel" name="label_5">
-                    <property name="text">
-                     <string>results Page</string>
+                   <widget class="QWidget" name="titleResultsPage" native="true">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>70</height>
+                     </size>
                     </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_19">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>10</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>10</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="maintitleResultsPage">
+                       <property name="text">
+                        <string>Step 6: Results</string>
+                       </property>
+                       <property name="wordWrap">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="subtitleResultsPage">
+                       <property name="text">
+                        <string>Analyze temperature evolution and heat transfer</string>
+                       </property>
+                       <property name="wordWrap">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </widget>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="settingsResultsPage" native="true"/>
                   </item>
                  </layout>
                 </widget>
@@ -605,12 +1090,67 @@ QWidget {
                <item>
                 <widget class="QWidget" name="positioningPageLayout" native="true">
                  <layout class="QVBoxLayout" name="verticalLayout_15">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
                   <item>
-                   <widget class="QLabel" name="label_4">
-                    <property name="text">
-                     <string>positioning Page</string>
+                   <widget class="QWidget" name="titlePositioningPage" native="true">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>70</height>
+                     </size>
                     </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_20">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>10</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>10</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="maintitlePositioningPage">
+                       <property name="text">
+                        <string>Step 2: Positioning</string>
+                       </property>
+                       <property name="wordWrap">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="subtitlePositioningPage">
+                       <property name="text">
+                        <string>Position and orient both objects in 3D space</string>
+                       </property>
+                       <property name="wordWrap">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </widget>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="settingsPositioningPage" native="true"/>
                   </item>
                  </layout>
                 </widget>
@@ -654,12 +1194,18 @@ QWidget {
           <property name="text">
            <string>Icon</string>
           </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="statusMessageLabel">
           <property name="text">
            <string>Ready to begin. Load geometry files to start.</string>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
