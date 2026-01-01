@@ -436,7 +436,20 @@ QWidget {
          </widget>
         </item>
         <item>
-         <widget class="QWidget" name="settingsLayout" native="true"/>
+         <widget class="QWidget" name="settingsLayout" native="true">
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="QStackedWidget" name="stackedWidget">
+             <widget class="QWidget" name="geometryPage"/>
+             <widget class="QWidget" name="meshingPage"/>
+             <widget class="QWidget" name="materialsPage"/>
+             <widget class="QWidget" name="simulationPage"/>
+             <widget class="QWidget" name="resultsPage"/>
+             <widget class="QWidget" name="positioningPage"/>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </item>
         <item>
          <widget class="QVTKRenderWindowInteractor" name="graphicsView"/>
