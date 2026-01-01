@@ -275,7 +275,7 @@ QWidget {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_6">
+            <widget class="QPushButton" name="geometryButton">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -294,7 +294,7 @@ QWidget {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_5">
+            <widget class="QPushButton" name="positioningButton">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -313,7 +313,7 @@ QWidget {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_4">
+            <widget class="QPushButton" name="meshingButton">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -332,7 +332,7 @@ QWidget {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_3">
+            <widget class="QPushButton" name="materialsButton">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -351,7 +351,7 @@ QWidget {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_2">
+            <widget class="QPushButton" name="simulationButton">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -370,7 +370,7 @@ QWidget {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QPushButton" name="resultsButton">
              <property name="minimumSize">
               <size>
                <width>0</width>
