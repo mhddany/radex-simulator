@@ -6,281 +6,232 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1288</width>
-    <height>824</height>
+    <width>800</width>
+    <height>496</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">/* Main widget global styling */
+   <string notr="true">/* =========================
+   Global application style
+   ========================= */
 QWidget {
-	/* Background color */
     background-color: #020618;
-    /* Font settings */
     font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
     font-size: 10pt;
-    color: #ffffff; /* Default text color */
+    color: #ffffff;
 }
 
-/* Labels*/
-#versionLabel{
-	color: #90A1B9;       /* Dark text color */
+/* =========================
+   Label color variants
+   ========================= */
+#versionLabel,
+#hintLabel,
+#subTitleLabel,
+#pipelineTitleLabel {
+    color: #90A1B9;
 }
 
-#hintLabel{
-	color: #90A1B9;       /* Dark text color */
-}
-
-#mainTitleLabel {
-    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
-    font-size: 16pt;      /* Larger size for title */
-    font-weight: normal;     /* Make it bold */
-    color: #CBF5F9;       /* Dark text color */
-}
-
-#subTitleLabel {
-    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
-    font-size: 10pt;      /* Larger size for title */
-    font-weight: normal;     /* Make it bold */
-    color: #90A1B9;       /* Dark text color */
-}
-
-#pipelineTitleLabel{
-    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
-    font-size: 10pt;      /* Larger size for title */
-    font-weight: normal;     /* Make it bold */
-    color: #90A1B9;       /* Dark text color */
-}
-
-#statusMessageLabel {
-    color: #6FC5F4;       /* Dark text color */
-    background-color: transparent;
-}
-
+/* =========================
+   Accent / status text
+   ========================= */
+#statusMessageLabel,
 #statusIcon {
-    color: #6FC5F4;       /* Dark text color */
+    color: #6FC5F4;
     background-color: transparent;
 }
 
-#maintitleSimulationPage{
-    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
-    font-size: 14pt;      /* Larger size for title */
-    font-weight: normal;     /* Make it bold */
-    color: #CBF5F9;       /* Dark text color */
+/* =========================
+   main title (slightly larger)
+   ========================= */
+#mainTitleLabel,
+#maintitleSimulationPage,
+#maintitleResultsPage,
+#maintitlePositioningPage,
+#maintitleMeshingPage,
+#maintitleMaterialsPage,
+#maintitleGeometryPage,
+#viewTitleLayout{
+    font-size: 14pt;
+    font-weight: normal;
+    color: #f1f5f9;
     background-color: transparent;
 }
 
-#subtitleSimulationPage{
-    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
-    font-size: 10pt;      /* Larger size for title */
-    font-weight: normal;     /* Make it bold */
-    color: #90A1B9;       /* Dark text color */
-    background-color: transparent;
+#viewTitleLayout{
+	border-bottom:	 1px solid #314158;
 }
 
-#maintitleResultsPage{
-    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
-    font-size: 14pt;      /* Larger size for title */
-    font-weight: normal;     /* Make it bold */
-    color: #CBF5F9;       /* Dark text color */
-    background-color: transparent;
-}
-
-#subtitleResultsPage{
-    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
-    font-size: 10pt;      /* Larger size for title */
-    font-weight: normal;     /* Make it bold */
-    color: #90A1B9;       /* Dark text color */
-    background-color: transparent;
-}
-
-#maintitlePositioningPage{
-    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
-    font-size: 14pt;      /* Larger size for title */
-    font-weight: normal;     /* Make it bold */
-    color: #CBF5F9;       /* Dark text color */
-    background-color: transparent;
-}
-
-#subtitlePositioningPage{
-    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
-    font-size: 10pt;      /* Larger size for title */
-    font-weight: normal;     /* Make it bold */
-    color: #90A1B9;       /* Dark text color */
-    background-color: transparent;
-}
-
-#maintitleMeshingPage{
-    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
-    font-size: 14pt;      /* Larger size for title */
-    font-weight: normal;     /* Make it bold */
-    color: #CBF5F9;       /* Dark text color */
-    background-color: transparent;
-}
-
-#subtitleMeshingPage{
-    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
-    font-size: 10pt;      /* Larger size for title */
-    font-weight: normal;     /* Make it bold */
-    color: #90A1B9;       /* Dark text color */
-    background-color: transparent;
-}
-
-#maintitleMaterialsPage{
-    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
-    font-size: 14pt;      /* Larger size for title */
-    font-weight: normal;     /* Make it bold */
-    color: #CBF5F9;       /* Dark text color */
-    background-color: transparent;
-}
-
-#subtitleMaterialsPage{
-    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
-    font-size: 10pt;      /* Larger size for title */
-    font-weight: normal;     /* Make it bold */
-    color: #90A1B9;       /* Dark text color */
-    background-color: transparent;
-}
-
-#maintitleGeometryPage{
-    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
-    font-size: 14pt;      /* Larger size for title */
-    font-weight: normal;     /* Make it bold */
-    color: #CBF5F9;       /* Dark text color */
-    background-color: transparent;
-}
-
-#subtitleGeometryPage{
-    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
-    font-size: 10pt;      /* Larger size for title */
-    font-weight: normal;     /* Make it bold */
-    color: #90A1B9;       /* Dark text color */
+#graphicsView{
+    border: 0px solid #314158;
     background-color: transparent;
 }
 
 
-/* Layouts*/
+/* =========================
+   Subtitles (shared)
+   ========================= */
+#subtitleSimulationPage,
+#subtitleResultsPage,
+#subtitlePositioningPage,
+#subtitleMeshingPage,
+#subtitleMaterialsPage,
+#subtitleGeometryPage,
+#stlfileAlabel ,
+#stlfileBlabel,
+#objectALoadedIcon,
+#objectBLoadedIcon,
+#objectALoadedLabel,
+#objectBLoadedLabel,
+#readyPositioningLabel,
+#readyPositioningIcon,
+#mainTitleViewLabel,
+#subTitleViewLabel{
+    font-size: 10pt;
+    font-weight: normal;
+    color: #90A1B9;
+    background-color: transparent;
+}
 
-#titleLayout {
+
+#validationLabel{
+    font-size: 10.5pt;
+    font-weight: normal;
+    color: #f1f5f9;
+    background-color: transparent;
+}
+
+#objectALabel{
+    font-size: 11pt;
+    font-weight: bold;
+    color: #06d3f3;
+    background-color: transparent;
+}
+
+#objectBLabel{
+    font-size: 11pt;
+    font-weight: bold;
+    color: #f18904;
+    background-color: transparent;
+}
+
+
+/* =========================
+   Common bordered containers
+   ========================= */
+#titleLayout,
+#centerLayout,
+#pipelineLayout,
+#pipelineTitleLayout,
+#hintLayout ,
+#viewLayout{
     border: 1px solid #314158;
 }
 
-#centerLayout {
-    border: 1px solid #314158;
+/* =========================
+   Dark panel containers
+   ========================= */
+#settingsLayout,
+#simulationPageLayout,
+#resultsPageLayout,
+#positioningPageLayout,
+#meshingPageLayout,
+#materialsPageLayout,
+#geometryPageLayout,
+#scrollAreaWidgetContentsGeometry,
+#viewLayout{
+    background-color: #0f172b;
 }
 
+
+/* =========================
+   Setting layout
+   ========================= */
 #settingsLayout {
     border: 1px solid #314158;
-	background-color: #0f172b;
 }
 
-#pipelineLayout {
+
+#uploadFileAButton,
+#uploadFileBButton {
+    font-weight: bold;
+    border-radius: 7px;
     border: 1px solid #314158;
+
+    /* Idle state */
+    background-color: #314158;
+    color: #f1f5f9;
+    padding: 6px 12px;
 }
 
-#pipelineTitleLayout{
-	border: 1px solid #314158;
+/* Hover */
+#uploadFileAButton:hover,
+#uploadFileBButton:hover {
+    background-color: #3f5470;   /* slightly lighter */
+    border-color: #4b6a8c;
 }
 
-#hintLayout{
-	border: 1px solid #314158;
+/* Pressed / clicked */
+#uploadFileAButton:pressed,
+#uploadFileBButton:pressed {
+    background-color: #253349;   /* darker */
+    border-color: #314158;
 }
 
+/* Disabled (optional but recommended) */
+#uploadFileAButton:disabled,
+#uploadFileBButton:disabled {
+    background-color: #1a2333;
+    border-color: #1a2333;
+    color: #5f6f85;
+}
+
+
+/* =========================
+   Status bar
+   ========================= */
 #statusLayout {
     border: 1px solid #314158;
-	background-color: #162556;
+    background-color: #162556;
 }
 
-#simulationPageLayout{
-	background-color: #0f172b;
-}
-
-#titleSimulationPage {
-    /*border: 1px solid #314158;*/
-	background-color: transparent;
-}
-
-#settingsSimulationPage {
-	border-top: 1px solid #314158;
-	background-color: transparent
-}
-
-#resultsPageLayout{
-	background-color: #0f172b;
-}
-
-#titleResultsPage {
-    /*border: 1px solid #314158;*/
-	background-color: transparent;
-}
-
-#settingsResultsPage {
-	border-top: 1px solid #314158;
-	background-color: transparent
-}
-
-#positioningPageLayout{
-	background-color: #0f172b;
-}
-
-#titlePositioningPage {
-    /*border: 1px solid #314158;*/
-	background-color: transparent;
-}
-
-#settingsPositioningPage {
-	border-top: 1px solid #314158;
-	background-color: transparent
-}
-
-#meshingPageLayout{
-	background-color: #0f172b;
-}
-
-#titleMeshingPage {
-    /*border: 1px solid #314158;*/
-	background-color: transparent;
-}
-
-#settingsMeshingPage {
-	border-top: 1px solid #314158;
-	background-color: transparent
-}
-
-#materialsPageLayout{
-	background-color: #0f172b;
-}
-
-#titleMaterialsPage {
-    /*border: 1px solid #314158;*/
-	background-color: transparent;
-}
-
-#settingsMaterialsPage {
-	border-top: 1px solid #314158;
-	background-color: transparent
-}
-
-#geometryPageLayout{
-	background-color: #0f172b;
-}
-
+#titleSimulationPage,
+#titleResultsPage,
+#titlePositioningPage,
+#titleMeshingPage,
+#titleMaterialsPage,
 #titleGeometryPage {
-    /*border: 1px solid #314158;*/
-	background-color: transparent;
+    background-color: transparent;
 }
 
-#settingsGeometryPage {
-	border-top: 1px solid #314158;
-	background-color: transparent
+#settingsSimulationPage,
+#settingsResultsPage,
+#settingsPositioningPage,
+#settingsMeshingPage,
+#settingsMaterialsPage,
+#settingsGeometryPage,
+#frameGeometryValidation{
+    border-top: 1px solid #314158;
+    background-color: transparent;
 }
+
+#frameGeometryA,
+#frameGeometryB{
+	background-color: #1d293d;
+	border: 1px solid #314158;
+	border-radius: 15px;
+}
+
 
 
 </string>
   </property>
-  <layout class="QGridLayout" name="gridLayout" rowstretch="0" columnstretch="0,0,0">
+  <layout class="QVBoxLayout" name="verticalLayout_26">
+   <property name="spacing">
+    <number>5</number>
+   </property>
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -293,10 +244,7 @@ QWidget {
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <property name="spacing">
-    <number>5</number>
-   </property>
-   <item row="0" column="2">
+   <item>
     <layout class="QVBoxLayout" name="MainLayout" stretch="2,20,1">
      <property name="spacing">
       <number>0</number>
@@ -640,7 +588,7 @@ QWidget {
             <number>0</number>
            </property>
            <property name="topMargin">
-            <number>0</number>
+            <number>1</number>
            </property>
            <property name="rightMargin">
             <number>0</number>
@@ -730,7 +678,292 @@ QWidget {
                    </widget>
                   </item>
                   <item>
-                   <widget class="QWidget" name="settingsGeometryPage" native="true"/>
+                   <widget class="QWidget" name="settingsGeometryPage" native="true">
+                    <layout class="QVBoxLayout" name="verticalLayout_24">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>1</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QScrollArea" name="scrollAreaGeometry">
+                       <property name="widgetResizable">
+                        <bool>true</bool>
+                       </property>
+                       <widget class="QWidget" name="scrollAreaWidgetContentsGeometry">
+                        <property name="geometry">
+                         <rect>
+                          <x>0</x>
+                          <y>0</y>
+                          <width>252</width>
+                          <height>415</height>
+                         </rect>
+                        </property>
+                        <layout class="QVBoxLayout" name="verticalLayout_28">
+                         <property name="spacing">
+                          <number>15</number>
+                         </property>
+                         <property name="leftMargin">
+                          <number>20</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>20</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>20</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>20</number>
+                         </property>
+                         <item>
+                          <widget class="QFrame" name="frameGeometryA">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>100</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>130</height>
+                            </size>
+                           </property>
+                           <property name="frameShape">
+                            <enum>QFrame::Shape::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Shadow::Raised</enum>
+                           </property>
+                           <layout class="QVBoxLayout" name="verticalLayout_25" stretch="0,0,0">
+                            <property name="spacing">
+                             <number>5</number>
+                            </property>
+                            <property name="leftMargin">
+                             <number>15</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>15</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>15</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>15</number>
+                            </property>
+                            <item>
+                             <widget class="QLabel" name="objectALabel">
+                              <property name="text">
+                               <string>Object A</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="stlfileAlabel">
+                              <property name="text">
+                               <string>STL File</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QPushButton" name="uploadFileAButton">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>40</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>icon: Select File..</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QFrame" name="frameGeometryB">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>100</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>130</height>
+                            </size>
+                           </property>
+                           <property name="frameShape">
+                            <enum>QFrame::Shape::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Shadow::Raised</enum>
+                           </property>
+                           <layout class="QVBoxLayout" name="verticalLayout_27" stretch="0,0,0">
+                            <property name="spacing">
+                             <number>5</number>
+                            </property>
+                            <property name="leftMargin">
+                             <number>15</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>15</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>15</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>15</number>
+                            </property>
+                            <item>
+                             <widget class="QLabel" name="objectBLabel">
+                              <property name="text">
+                               <string>Object B</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="stlfileBlabel">
+                              <property name="text">
+                               <string>STL File</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QPushButton" name="uploadFileBButton">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>40</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>icon: Select File...</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QFrame" name="frameGeometryValidation">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>130</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>130</height>
+                            </size>
+                           </property>
+                           <property name="frameShape">
+                            <enum>QFrame::Shape::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Shadow::Raised</enum>
+                           </property>
+                           <layout class="QFormLayout" name="formLayout">
+                            <property name="horizontalSpacing">
+                             <number>0</number>
+                            </property>
+                            <property name="verticalSpacing">
+                             <number>5</number>
+                            </property>
+                            <property name="leftMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>10</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>20</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>20</number>
+                            </property>
+                            <item row="0" column="0">
+                             <widget class="QLabel" name="validationLabel">
+                              <property name="text">
+                               <string>Validation</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="0">
+                             <widget class="QLabel" name="objectALoadedIcon">
+                              <property name="text">
+                               <string>icon</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="1">
+                             <widget class="QLabel" name="objectALoadedLabel">
+                              <property name="text">
+                               <string>Object A loaded</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="2" column="0">
+                             <widget class="QLabel" name="objectBLoadedIcon">
+                              <property name="text">
+                               <string>icon</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="2" column="1">
+                             <widget class="QLabel" name="objectBLoadedLabel">
+                              <property name="text">
+                               <string>Object A loaded</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="3" column="0">
+                             <widget class="QLabel" name="readyPositioningIcon">
+                              <property name="text">
+                               <string>icon</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="3" column="1">
+                             <widget class="QLabel" name="readyPositioningLabel">
+                              <property name="text">
+                               <string>Ready for positioning</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item>
+                          <spacer name="verticalSpacer_2">
+                           <property name="orientation">
+                            <enum>Qt::Orientation::Vertical</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>20</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                        </layout>
+                       </widget>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
                   </item>
                  </layout>
                 </widget>
@@ -1163,7 +1396,51 @@ QWidget {
          </widget>
         </item>
         <item>
-         <widget class="QVTKRenderWindowInteractor" name="graphicsView"/>
+         <widget class="QWidget" name="viewLayout" native="true">
+          <layout class="QVBoxLayout" name="verticalLayout_29">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>1</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QWidget" name="viewTitleLayout" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QLabel" name="mainTitleViewLabel">
+                <property name="text">
+                 <string>3D Viewer</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="subTitleViewLabel">
+                <property name="text">
+                 <string>icon click and drag to rotate</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGraphicsView" name="graphicsView"/>
+           </item>
+          </layout>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -1216,13 +1493,6 @@ QWidget {
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QVTKRenderWindowInteractor</class>
-   <extends>QGraphicsView</extends>
-   <header>vtk.qt.QVTKRenderWindowInteractor</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
