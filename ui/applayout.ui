@@ -189,9 +189,9 @@ QWidget {
 #simulationButton:hover,
 #positioningButton:hover,
 #meshingButton:hover {
-    background-color: #155dfc;  
+    background-color: #1d293d;  
     color: #f1f5f9;
-	border-left: 3px solid #50a2ff;
+	border-left: 3px solid #415c89;
 }
 
 #geometryButton:checked ,

@@ -205,6 +205,17 @@ class Ui_Widget(object):
 "#positioningButton:hover,\n"
 "#meshingButton:hover "
                         "{\n"
+"    background-color: #1d293d;  \n"
+"    color: #f1f5f9;\n"
+"	border-left: 3px solid #415c89;\n"
+"}\n"
+"\n"
+"#geometryButton:checked ,\n"
+"#materialsButton:checked ,\n"
+"#resultsButton:checked ,\n"
+"#simulationButton:checked ,\n"
+"#positioningButton:checked ,\n"
+"#meshingButton:checked  {\n"
 "    background-color: #155dfc;  \n"
 "    color: #f1f5f9;\n"
 "	border-left: 3px solid #50a2ff;\n"
@@ -235,7 +246,8 @@ class Ui_Widget(object):
 "\n"
 "/* Hover */\n"
 "#uploadFileAButton:hover,\n"
-"#uploadFileBButton:hover {\n"
+"#uploadFileBButton:h"
+                        "over {\n"
 "    background-color: #3f5470;   /* slightly lighter */\n"
 "    border-color: #4b6a8c;\n"
 "}\n"
@@ -247,8 +259,7 @@ class Ui_Widget(object):
 "    border-color: #314158;\n"
 "}\n"
 "\n"
-""
-                        "/* Disabled (optional but recommended) */\n"
+"/* Disabled (optional but recommended) */\n"
 "#uploadFileAButton:disabled,\n"
 "#uploadFileBButton:disabled {\n"
 "    background-color: #1a2333;\n"
@@ -278,7 +289,8 @@ class Ui_Widget(object):
 "#settingsResultsPage,\n"
 "#settingsPositioningPage,\n"
 "#settingsMeshingPage,\n"
-"#settingsMaterialsPage,\n"
+"#settingsM"
+                        "aterialsPage,\n"
 "#settingsGeometryPage,\n"
 "#frameGeometryValidation{\n"
 "    border-top: 1px solid #314158;\n"
@@ -291,8 +303,7 @@ class Ui_Widget(object):
 "	border: 1px solid #314158;\n"
 "	border-radius: 15px;\n"
 "}\n"
-""
-                        "\n"
+"\n"
 "\n"
 "\n"
 "")
@@ -394,6 +405,9 @@ class Ui_Widget(object):
         icon.addFile(u":/icons/icons/cube_white.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.geometryButton.setIcon(icon)
         self.geometryButton.setIconSize(QSize(15, 15))
+        self.geometryButton.setCheckable(True)
+        self.geometryButton.setChecked(True)
+        self.geometryButton.setAutoExclusive(True)
 
         self.verticalLayout_2.addWidget(self.geometryButton)
 
@@ -405,6 +419,8 @@ class Ui_Widget(object):
         icon1.addFile(u":/icons/icons/arrows_white.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.positioningButton.setIcon(icon1)
         self.positioningButton.setIconSize(QSize(15, 15))
+        self.positioningButton.setCheckable(True)
+        self.positioningButton.setAutoExclusive(True)
 
         self.verticalLayout_2.addWidget(self.positioningButton)
 
@@ -416,6 +432,8 @@ class Ui_Widget(object):
         icon2.addFile(u":/icons/icons/mesh_white.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.meshingButton.setIcon(icon2)
         self.meshingButton.setIconSize(QSize(15, 15))
+        self.meshingButton.setCheckable(True)
+        self.meshingButton.setAutoExclusive(True)
 
         self.verticalLayout_2.addWidget(self.meshingButton)
 
@@ -427,6 +445,8 @@ class Ui_Widget(object):
         icon3.addFile(u":/icons/icons/build-alt.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.materialsButton.setIcon(icon3)
         self.materialsButton.setIconSize(QSize(15, 15))
+        self.materialsButton.setCheckable(True)
+        self.materialsButton.setAutoExclusive(True)
 
         self.verticalLayout_2.addWidget(self.materialsButton)
 
@@ -438,6 +458,8 @@ class Ui_Widget(object):
         icon4.addFile(u":/icons/icons/play_white.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.simulationButton.setIcon(icon4)
         self.simulationButton.setIconSize(QSize(15, 15))
+        self.simulationButton.setCheckable(True)
+        self.simulationButton.setAutoExclusive(True)
 
         self.verticalLayout_2.addWidget(self.simulationButton)
 
@@ -449,6 +471,8 @@ class Ui_Widget(object):
         icon5.addFile(u":/icons/icons/chart_white.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.resultsButton.setIcon(icon5)
         self.resultsButton.setIconSize(QSize(15, 15))
+        self.resultsButton.setCheckable(True)
+        self.resultsButton.setAutoExclusive(True)
 
         self.verticalLayout_2.addWidget(self.resultsButton)
 
