@@ -1,0 +1,36 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/check_green.svg</file>
+    <file>icons/uncheck_white.svg</file>
+    <file>icons/eye_small.svg</file>
+    <file>icons/material.svg</file>
+    <file>icons/build-alt.svg</file>
+    <file>icons/positioning_white.svg</file>
+    <file>icons/cube_white.svg</file>
+    <file>icons/arrows_white.svg</file>
+    <file>icons/chart_white.svg</file>
+    <file>icons/check_white.svg</file>
+    <file>icons/clock-three.svg</file>
+    <file>icons/dewpoint.svg</file>
+    <file>icons/eye.svg</file>
+    <file>icons/flame.svg</file>
+    <file>icons/heat.svg</file>
+    <file>icons/icons.svg</file>
+    <file>icons/info.svg</file>
+    <file>icons/lock_white.svg</file>
+    <file>icons/memo-circle-check.svg</file>
+    <file>icons/mesh_white.svg</file>
+    <file>icons/play_white.svg</file>
+    <file>icons/rotate-right.svg</file>
+    <file>icons/stop_white.svg</file>
+    <file>icons/thermometer-three-quarters.svg</file>
+    <file>icons/time-quarter-past.svg</file>
+    <file>icons/triangle-warning.svg</file>
+    <file>icons/upload.svg</file>
+    <file>icons/warning_white.svg</file>
+    <file>icons/water.svg</file>
+  </qresource>
+  <qresource prefix="styles">
+    <file>styles/dark.qss</file>
+  </qresource>
+</RCC>

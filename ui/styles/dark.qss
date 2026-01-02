@@ -1,0 +1,258 @@
+/* =========================
+   Global application style
+   ========================= */
+QWidget {
+    background-color: #020618;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 10pt;
+    color: #ffffff;
+}
+
+/* =========================
+   Label color variants
+   ========================= */
+#versionLabel,
+#hintLabel,
+#subTitleLabel,
+#pipelineTitleLabel {
+    color: #90A1B9;
+}
+
+/* =========================
+   Accent / status text
+   ========================= */
+#statusMessageLabel,
+#statusIcon {
+    color: #6FC5F4;
+    background-color: transparent;
+}
+
+/* =========================
+   main title (slightly larger)
+   ========================= */
+#mainTitleLabel,
+#maintitleSimulationPage,
+#maintitleResultsPage,
+#maintitlePositioningPage,
+#maintitleMeshingPage,
+#maintitleMaterialsPage,
+#maintitleGeometryPage,
+#viewTitleLayout{
+    font-size: 14pt;
+    font-weight: normal;
+    color: #f1f5f9;
+    background-color: transparent;
+}
+
+#viewTitleLayout{
+	border-bottom:	 1px solid #314158;
+}
+
+#graphicsView{
+    border: 0px solid #314158;
+    background-color: transparent;
+}
+
+
+/* =========================
+   Subtitles (shared)
+   ========================= */
+#subtitleSimulationPage,
+#subtitleResultsPage,
+#subtitlePositioningPage,
+#subtitleMeshingPage,
+#subtitleMaterialsPage,
+#subtitleGeometryPage,
+#stlfileAlabel ,
+#stlfileBlabel,
+#objectALoadedIcon,
+#objectBLoadedIcon,
+#objectALoadedLabel,
+#objectBLoadedLabel,
+#readyPositioningLabel,
+#readyPositioningIcon,
+#mainTitleViewLabel,
+#subTitleViewLabel{
+    font-size: 10pt;
+    font-weight: normal;
+    color: #90A1B9;
+    background-color: transparent;
+}
+
+
+#validationLabel{
+    font-size: 10.5pt;
+    font-weight: normal;
+    color: #f1f5f9;
+    background-color: transparent;
+}
+
+#objectALabel{
+    font-size: 11pt;
+    font-weight: bold;
+    color: #06d3f3;
+    background-color: transparent;
+}
+
+#objectBLabel{
+    font-size: 11pt;
+    font-weight: bold;
+    color: #f18904;
+    background-color: transparent;
+}
+
+
+/* =========================
+   Common bordered containers
+   ========================= */
+#titleLayout,
+#centerLayout,
+#pipelineLayout,
+#viewLayout{
+    border: 1px solid #314158;
+}
+
+#pipelineTitleLayout{
+    border-bottom: 1px solid #314158;
+    border-top: 1px solid #314158;
+}
+
+#hintLayout{
+    border-top: 1px solid #314158;
+}
+
+/* =========================
+   Dark panel containers
+   ========================= */
+#settingsLayout,
+#simulationPageLayout,
+#resultsPageLayout,
+#positioningPageLayout,
+#meshingPageLayout,
+#materialsPageLayout,
+#geometryPageLayout,
+#scrollAreaWidgetContentsGeometry,
+#viewLayout{
+    background-color: #0f172b;
+}
+
+
+/* =========================
+   Setting layout
+   ========================= */
+#settingsLayout {
+    border: 1px solid #314158;
+}
+
+#geometryButton,
+#materialsButton,
+#resultsButton,
+#simulationButton,
+#positioningButton,
+#meshingButton {
+    border: none;
+    background-color: #020618;   /* idle */
+    color: #f1f5f9;
+	padding-left: 10px; 
+    padding-right: 12px;
+	icon-size: 10px;
+}
+
+#geometryButton::icon {
+    margin-right: 20px;       /* distance between icon and text */
+}
+
+/* Hover – slightly lighter background */
+#geometryButton:hover,
+#materialsButton:hover,
+#resultsButton:hover,
+#simulationButton:hover,
+#positioningButton:hover,
+#meshingButton:hover {
+    background-color: #155dfc;  
+    color: #f1f5f9;
+}
+
+/* Pressed – slightly darker / inset feel */
+#geometryButton:pressed,
+#materialsButton:pressed,
+#resultsButton:pressed,
+#simulationButton:pressed,
+#positioningButton:pressed,
+#meshingButton:pressed {
+    background-color: #1253df;
+}
+
+
+#uploadFileAButton,
+#uploadFileBButton {
+    font-weight: bold;
+    border-radius: 7px;
+    border: 1px solid #314158;
+
+    /* Idle state */
+    background-color: #314158;
+    color: #f1f5f9;
+    padding: 6px 12px;
+}
+
+/* Hover */
+#uploadFileAButton:hover,
+#uploadFileBButton:hover {
+    background-color: #3f5470;   /* slightly lighter */
+    border-color: #4b6a8c;
+}
+
+/* Pressed / clicked */
+#uploadFileAButton:pressed,
+#uploadFileBButton:pressed {
+    background-color: #253349;   /* darker */
+    border-color: #314158;
+}
+
+/* Disabled (optional but recommended) */
+#uploadFileAButton:disabled,
+#uploadFileBButton:disabled {
+    background-color: #1a2333;
+    border-color: #1a2333;
+    color: #5f6f85;
+}
+
+
+/* =========================
+   Status bar
+   ========================= */
+#statusLayout {
+    border: 1px solid #314158;
+    background-color: #162556;
+}
+
+#titleSimulationPage,
+#titleResultsPage,
+#titlePositioningPage,
+#titleMeshingPage,
+#titleMaterialsPage,
+#titleGeometryPage {
+    background-color: transparent;
+}
+
+#settingsSimulationPage,
+#settingsResultsPage,
+#settingsPositioningPage,
+#settingsMeshingPage,
+#settingsMaterialsPage,
+#settingsGeometryPage,
+#frameGeometryValidation{
+    border-top: 1px solid #314158;
+    background-color: transparent;
+}
+
+#frameGeometryA,
+#frameGeometryB{
+	background-color: #1d293d;
+	border: 1px solid #314158;
+	border-radius: 15px;
+}
+
+
+
