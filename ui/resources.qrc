@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/arrows_dark.svg</file>
     <file>icons/check_green.svg</file>
     <file>icons/uncheck_white.svg</file>
     <file>icons/eye_small.svg</file>

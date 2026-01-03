@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>496</height>
+    <width>986</width>
+    <height>611</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,10 +18,10 @@
    Global application style
    ========================= */
 QWidget {
-    background-color: #020618;
+    background-color: #transparent;
     font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
     font-size: 10pt;
-    color: #ffffff;
+    color: #90A1B9;
 }
 
 /* =========================
@@ -105,14 +105,16 @@ QWidget {
     background-color: transparent;
 }
 
-#objectALabel{
+#objectALabel,
+#positionObjectALabel{
     font-size: 11pt;
     font-weight: bold;
     color: #06d3f3;
     background-color: transparent;
 }
 
-#objectBLabel{
+#objectBLabel,
+#positionObjectBLabel{
     font-size: 11pt;
     font-weight: bold;
     color: #f18904;
@@ -123,11 +125,12 @@ QWidget {
 /* =========================
    Common bordered containers
    ========================= */
-#titleLayout,
+#topLayout,
 #centerLayout,
 #pipelineLayout,
 #viewLayout{
     border: 1px solid #314158;
+    background-color: #020618;
 }
 
 #pipelineTitleLayout{
@@ -150,6 +153,7 @@ QWidget {
 #materialsPageLayout,
 #geometryPageLayout,
 #scrollAreaWidgetContentsGeometry,
+#scrollAreaWidgetContentsPositioning,
 #viewLayout{
     background-color: #0f172b;
 }
@@ -217,7 +221,8 @@ QWidget {
 
 
 #uploadFileAButton,
-#uploadFileBButton {
+#uploadFileBButton,
+#resetPositionAButton{
     font-weight: bold;
     border-radius: 7px;
     border: 1px solid #314158;
@@ -230,21 +235,24 @@ QWidget {
 
 /* Hover */
 #uploadFileAButton:hover,
-#uploadFileBButton:hover {
+#uploadFileBButton:hover ,
+#resetPositionAButton:hover{
     background-color: #3f5470;   /* slightly lighter */
     border-color: #4b6a8c;
 }
 
 /* Pressed / clicked */
 #uploadFileAButton:pressed,
-#uploadFileBButton:pressed {
+#uploadFileBButton:pressed,
+#resetPositionAButton:pressed{
     background-color: #253349;   /* darker */
     border-color: #314158;
 }
 
 /* Disabled (optional but recommended) */
 #uploadFileAButton:disabled,
-#uploadFileBButton:disabled {
+#uploadFileBButton:disabled,
+#resetPositionAButton:disabled{
     background-color: #1a2333;
     border-color: #1a2333;
     color: #5f6f85;
@@ -274,13 +282,16 @@ QWidget {
 #settingsMeshingPage,
 #settingsMaterialsPage,
 #settingsGeometryPage,
-#frameGeometryValidation{
+#frameGeometryValidation,
+#framePositioningValidation{
     border-top: 1px solid #314158;
     background-color: transparent;
 }
 
 #frameGeometryA,
-#frameGeometryB{
+#frameGeometryB,
+#framePositioningA,
+#framePositioningB{
 	background-color: #1d293d;
 	border: 1px solid #314158;
 	border-radius: 15px;
@@ -312,75 +323,86 @@ QWidget {
       <number>0</number>
      </property>
      <item>
-      <layout class="QHBoxLayout" name="titleLayout" stretch="4,1">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout" stretch="2,1">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <property name="leftMargin">
-          <number>10</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>10</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="mainTitleLabel">
-           <property name="text">
-            <string>Transient Thermal Radiation Simulator</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-           </property>
-           <property name="wordWrap">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="subTitleLabel">
-           <property name="lineWidth">
-            <number>1</number>
-           </property>
-           <property name="text">
-            <string>CAE Tool for 3D Heat Transfer Analysis</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-           </property>
-           <property name="wordWrap">
-            <bool>true</bool>
-           </property>
-           <property name="margin">
-            <number>0</number>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QLabel" name="versionLabel">
-         <property name="text">
-          <string>v1.0.0</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-         <property name="margin">
-          <number>20</number>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <widget class="QWidget" name="topLayout" native="true">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout" stretch="2,1">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="mainTitleLabel">
+            <property name="text">
+             <string>Transient Thermal Radiation Simulator</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="subTitleLabel">
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="text">
+             <string>CAE Tool for 3D Heat Transfer Analysis</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+            <property name="margin">
+             <number>0</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="versionLabel">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>v1.0.0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="margin">
+           <number>20</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </item>
      <item>
       <widget class="QWidget" name="centerLayout" native="true">
@@ -750,6 +772,18 @@ QWidget {
         </item>
         <item>
          <widget class="QWidget" name="settingsLayout" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>400</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <layout class="QVBoxLayout" name="verticalLayout_5">
            <property name="spacing">
             <number>0</number>
@@ -871,9 +905,9 @@ QWidget {
                         <property name="geometry">
                          <rect>
                           <x>0</x>
-                          <y>-88</y>
-                          <width>252</width>
-                          <height>415</height>
+                          <y>0</y>
+                          <width>326</width>
+                          <height>426</height>
                          </rect>
                         </property>
                         <layout class="QVBoxLayout" name="verticalLayout_28">
@@ -1626,6 +1660,21 @@ QWidget {
                   <item>
                    <widget class="QWidget" name="settingsPositioningPage" native="true">
                     <layout class="QVBoxLayout" name="verticalLayout_30">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>1</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
                      <item>
                       <widget class="QScrollArea" name="scrollAreaPositioning">
                        <property name="widgetResizable">
@@ -1636,23 +1685,38 @@ QWidget {
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>234</width>
-                          <height>360</height>
+                          <width>314</width>
+                          <height>1000</height>
                          </rect>
                         </property>
                         <layout class="QVBoxLayout" name="verticalLayout_33">
+                         <property name="spacing">
+                          <number>15</number>
+                         </property>
+                         <property name="leftMargin">
+                          <number>20</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>20</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>20</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>20</number>
+                         </property>
                          <item>
                           <widget class="QFrame" name="framePositioningA">
                            <property name="minimumSize">
                             <size>
                              <width>0</width>
-                             <height>100</height>
+                             <height>400</height>
                             </size>
                            </property>
                            <property name="maximumSize">
                             <size>
                              <width>16777215</width>
-                             <height>130</height>
+                             <height>1000</height>
                             </size>
                            </property>
                            <property name="frameShape">
@@ -1661,23 +1725,263 @@ QWidget {
                            <property name="frameShadow">
                             <enum>QFrame::Shadow::Raised</enum>
                            </property>
-                           <layout class="QVBoxLayout" name="verticalLayout_32" stretch="0">
-                            <property name="spacing">
-                             <number>5</number>
-                            </property>
+                           <layout class="QGridLayout" name="gridLayout_3">
                             <property name="leftMargin">
-                             <number>15</number>
+                             <number>10</number>
                             </property>
                             <property name="topMargin">
-                             <number>15</number>
+                             <number>0</number>
                             </property>
                             <property name="rightMargin">
-                             <number>15</number>
+                             <number>10</number>
                             </property>
                             <property name="bottomMargin">
-                             <number>15</number>
+                             <number>0</number>
                             </property>
-                            <item>
+                            <property name="horizontalSpacing">
+                             <number>5</number>
+                            </property>
+                            <property name="verticalSpacing">
+                             <number>0</number>
+                            </property>
+                            <item row="0" column="2">
+                             <widget class="QPushButton" name="resetPositionAButton">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>Reset</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="0">
+                             <widget class="QLabel" name="translationPositionAIcon">
+                              <property name="minimumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string/>
+                              </property>
+                              <property name="pixmap">
+                               <pixmap resource="resources.qrc">:/icons/icons/arrows_dark.svg</pixmap>
+                              </property>
+                              <property name="scaledContents">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="1">
+                             <widget class="QLabel" name="translationPositionALabel">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>Translation</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="2" column="0">
+                             <widget class="QLabel" name="xTranslationPositionALabel">
+                              <property name="text">
+                               <string>x:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="2" column="1">
+                             <widget class="QDoubleSpinBox" name="xTranslationASpinbox">
+                              <property name="stepType">
+                               <enum>QAbstractSpinBox::StepType::AdaptiveDecimalStepType</enum>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="2" column="2">
+                             <widget class="QLabel" name="xTranslationUnitPositionALabel">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>m</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="3" column="0">
+                             <widget class="QLabel" name="yTranslationPositionALabel">
+                              <property name="text">
+                               <string>y:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="3" column="1">
+                             <widget class="QDoubleSpinBox" name="yTranslationASpinbox"/>
+                            </item>
+                            <item row="3" column="2">
+                             <widget class="QLabel" name="yTranslationUnitPositionALabel">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>m</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="4" column="0">
+                             <widget class="QLabel" name="zTranslationPositionALabel">
+                              <property name="text">
+                               <string>z:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="4" column="1">
+                             <widget class="QDoubleSpinBox" name="zTranslationASpinbox"/>
+                            </item>
+                            <item row="4" column="2">
+                             <widget class="QLabel" name="zTranslationUnitPositionALabel">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>m</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="5" column="0">
+                             <widget class="QLabel" name="rotationPositionAIcon">
+                              <property name="minimumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string/>
+                              </property>
+                              <property name="pixmap">
+                               <pixmap resource="resources.qrc">:/icons/icons/rotate-right.svg</pixmap>
+                              </property>
+                              <property name="scaledContents">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="5" column="1">
+                             <widget class="QLabel" name="rotationPositionALabel">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>Rotation</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="6" column="0">
+                             <widget class="QLabel" name="xRotationPositionALabel">
+                              <property name="text">
+                               <string>x:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="6" column="1">
+                             <widget class="QDoubleSpinBox" name="xRotationASpinbox"/>
+                            </item>
+                            <item row="6" column="2">
+                             <widget class="QLabel" name="xRotationUnitPositionALabel">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>°</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="7" column="0">
+                             <widget class="QLabel" name="yRotationPositionALabel">
+                              <property name="text">
+                               <string>y:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="7" column="1">
+                             <widget class="QDoubleSpinBox" name="yRotationASpinbox"/>
+                            </item>
+                            <item row="7" column="2">
+                             <widget class="QLabel" name="yRotationUnitPositionALabel">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>°</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="8" column="0">
+                             <widget class="QLabel" name="zRotationPositionALabel">
+                              <property name="text">
+                               <string>z:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="8" column="1">
+                             <widget class="QDoubleSpinBox" name="zRotationASpinbox"/>
+                            </item>
+                            <item row="8" column="2">
+                             <widget class="QLabel" name="zRotationUnitPositionALabel">
+                              <property name="text">
+                               <string>°</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="0" column="0" colspan="2">
                              <widget class="QLabel" name="positionObjectALabel">
                               <property name="text">
                                <string>Object A</string>
@@ -1692,13 +1996,13 @@ QWidget {
                            <property name="minimumSize">
                             <size>
                              <width>0</width>
-                             <height>100</height>
+                             <height>400</height>
                             </size>
                            </property>
                            <property name="maximumSize">
                             <size>
                              <width>16777215</width>
-                             <height>130</height>
+                             <height>500</height>
                             </size>
                            </property>
                            <property name="frameShape">
@@ -1707,23 +2011,263 @@ QWidget {
                            <property name="frameShadow">
                             <enum>QFrame::Shadow::Raised</enum>
                            </property>
-                           <layout class="QVBoxLayout" name="verticalLayout_31" stretch="0">
-                            <property name="spacing">
-                             <number>5</number>
-                            </property>
+                           <layout class="QGridLayout" name="gridLayout_4">
                             <property name="leftMargin">
-                             <number>15</number>
+                             <number>10</number>
                             </property>
                             <property name="topMargin">
-                             <number>15</number>
+                             <number>0</number>
                             </property>
                             <property name="rightMargin">
-                             <number>15</number>
+                             <number>10</number>
                             </property>
                             <property name="bottomMargin">
-                             <number>15</number>
+                             <number>0</number>
                             </property>
-                            <item>
+                            <property name="horizontalSpacing">
+                             <number>5</number>
+                            </property>
+                            <property name="verticalSpacing">
+                             <number>0</number>
+                            </property>
+                            <item row="1" column="2">
+                             <widget class="QPushButton" name="resetPositionbButton">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>Reset</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="2" column="0">
+                             <widget class="QLabel" name="translationPositionBIcon">
+                              <property name="minimumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string/>
+                              </property>
+                              <property name="pixmap">
+                               <pixmap resource="resources.qrc">:/icons/icons/arrows_dark.svg</pixmap>
+                              </property>
+                              <property name="scaledContents">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="2" column="1">
+                             <widget class="QLabel" name="translationPositionBLabel">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>Translation</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="3" column="0">
+                             <widget class="QLabel" name="xTranslationPositionBLabel">
+                              <property name="text">
+                               <string>x:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="3" column="1">
+                             <widget class="QDoubleSpinBox" name="xTranslationBSpinbox">
+                              <property name="stepType">
+                               <enum>QAbstractSpinBox::StepType::AdaptiveDecimalStepType</enum>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="3" column="2">
+                             <widget class="QLabel" name="xTranslationUnitPositionBLabel">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>m</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="4" column="0">
+                             <widget class="QLabel" name="yTranslationPositionBLabel">
+                              <property name="text">
+                               <string>y:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="4" column="1">
+                             <widget class="QDoubleSpinBox" name="yTranslationBSpinbox"/>
+                            </item>
+                            <item row="4" column="2">
+                             <widget class="QLabel" name="yTranslationUnitPositionBLabel">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>m</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="5" column="0">
+                             <widget class="QLabel" name="zTranslationPositionBLabel">
+                              <property name="text">
+                               <string>z:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="5" column="1">
+                             <widget class="QDoubleSpinBox" name="zTranslationBSpinbox"/>
+                            </item>
+                            <item row="5" column="2">
+                             <widget class="QLabel" name="zTranslationUnitPositionBLabel">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>m</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="6" column="0">
+                             <widget class="QLabel" name="rotationPositionbIcon">
+                              <property name="minimumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string/>
+                              </property>
+                              <property name="pixmap">
+                               <pixmap resource="resources.qrc">:/icons/icons/rotate-right.svg</pixmap>
+                              </property>
+                              <property name="scaledContents">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="6" column="1">
+                             <widget class="QLabel" name="rotationPositionbLabel">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>Rotation</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="7" column="0">
+                             <widget class="QLabel" name="xRotationPositionBLabel">
+                              <property name="text">
+                               <string>x:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="7" column="1">
+                             <widget class="QDoubleSpinBox" name="xRotationBSpinbox"/>
+                            </item>
+                            <item row="7" column="2">
+                             <widget class="QLabel" name="xRotationUnitPositionBLabel">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>°</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="8" column="0">
+                             <widget class="QLabel" name="yRotationPositionBLabel">
+                              <property name="text">
+                               <string>y:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="8" column="1">
+                             <widget class="QDoubleSpinBox" name="yRotationBSpinbox"/>
+                            </item>
+                            <item row="8" column="2">
+                             <widget class="QLabel" name="yRotationUnitPositionBLabel">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>°</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="9" column="0">
+                             <widget class="QLabel" name="zRotationPositionBLabel">
+                              <property name="text">
+                               <string>z:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="9" column="1">
+                             <widget class="QDoubleSpinBox" name="zRotationBSpinbox"/>
+                            </item>
+                            <item row="9" column="2">
+                             <widget class="QLabel" name="zRotationUnitPositionBLabel">
+                              <property name="text">
+                               <string>°</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="0" colspan="2">
                              <widget class="QLabel" name="positionObjectBLabel">
                               <property name="text">
                                <string>Object B</string>
