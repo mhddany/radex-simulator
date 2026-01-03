@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/warning_red.svg</file>
+    <file>icons/undo-alt.svg</file>
     <file>icons/arrows_dark.svg</file>
     <file>icons/check_green.svg</file>
     <file>icons/uncheck_white.svg</file>
