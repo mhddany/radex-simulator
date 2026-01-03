@@ -811,7 +811,7 @@ QWidget {
            <item>
             <widget class="QStackedWidget" name="stackedWidget">
              <property name="currentIndex">
-              <number>0</number>
+              <number>5</number>
              </property>
              <widget class="QWidget" name="geometryPage">
               <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1692,7 +1692,7 @@ QWidget {
                         <property name="geometry">
                          <rect>
                           <x>0</x>
-                          <y>0</y>
+                          <y>-159</y>
                           <width>314</width>
                           <height>1000</height>
                          </rect>
@@ -1807,7 +1807,7 @@ QWidget {
                             <item row="2" column="1">
                              <widget class="QDoubleSpinBox" name="xTranslationASpinbox">
                               <property name="stepType">
-                               <enum>QAbstractSpinBox::StepType::AdaptiveDecimalStepType</enum>
+                               <enum>QAbstractSpinBox::StepType::DefaultStepType</enum>
                               </property>
                              </widget>
                             </item>
@@ -1883,7 +1883,7 @@ QWidget {
                             <item row="9" column="2">
                              <widget class="QLabel" name="zRotationUnitPositionALabel">
                               <property name="text">
-                               <string>°</string>
+                               <string>0°</string>
                               </property>
                              </widget>
                             </item>
@@ -1922,7 +1922,7 @@ QWidget {
                                </size>
                               </property>
                               <property name="text">
-                               <string>°</string>
+                               <string>0°</string>
                               </property>
                              </widget>
                             </item>
@@ -1986,7 +1986,7 @@ QWidget {
                                </size>
                               </property>
                               <property name="text">
-                               <string>°</string>
+                               <string>0°</string>
                               </property>
                              </widget>
                             </item>
@@ -2075,14 +2075,14 @@ QWidget {
                             <item row="3" column="1">
                              <widget class="QDoubleSpinBox" name="xTranslationBSpinbox">
                               <property name="stepType">
-                               <enum>QAbstractSpinBox::StepType::AdaptiveDecimalStepType</enum>
+                               <enum>QAbstractSpinBox::StepType::DefaultStepType</enum>
                               </property>
                              </widget>
                             </item>
                             <item row="9" column="2">
                              <widget class="QLabel" name="zRotationUnitPositionBLabel">
                               <property name="text">
-                               <string>°</string>
+                               <string>0°</string>
                               </property>
                              </widget>
                             </item>
@@ -2279,7 +2279,7 @@ QWidget {
                                </size>
                               </property>
                               <property name="text">
-                               <string>°</string>
+                               <string>0°</string>
                               </property>
                              </widget>
                             </item>
@@ -2306,7 +2306,7 @@ QWidget {
                                </size>
                               </property>
                               <property name="text">
-                               <string>°</string>
+                               <string>0°</string>
                               </property>
                              </widget>
                             </item>

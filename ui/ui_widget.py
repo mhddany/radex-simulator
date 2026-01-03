@@ -925,7 +925,7 @@ class Ui_Widget(object):
         self.scrollAreaPositioning.setWidgetResizable(True)
         self.scrollAreaWidgetContentsPositioning = QWidget()
         self.scrollAreaWidgetContentsPositioning.setObjectName(u"scrollAreaWidgetContentsPositioning")
-        self.scrollAreaWidgetContentsPositioning.setGeometry(QRect(0, 0, 314, 1000))
+        self.scrollAreaWidgetContentsPositioning.setGeometry(QRect(0, -298, 314, 1000))
         self.verticalLayout_33 = QVBoxLayout(self.scrollAreaWidgetContentsPositioning)
         self.verticalLayout_33.setSpacing(15)
         self.verticalLayout_33.setObjectName(u"verticalLayout_33")
@@ -976,7 +976,7 @@ class Ui_Widget(object):
 
         self.xTranslationASpinbox = QDoubleSpinBox(self.framePositioningA)
         self.xTranslationASpinbox.setObjectName(u"xTranslationASpinbox")
-        self.xTranslationASpinbox.setStepType(QAbstractSpinBox.StepType.AdaptiveDecimalStepType)
+        self.xTranslationASpinbox.setStepType(QAbstractSpinBox.StepType.DefaultStepType)
 
         self.gridLayout_3.addWidget(self.xTranslationASpinbox, 2, 1, 1, 1)
 
@@ -1107,7 +1107,7 @@ class Ui_Widget(object):
         self.gridLayout_4.setContentsMargins(10, 0, 10, 0)
         self.xTranslationBSpinbox = QDoubleSpinBox(self.framePositioningB)
         self.xTranslationBSpinbox.setObjectName(u"xTranslationBSpinbox")
-        self.xTranslationBSpinbox.setStepType(QAbstractSpinBox.StepType.AdaptiveDecimalStepType)
+        self.xTranslationBSpinbox.setStepType(QAbstractSpinBox.StepType.DefaultStepType)
 
         self.gridLayout_4.addWidget(self.xTranslationBSpinbox, 3, 1, 1, 1)
 
@@ -1391,7 +1391,7 @@ class Ui_Widget(object):
 
         self.retranslateUi(Widget)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(5)
 
 
         QMetaObject.connectSlotsByName(Widget)
