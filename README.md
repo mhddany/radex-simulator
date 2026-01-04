@@ -1,20 +1,17 @@
-# RadEx Simulator  
-*A 3D thermal radiation exchange simulator for engineering applications*
-
-![RadEx Simulator Demo](ui/assets/app_layout.gif)
-
----
-
-## Badges
 
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue)
 ![Qt](https://img.shields.io/badge/Qt-PySide6-green)
 ![VTK](https://img.shields.io/badge/VTK-Visualization-orange)
 ![Status](https://img.shields.io/badge/status-work%20in%20progress-yellow)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
-
 ---
 
+# RadEx Simulator  
+*A 3D thermal radiation exchange simulator for engineering applications*
+
+![RadEx Simulator Demo](ui/assets/app_layout.gif)
+
+---
 ## Overview
 
 **RadEx Simulator** is a desktop application for simulating **transient thermal radiation exchange between two 3D objects**.  
