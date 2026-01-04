@@ -18,6 +18,7 @@
 The application follows a **pipeline-driven engineering workflow**, allowing users to import geometry, define physical properties, and analyze heat exchange over time through an intuitive GUI.
 
 This project is developed as a **portfolio project** demonstrating skills in **scientific computing, geometry processing, and GUI development**.
+
 ---
 
 ## Mathematical Background
@@ -40,6 +41,7 @@ Where:
 To handle complex geometries, we calculate the view factor by summing the interaction between every surface triangle (facet) of Body A and Body B. For any two facets $i$ and $j$:
 
 $$dF_{ij} = \frac{\cos(\theta_i) \cos(\theta_j)}{\pi s^2} A_j$$
+
 ---
 
 ## Key Features
