@@ -18,7 +18,28 @@
 The application follows a **pipeline-driven engineering workflow**, allowing users to import geometry, define physical properties, and analyze heat exchange over time through an intuitive GUI.
 
 This project is developed as a **portfolio project** demonstrating skills in **scientific computing, geometry processing, and GUI development**.
+---
 
+## Mathematical Background
+
+The simulation engine solves the Stefan-Boltzmann radiation law discretized over the surface triangles of the generated meshes.
+
+### 1. Radiative Heat Transfer Rate
+The net rate of heat transfer $Q$ between two surfaces is determined by:
+
+$$Q_{1 \to 2} = \sigma \cdot \epsilon_{eff} \cdot A_1 \cdot F_{1 \to 2} \cdot (T_1^4 - T_2^4)$$
+
+Where:
+* $\sigma$: Stefan-Boltzmann constant ($5.6703 \times 10^{-8} \, W \cdot m^{-2} \cdot K^{-4}$)
+* $\epsilon_{eff}$: Effective emissivity
+* $A_1$: Surface area of the emitting element
+* $F_{1 \to 2}$: The geometric **View Factor**
+* $T$: Absolute temperature in Kelvin
+
+### 2. Discrete View Factor Calculation
+To handle complex geometries, we calculate the view factor by summing the interaction between every surface triangle (facet) of Body A and Body B. For any two facets $i$ and $j$:
+
+$$dF_{ij} = \frac{\cos(\theta_i) \cos(\theta_j)}{\pi s^2} A_j$$
 ---
 
 ## Key Features
@@ -68,20 +89,6 @@ This project is developed as a **portfolio project** demonstrating skills in **s
 - **VTK** – 3D visualization and interaction
 - **STL & mesh processing libraries**
 - **Qt Stylesheets (QSS)** – UI styling
-
----
-
-## Project Structure
-RadEx Simulator/
-├── ui/ # Qt Designer .ui files
-├── styles/ # Global QSS stylesheets
-├── simulation/ # Thermal simulation logic
-├── geometry/ # STL handling and meshing
-├── visualization/ # VTK rendering
-├── docs/ # GIFs and documentation assets
-├── main.py # Application entry point
-└── README.md
-
 
 ---
 
