@@ -1,6 +1,6 @@
 
 from PySide6.QtWidgets import QWidget, QFileDialog, QDialog, QVBoxLayout, QLabel, QProgressBar
-from PySide6.QtCore import QTimer, Qt
+from PySide6.QtCore import QTimer, Qt, QTimer
 from PySide6.QtGui import QPixmap, QColor
 from ui.ui_widget import Ui_Widget 
 from controllers.stl_manager import STLManager
@@ -30,6 +30,9 @@ class Widget(QWidget, Ui_Widget):
         self.resetPositionBButton.clicked.connect(lambda: self.reset_object_transform(2))
         self.validationPositionButton.clicked.connect(self.check_objects_overlap)
 
+        # rotate viewer
+        #self.validationPositionButton.clicked.connect(lambda: self.rotate_for_gif(steps=360, angle_per_step=2, interval_ms=30))
+        
         
         self.setup_transform_controls()
 
@@ -310,3 +313,37 @@ class Widget(QWidget, Ui_Widget):
         # Compute AABB in world coordinates
         xs, ys, zs = zip(*transformed_points)
         return (min(xs), max(xs), min(ys), max(ys), min(zs), max(zs))
+ 
+    def rotate_for_gif(self, steps, angle_per_step, interval_ms):
+        """
+        Smoothly rotate the VTK camera for GIF recording.
+
+        steps: number of frames
+        angle_per_step: degrees per frame
+        interval_ms: delay between frames (ms)
+        """
+        self._gif_step = 0
+
+        # Get renderer & camera
+        renderer = self.vtkViewer.GetRenderWindow().GetRenderers().GetFirstRenderer()
+        camera = renderer.GetActiveCamera()
+
+        # Optional: ensure nice rotation center
+        camera.SetViewUp(0, 0, 1)
+        renderer.ResetCameraClippingRange()
+
+        def rotate_once():
+            if self._gif_step >= steps:
+                self._gif_timer.stop()
+                return
+
+            camera.Azimuth(angle_per_step)
+            renderer.ResetCameraClippingRange()
+            self.vtkViewer.GetRenderWindow().Render()
+
+            self._gif_step += 1
+
+        self._gif_timer = QTimer(self)
+        self._gif_timer.timeout.connect(rotate_once)
+        self._gif_timer.start(interval_ms)
+
