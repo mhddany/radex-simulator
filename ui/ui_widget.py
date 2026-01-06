@@ -762,7 +762,7 @@ class Ui_Widget(object):
         self.scrollAreaPositioning_2.setWidgetResizable(True)
         self.scrollAreaWidgetContentsPositioning_2 = QWidget()
         self.scrollAreaWidgetContentsPositioning_2.setObjectName(u"scrollAreaWidgetContentsPositioning_2")
-        self.scrollAreaWidgetContentsPositioning_2.setGeometry(QRect(0, -12, 314, 1000))
+        self.scrollAreaWidgetContentsPositioning_2.setGeometry(QRect(0, -25, 314, 1000))
         self.verticalLayout_34 = QVBoxLayout(self.scrollAreaWidgetContentsPositioning_2)
         self.verticalLayout_34.setSpacing(15)
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
@@ -1727,10 +1727,40 @@ class Ui_Widget(object):
 
         self.verticalLayout_29.addWidget(self.viewTitleLayout)
 
-        self.vtkViewer = QVTKRenderWindowInteractor(self.viewLayout)
+        self.viewerStackedWidget = QStackedWidget(self.viewLayout)
+        self.viewerStackedWidget.setObjectName(u"viewerStackedWidget")
+        self.vtkViewerPage = QWidget()
+        self.vtkViewerPage.setObjectName(u"vtkViewerPage")
+        self.verticalLayout_36 = QVBoxLayout(self.vtkViewerPage)
+        self.verticalLayout_36.setObjectName(u"verticalLayout_36")
+        self.vtkViewerLabel = QLabel(self.vtkViewerPage)
+        self.vtkViewerLabel.setObjectName(u"vtkViewerLabel")
+
+        self.verticalLayout_36.addWidget(self.vtkViewerLabel)
+
+        self.vtkViewer = QVTKRenderWindowInteractor(self.vtkViewerPage)
         self.vtkViewer.setObjectName(u"vtkViewer")
 
-        self.verticalLayout_29.addWidget(self.vtkViewer)
+        self.verticalLayout_36.addWidget(self.vtkViewer)
+
+        self.viewerStackedWidget.addWidget(self.vtkViewerPage)
+        self.tetViewerPage = QWidget()
+        self.tetViewerPage.setObjectName(u"tetViewerPage")
+        self.verticalLayout_37 = QVBoxLayout(self.tetViewerPage)
+        self.verticalLayout_37.setObjectName(u"verticalLayout_37")
+        self.tetViewerLabel = QLabel(self.tetViewerPage)
+        self.tetViewerLabel.setObjectName(u"tetViewerLabel")
+
+        self.verticalLayout_37.addWidget(self.tetViewerLabel)
+
+        self.tetViewer = QVTKRenderWindowInteractor(self.tetViewerPage)
+        self.tetViewer.setObjectName(u"tetViewer")
+
+        self.verticalLayout_37.addWidget(self.tetViewer)
+
+        self.viewerStackedWidget.addWidget(self.tetViewerPage)
+
+        self.verticalLayout_29.addWidget(self.viewerStackedWidget)
 
 
         self.horizontalLayout.addWidget(self.viewLayout)
@@ -1776,6 +1806,7 @@ class Ui_Widget(object):
         self.retranslateUi(Widget)
 
         self.stackedWidget.setCurrentIndex(1)
+        self.viewerStackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(Widget)
@@ -1895,6 +1926,8 @@ class Ui_Widget(object):
         self.validationPositionButton.setText(QCoreApplication.translate("Widget", u" Check For Overlap", None))
         self.mainTitleViewLabel.setText(QCoreApplication.translate("Widget", u"3D Viewer", None))
         self.subTitleViewLabel.setText(QCoreApplication.translate("Widget", u"Click and drag to rotate", None))
+        self.vtkViewerLabel.setText(QCoreApplication.translate("Widget", u"STL Mesh Viewer", None))
+        self.tetViewerLabel.setText(QCoreApplication.translate("Widget", u"Tetrahedral Mesh Viewer", None))
         self.statusMessageLabel.setText(QCoreApplication.translate("Widget", u"Ready to begin. Load geometry files to start.", None))
     # retranslateUi
 

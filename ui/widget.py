@@ -4,8 +4,10 @@ from PySide6.QtCore import QTimer, Qt, QTimer
 from PySide6.QtGui import QPixmap, QColor
 from ui.ui_widget import Ui_Widget 
 from controllers.stl_manager import STLManager
+from controllers.surf_to_tet_mesh import Surf2TetMesh
 import os
 import vtk
+import pyvista as pv
 
 class Widget(QWidget, Ui_Widget):
     def __init__(self):
@@ -15,12 +17,17 @@ class Widget(QWidget, Ui_Widget):
         
         # Connect sidebar buttons to stacked widget
         self.setup_connections()
-        self.switch_page(0)  # Default to first page
+        self.switch_page(0)  # Default to settings first page
             
         # Initialize STL Manager
         self.stl_manager = STLManager(
             vtk_widget=self.vtkViewer,      # QVTKRenderWindowInteractor from UI
             viewer_label=self.mainTitleViewLabel  # QLabel from UI
+        )
+
+        # Initialize Surface to Tetrahedral Mesh converter
+        self.surf2tetmesh = Surf2TetMesh(
+            vtk_widget=self.tetViewer
         )
         
         # Connect buttons
@@ -36,7 +43,7 @@ class Widget(QWidget, Ui_Widget):
         
         self.setup_transform_controls()
         
-        self.generateMeshAButton.clicked.connect(self.stl_manager.generate_tet_meshes)
+        self.generateMeshAButton.clicked.connect(self.generate_tet_meshes)
 
 
     def setup_connections(self):
@@ -56,6 +63,7 @@ class Widget(QWidget, Ui_Widget):
     def switch_page(self, index):
         """Switch stacked widget to the given page index"""
         self.stackedWidget.setCurrentIndex(index)
+        self.viewerStackedWidget.setCurrentIndex(index)
 
     def open_stl_file(self, stl_number):
         dialog = QFileDialog(self)
@@ -349,5 +357,34 @@ class Widget(QWidget, Ui_Widget):
         self._gif_timer = QTimer(self)
         self._gif_timer.timeout.connect(rotate_once)
         self._gif_timer.start(interval_ms)
+        
+    def generate_tet_meshes(self):
+        for stl_number, file_path in self.stl_manager.stl_paths.items():
+            try:
+                mesh = pv.read(file_path)  # Load STL with PyVista
+                self.surf2tetmesh.add_stl_mesh(stl_number, mesh)
+                print(f"Loaded STL {stl_number}: {file_path}")
+            except Exception as e:
+                print(f"Failed to load STL {stl_number}: {e}")
+                continue
+            
+        self.surf2tetmesh.generate_fem_mesh(
+            maxvolume=1.0,   # max tetrahedron volume (adjust for finer/coarser mesh)
+            order=1,         # linear tetrahedra
+            mindihedral=20,  # minimum dihedral angle
+            minratio=1.5,    # minimum ratio of tetrahedron edges
+            psc=1.0,         # points per surface control
+            verbose=0        # set to 0 to silence output
+        )
+
+        print("TetGen tetrahedral meshes generated for all STL meshes.")
+        
+        self.viewerStackedWidget.setCurrentIndex(1) # Switch to Tetrahedral Mesh Viewer tab
+        self.surf2tetmesh.display_tet_meshes()
+        
+        
+            
+        
+    
 
     

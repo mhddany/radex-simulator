@@ -1359,7 +1359,7 @@ QWidget {
                         <property name="geometry">
                          <rect>
                           <x>0</x>
-                          <y>-12</y>
+                          <y>-25</y>
                           <width>314</width>
                           <height>1000</height>
                          </rect>
@@ -3331,7 +3331,39 @@ background-color: #1447e6</string>
             </widget>
            </item>
            <item>
-            <widget class="QVTKRenderWindowInteractor" name="vtkViewer"/>
+            <widget class="QStackedWidget" name="viewerStackedWidget">
+             <property name="currentIndex">
+              <number>0</number>
+             </property>
+             <widget class="QWidget" name="vtkViewerPage">
+              <layout class="QVBoxLayout" name="verticalLayout_36">
+               <item>
+                <widget class="QLabel" name="vtkViewerLabel">
+                 <property name="text">
+                  <string>STL Mesh Viewer</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QVTKRenderWindowInteractor" name="vtkViewer"/>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tetViewerPage">
+              <layout class="QVBoxLayout" name="verticalLayout_37">
+               <item>
+                <widget class="QLabel" name="tetViewerLabel">
+                 <property name="text">
+                  <string>Tetrahedral Mesh Viewer</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QVTKRenderWindowInteractor" name="tetViewer"/>
+               </item>
+              </layout>
+             </widget>
+            </widget>
            </item>
           </layout>
          </widget>
