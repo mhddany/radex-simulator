@@ -811,7 +811,7 @@ QWidget {
            <item>
             <widget class="QStackedWidget" name="stackedWidget">
              <property name="currentIndex">
-              <number>5</number>
+              <number>1</number>
              </property>
              <widget class="QWidget" name="geometryPage">
               <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1270,6 +1270,9 @@ QWidget {
                <item>
                 <widget class="QWidget" name="meshingPageLayout" native="true">
                  <layout class="QVBoxLayout" name="verticalLayout_14">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
                   <property name="leftMargin">
                    <number>0</number>
                   </property>
@@ -1330,7 +1333,803 @@ QWidget {
                    </widget>
                   </item>
                   <item>
-                   <widget class="QWidget" name="settingsMeshingPage" native="true"/>
+                   <widget class="QWidget" name="settingsMeshingPage" native="true">
+                    <layout class="QVBoxLayout" name="verticalLayout_35">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>1</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QScrollArea" name="scrollAreaPositioning_2">
+                       <property name="widgetResizable">
+                        <bool>true</bool>
+                       </property>
+                       <widget class="QWidget" name="scrollAreaWidgetContentsPositioning_2">
+                        <property name="geometry">
+                         <rect>
+                          <x>0</x>
+                          <y>-12</y>
+                          <width>314</width>
+                          <height>1000</height>
+                         </rect>
+                        </property>
+                        <layout class="QVBoxLayout" name="verticalLayout_34">
+                         <property name="spacing">
+                          <number>15</number>
+                         </property>
+                         <property name="leftMargin">
+                          <number>20</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>20</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>20</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>20</number>
+                         </property>
+                         <item>
+                          <widget class="QFrame" name="framePositioningA_2">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>400</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>1000</height>
+                            </size>
+                           </property>
+                           <property name="frameShape">
+                            <enum>QFrame::Shape::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Shadow::Raised</enum>
+                           </property>
+                           <layout class="QGridLayout" name="gridLayout_2">
+                            <item row="9" column="2">
+                             <widget class="QSlider" name="xRotationASlider_2">
+                              <property name="maximum">
+                               <number>100</number>
+                              </property>
+                              <property name="value">
+                               <number>50</number>
+                              </property>
+                              <property name="orientation">
+                               <enum>Qt::Orientation::Horizontal</enum>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="8" column="2">
+                             <widget class="QLabel" name="rotationPositionALabel_2">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>Rotation</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="0" column="3">
+                             <widget class="QPushButton" name="resetPositionAButton_2">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string/>
+                              </property>
+                              <property name="icon">
+                               <iconset resource="resources.qrc">
+                                <normaloff>:/icons/icons/undo-alt.svg</normaloff>:/icons/icons/undo-alt.svg</iconset>
+                              </property>
+                              <property name="iconSize">
+                               <size>
+                                <width>12</width>
+                                <height>12</height>
+                               </size>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="0" column="0" colspan="3">
+                             <widget class="QLabel" name="positionObjectALabel_2">
+                              <property name="text">
+                               <string>Object A</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="9" column="0">
+                             <widget class="QLabel" name="xRotationPositionALabel_2">
+                              <property name="text">
+                               <string>x:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="5" column="2">
+                             <widget class="QDoubleSpinBox" name="xTranslationASpinbox_2">
+                              <property name="stepType">
+                               <enum>QAbstractSpinBox::StepType::DefaultStepType</enum>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="6" column="3">
+                             <widget class="QLabel" name="yTranslationUnitPositionALabel_2">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>m</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="6" column="2">
+                             <widget class="QDoubleSpinBox" name="yTranslationASpinbox_2"/>
+                            </item>
+                            <item row="5" column="3">
+                             <widget class="QLabel" name="xTranslationUnitPositionALabel_2">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>m</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="11" column="3">
+                             <widget class="QLabel" name="zRotationUnitPositionALabel_2">
+                              <property name="text">
+                               <string>0°</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="6" column="0">
+                             <widget class="QLabel" name="yTranslationPositionALabel_2">
+                              <property name="text">
+                               <string>y:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="7" column="0">
+                             <widget class="QLabel" name="zTranslationPositionALabel_2">
+                              <property name="text">
+                               <string>z:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="10" column="3">
+                             <widget class="QLabel" name="yRotationUnitPositionALabel_2">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>0°</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="11" column="2">
+                             <widget class="QSlider" name="zRotationASlider_2">
+                              <property name="value">
+                               <number>50</number>
+                              </property>
+                              <property name="orientation">
+                               <enum>Qt::Orientation::Horizontal</enum>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="10" column="0">
+                             <widget class="QLabel" name="yRotationPositionALabel_2">
+                              <property name="text">
+                               <string>y:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="5" column="0">
+                             <widget class="QLabel" name="xTranslationPositionALabel_2">
+                              <property name="text">
+                               <string>x:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="8" column="0">
+                             <widget class="QLabel" name="rotationPositionAIcon_2">
+                              <property name="minimumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string/>
+                              </property>
+                              <property name="pixmap">
+                               <pixmap resource="resources.qrc">:/icons/icons/rotate-right.svg</pixmap>
+                              </property>
+                              <property name="scaledContents">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="9" column="3">
+                             <widget class="QLabel" name="xRotationUnitPositionALabel_2">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>0°</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="11" column="0">
+                             <widget class="QLabel" name="zRotationPositionALabel_2">
+                              <property name="text">
+                               <string>z:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="7" column="2">
+                             <widget class="QDoubleSpinBox" name="zTranslationASpinbox_2"/>
+                            </item>
+                            <item row="4" column="0">
+                             <widget class="QLabel" name="translationPositionAIcon_2">
+                              <property name="minimumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string/>
+                              </property>
+                              <property name="pixmap">
+                               <pixmap resource="resources.qrc">:/icons/icons/arrows_dark.svg</pixmap>
+                              </property>
+                              <property name="scaledContents">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="10" column="2">
+                             <widget class="QSlider" name="yRotationASlider_2">
+                              <property name="value">
+                               <number>50</number>
+                              </property>
+                              <property name="orientation">
+                               <enum>Qt::Orientation::Horizontal</enum>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="4" column="2">
+                             <widget class="QLabel" name="translationPositionALabel_2">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>Translation</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="7" column="3">
+                             <widget class="QLabel" name="zTranslationUnitPositionALabel_2">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>m</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="2">
+                             <widget class="QPushButton" name="generateMeshAButton">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>35</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">
+background-color: #1447e6</string>
+                              </property>
+                              <property name="text">
+                               <string>Generate Mesh</string>
+                              </property>
+                              <property name="icon">
+                               <iconset resource="resources.qrc">
+                                <normaloff>:/icons/icons/warning_white.svg</normaloff>:/icons/icons/warning_white.svg</iconset>
+                              </property>
+                              <property name="iconSize">
+                               <size>
+                                <width>14</width>
+                                <height>14</height>
+                               </size>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QFrame" name="framePositioningB_2">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>400</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>500</height>
+                            </size>
+                           </property>
+                           <property name="frameShape">
+                            <enum>QFrame::Shape::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Shadow::Raised</enum>
+                           </property>
+                           <layout class="QGridLayout" name="gridLayout_6">
+                            <property name="leftMargin">
+                             <number>10</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>10</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="horizontalSpacing">
+                             <number>5</number>
+                            </property>
+                            <property name="verticalSpacing">
+                             <number>0</number>
+                            </property>
+                            <item row="3" column="1">
+                             <widget class="QDoubleSpinBox" name="xTranslationBSpinbox_2">
+                              <property name="stepType">
+                               <enum>QAbstractSpinBox::StepType::DefaultStepType</enum>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="9" column="2">
+                             <widget class="QLabel" name="zRotationUnitPositionBLabel_2">
+                              <property name="text">
+                               <string>0°</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="2" column="0">
+                             <widget class="QLabel" name="translationPositionBIcon_2">
+                              <property name="minimumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string/>
+                              </property>
+                              <property name="pixmap">
+                               <pixmap resource="resources.qrc">:/icons/icons/arrows_dark.svg</pixmap>
+                              </property>
+                              <property name="scaledContents">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="2">
+                             <widget class="QPushButton" name="resetPositionBButton_2">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string/>
+                              </property>
+                              <property name="icon">
+                               <iconset resource="resources.qrc">
+                                <normaloff>:/icons/icons/undo-alt.svg</normaloff>:/icons/icons/undo-alt.svg</iconset>
+                              </property>
+                              <property name="iconSize">
+                               <size>
+                                <width>12</width>
+                                <height>12</height>
+                               </size>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="9" column="0">
+                             <widget class="QLabel" name="zRotationPositionBLabel_2">
+                              <property name="text">
+                               <string>z:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="4" column="2">
+                             <widget class="QLabel" name="yTranslationUnitPositionBLabel_2">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>m</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="3" column="0">
+                             <widget class="QLabel" name="xTranslationPositionBLabel_2">
+                              <property name="text">
+                               <string>x:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="5" column="2">
+                             <widget class="QLabel" name="zTranslationUnitPositionBLabel_2">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>m</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="8" column="2">
+                             <widget class="QLabel" name="yRotationUnitPositionBLabel_2">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>0°</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="6" column="0">
+                             <widget class="QLabel" name="rotationPositionbIcon_2">
+                              <property name="minimumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>11</width>
+                                <height>11</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string/>
+                              </property>
+                              <property name="pixmap">
+                               <pixmap resource="resources.qrc">:/icons/icons/rotate-right.svg</pixmap>
+                              </property>
+                              <property name="scaledContents">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="8" column="1">
+                             <widget class="QSlider" name="yRotationBSlider_2">
+                              <property name="maximum">
+                               <number>100</number>
+                              </property>
+                              <property name="value">
+                               <number>50</number>
+                              </property>
+                              <property name="orientation">
+                               <enum>Qt::Orientation::Horizontal</enum>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="5" column="1">
+                             <widget class="QDoubleSpinBox" name="zTranslationBSpinbox_2"/>
+                            </item>
+                            <item row="9" column="1">
+                             <widget class="QSlider" name="zRotationBSlider_2">
+                              <property name="maximum">
+                               <number>100</number>
+                              </property>
+                              <property name="value">
+                               <number>50</number>
+                              </property>
+                              <property name="orientation">
+                               <enum>Qt::Orientation::Horizontal</enum>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="2" column="1">
+                             <widget class="QLabel" name="translationPositionBLabel_2">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>Translation</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="4" column="1">
+                             <widget class="QDoubleSpinBox" name="yTranslationBSpinbox_2"/>
+                            </item>
+                            <item row="7" column="0">
+                             <widget class="QLabel" name="xRotationPositionBLabel_2">
+                              <property name="text">
+                               <string>x:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="0" colspan="2">
+                             <widget class="QLabel" name="positionObjectBLabel_2">
+                              <property name="text">
+                               <string>Object B</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="6" column="1">
+                             <widget class="QLabel" name="rotationPositionbLabel_2">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>Rotation</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="7" column="2">
+                             <widget class="QLabel" name="xRotationUnitPositionBLabel_2">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>0°</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="4" column="0">
+                             <widget class="QLabel" name="yTranslationPositionBLabel_2">
+                              <property name="text">
+                               <string>y:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="7" column="1">
+                             <widget class="QSlider" name="xRotationBSlider_2">
+                              <property name="maximum">
+                               <number>100</number>
+                              </property>
+                              <property name="value">
+                               <number>50</number>
+                              </property>
+                              <property name="orientation">
+                               <enum>Qt::Orientation::Horizontal</enum>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="3" column="2">
+                             <widget class="QLabel" name="xTranslationUnitPositionBLabel_2">
+                              <property name="maximumSize">
+                               <size>
+                                <width>50</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>m</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="8" column="0">
+                             <widget class="QLabel" name="yRotationPositionBLabel_2">
+                              <property name="text">
+                               <string>y:</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="5" column="0">
+                             <widget class="QLabel" name="zTranslationPositionBLabel_2">
+                              <property name="text">
+                               <string>z:</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QFrame" name="framePositioningValidation_2">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>130</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>130</height>
+                            </size>
+                           </property>
+                           <property name="frameShape">
+                            <enum>QFrame::Shape::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Shadow::Raised</enum>
+                           </property>
+                           <layout class="QVBoxLayout" name="verticalLayout_32">
+                            <property name="leftMargin">
+                             <number>10</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>10</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>10</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>10</number>
+                            </property>
+                            <item>
+                             <widget class="QLabel" name="validationPositioningLabel_2">
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>20</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>Validation</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QPushButton" name="validationPositionButton_2">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>35</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">
+background-color: #1447e6</string>
+                              </property>
+                              <property name="text">
+                               <string> Check For Overlap</string>
+                              </property>
+                              <property name="icon">
+                               <iconset resource="resources.qrc">
+                                <normaloff>:/icons/icons/warning_white.svg</normaloff>:/icons/icons/warning_white.svg</iconset>
+                              </property>
+                              <property name="iconSize">
+                               <size>
+                                <width>14</width>
+                                <height>14</height>
+                               </size>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <spacer name="verticalSpacer_4">
+                              <property name="orientation">
+                               <enum>Qt::Orientation::Vertical</enum>
+                              </property>
+                              <property name="sizeHint" stdset="0">
+                               <size>
+                                <width>20</width>
+                                <height>40</height>
+                               </size>
+                              </property>
+                             </spacer>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
                   </item>
                  </layout>
                 </widget>
@@ -1692,7 +2491,7 @@ QWidget {
                         <property name="geometry">
                          <rect>
                           <x>0</x>
-                          <y>-159</y>
+                          <y>0</y>
                           <width>314</width>
                           <height>1000</height>
                          </rect>

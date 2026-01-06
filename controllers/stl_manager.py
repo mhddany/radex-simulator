@@ -1,5 +1,9 @@
 import vtk
 import math
+import os
+import numpy as np
+import trimesh
+import tetgen
 from vtkmodules.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 
 class STLManager:
@@ -24,6 +28,9 @@ class STLManager:
         
         self.setup_camera_info()
         
+        self.tet_meshes = {}   # stl_number -> volume mesh data
+        self.stl_paths = {}
+
         
         
     def setup_camera_info(self):
@@ -91,6 +98,7 @@ class STLManager:
 
         self.actors[stl_number] = actor
         self.transforms[stl_number] = transform 
+        self.stl_paths[stl_number] = file_path
         
         center = actor.GetCenter()
         self.object_centers[stl_number] = center
@@ -190,5 +198,67 @@ class STLManager:
             print("STL validation error:", e)
             return False
         
+    def stl_to_tet_mesh(
+        self,
+        stl_path: str,
+        max_volume: float = 1.0,
+        quality: float = 1.4,
+    ):
+        """
+        Convert a closed STL surface into a tetrahedral FEM mesh using TetGen.
 
+        Parameters
+        ----------
+        stl_path : str
+            Path to STL file (must be closed / watertight).
+        max_volume : float
+            Maximum tetrahedron volume (mesh density control).
+        quality : float
+            Radius-edge ratio (lower = better quality, >= 1.2 recommended).
+
+        Returns
+        -------
+        mesh : dict
+            Dictionary containing nodes, tetrahedra, and surface triangles.
+        """
+
+        if not os.path.exists(stl_path):
+            raise FileNotFoundError(stl_path)
+
+        # -----------------------------
+        # Load and clean STL
+        # -----------------------------
+        surface = trimesh.load(stl_path)
+
+        if not isinstance(surface, trimesh.Trimesh):
+            raise ValueError("Invalid STL mesh")
+
+        surface.remove_duplicate_faces()
+        surface.remove_degenerate_faces()
+        surface.remove_unreferenced_vertices()
+        surface.fill_holes()
+
+        if not surface.is_watertight:
+            raise ValueError("STL must be watertight for TetGen")
+
+        # -----------------------------
+        # TetGen tetrahedralization
+        # -----------------------------
+        tg = tetgen.TetGen(surface.vertices, surface.faces)
+
+        tg.tetrahedralize(
+            quality=quality,
+            maxvolume=max_volume
+        )
+
+        nodes = tg.points                      # (N, 3)
+        tetrahedra = tg.elements               # (M, 4)
+        triangles = surface.faces              # surface triangles
+
+        return {
+            "nodes": nodes,
+            "tetrahedra": tetrahedra,   # already zero-based
+            "triangles": triangles,     # already zero-based
+        }
+        
     

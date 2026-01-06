@@ -35,6 +35,9 @@ class Widget(QWidget, Ui_Widget):
         
         
         self.setup_transform_controls()
+        
+        self.generateMeshAButton.clicked.connect(self.stl_manager.generate_tet_meshes)
+
 
     def setup_connections(self):
         # Dictionary mapping buttons to page index
@@ -347,3 +350,4 @@ class Widget(QWidget, Ui_Widget):
         self._gif_timer.timeout.connect(rotate_once)
         self._gif_timer.start(interval_ms)
 
+    
