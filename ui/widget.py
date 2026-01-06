@@ -373,13 +373,15 @@ class Widget(QWidget, Ui_Widget):
         self._gif_timer.start(interval_ms)
         
     def generate_tet_meshes(self):
-        for stl_number, file_path in self.stl_manager.stl_paths.items():
+        
+        for stl_number, mesh in self.stl_manager.stl_mesh.items():
             try:
-                mesh = pv.read(file_path)  # Load STL with PyVista
+                self.stl_manager.update_pyvista_mesh_from_actor(stl_number)
+                # Add the already-loaded and transformed PyVista mesh
                 self.surf2tetmesh.add_stl_mesh(stl_number, mesh)
-                print(f"Loaded STL {stl_number}: {file_path}")
+                print(f"Added STL {stl_number} to Surf2TetMesh")
             except Exception as e:
-                print(f"Failed to load STL {stl_number}: {e}")
+                print(f"Failed to add STL {stl_number}: {e}")
                 continue
             
         self.surf2tetmesh.generate_fem_mesh(
@@ -395,10 +397,6 @@ class Widget(QWidget, Ui_Widget):
         
         self.viewerStackedWidget.setCurrentIndex(1) # Switch to Tetrahedral Mesh Viewer tab
         self.surf2tetmesh.display_tet_meshes()
-        
-        
-            
-        
-    
+        #self.surf2tetmesh.display_stl_meshes()
 
     

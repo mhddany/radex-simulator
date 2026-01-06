@@ -139,3 +139,49 @@ class Surf2TetMesh:
         self.tet_viewer.GetRenderWindow().Render()
 
         print(f"Displayed {len(self.tet_meshes)} tetrahedral meshes.")
+
+    def display_stl_meshes(self):
+        """
+        Display all STL meshes that have been loaded into Surf2TetMesh.
+        Uses the same tet_renderer style logic but for surface meshes.
+        """
+        # Clear previous actors
+        self.tet_renderer.RemoveAllViewProps()
+        self.tet_actors = {}
+
+        # Define surface color (same for both)
+        surface_color = (0.5647, 0.6314, 0.7255)  # #90a1b9
+
+        # Define edge colors per mesh
+        edge_colors = {
+            1: (0.0235, 0.827, 0.953),  # #06d3f3 for mesh 1
+            2: (0.945, 0.537, 0.016),   # #f18904 for mesh 2
+        }
+
+        for stl_number, stl_mesh in self.stl_mesh.items():
+            # PyVista PolyData can be used directly with vtkPolyDataMapper
+            vtk_mesh = stl_mesh
+
+            mapper = vtk.vtkPolyDataMapper()
+            mapper.SetInputData(vtk_mesh)
+
+            actor = vtk.vtkActor()
+            actor.SetMapper(mapper)
+
+            # Set surface and edge colors
+            edge_color = edge_colors.get(stl_number, (0.2, 0.2, 0.2))  # default gray if missing
+            prop = actor.GetProperty()
+            prop.SetColor(*surface_color)
+            prop.EdgeVisibilityOn()
+            prop.SetEdgeColor(*edge_color)
+            prop.SetLineWidth(1.0)
+            prop.SetRepresentationToSurface()
+
+            # Store actor and add to renderer
+            self.tet_actors[stl_number] = actor
+            self.tet_renderer.AddActor(actor)
+
+        self.tet_renderer.ResetCamera()
+        self.tet_viewer.GetRenderWindow().Render()
+
+        print(f"Displayed {len(self.stl_mesh)} STL meshes.")

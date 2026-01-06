@@ -131,11 +131,71 @@ class STLManager:
     # -----------------------------
     # Apply translation + rotation to PyVista mesh & actor
     # -----------------------------
-    def set_transform(self, stl_number, tx=0, ty=0, tz=0, rx=0, ry=0, rz=0):
+    def _apply_to_pyvista_mesh(self, stl_number, tx=0, ty=0, tz=0, rx=0, ry=0, rz=0):
+        """
+        Apply translation and rotation to the PyVista mesh corresponding to stl_number.
+        """
+        if stl_number not in self.stl_mesh:
+            return
+
+        mesh = self.stl_mesh[stl_number]
+
+        # Convert degrees to radians
+        rx, ry, rz = np.deg2rad([rx, ry, rz])
+
+        # Rotation matrices
+        Rx = np.array([[1, 0, 0],
+                       [0, np.cos(rx), -np.sin(rx)],
+                       [0, np.sin(rx),  np.cos(rx)]])
+        Ry = np.array([[ np.cos(ry), 0, np.sin(ry)],
+                       [0, 1, 0],
+                       [-np.sin(ry), 0, np.cos(ry)]])
+        Rz = np.array([[np.cos(rz), -np.sin(rz), 0],
+                       [np.sin(rz),  np.cos(rz), 0],
+                       [0, 0, 1]])
+
+        # Combined rotation: X then Y then Z
+        R = Rz @ Ry @ Rx
+
+        # Apply rotation
+        mesh.points[:] = mesh.points @ R.T
+
+        # Apply translation
+        mesh.points[:] += np.array([tx, ty, tz])
+    
+    def update_pyvista_mesh_from_actor(self, stl_number):
+        """
+        Apply the current VTK actor transform to the corresponding PyVista mesh.
+        Updates self.stl_mesh[stl_number] in-place so TetGen sees the transformed mesh.
+        """
         if stl_number not in self.transforms or stl_number not in self.stl_mesh:
             return
 
-        #  Update VTK transform for display
+        transform = self.transforms[stl_number]
+        mesh = self.stl_mesh[stl_number]
+
+        # Get 4x4 transformation matrix from VTK
+        vtk_mat = transform.GetMatrix()
+        mat_np = np.array([[vtk_mat.GetElement(i, j) for j in range(4)] for i in range(4)])
+
+        # Apply transformation to points
+        pts = mesh.points
+        pts_hom = np.hstack([pts, np.ones((pts.shape[0], 1))])  # homogeneous
+        pts_transformed = (mat_np @ pts_hom.T).T[:, :3]
+
+        # Update mesh in-place
+        mesh.points[:] = pts_transformed
+
+
+    # -----------------------------
+    # Overwrite set_transform to update both VTK actor and PyVista mesh
+    # -----------------------------
+    def set_transform(self, stl_number, tx=0, ty=0, tz=0, rx=0, ry=0, rz=0):
+        """Combined translation + rotation"""
+        if stl_number not in self.transforms or stl_number not in self.stl_mesh:
+            return
+
+        # --- Update VTK actor for visualization ---
         transform = self.transforms[stl_number]
         transform.Identity()
         transform.Translate(tx, ty, tz)
@@ -143,11 +203,10 @@ class STLManager:
         transform.RotateY(ry)
         transform.RotateZ(rz)
 
-        #  Apply same transform to PyVista mesh (in-place)
-        mat = self._vtk_transform_to_numpy_matrix(transform)
-        self.stl_mesh[stl_number].transform(mat)
+        # --- Update PyVista mesh for TetGen ---
+        self._apply_to_pyvista_mesh(stl_number, tx, ty, tz, rx, ry, rz)
 
-        #  Refresh display
+        # --- Render VTK widget ---
         self.vtk_widget.GetRenderWindow().Render()
 
     # -----------------------------
