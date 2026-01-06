@@ -43,7 +43,7 @@ class Widget(QWidget, Ui_Widget):
         
         self.setup_transform_controls()
         
-        self.generateMeshAButton.clicked.connect(self.generate_tet_meshes)
+        self.generateMeshButton.clicked.connect(self.generate_tet_meshes)
         
         # Define surface color (same for both)
         self.surface_color = (0.5647, 0.6314, 0.7255)  # #90a1b9

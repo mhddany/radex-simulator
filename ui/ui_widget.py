@@ -15,10 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractSpinBox, QApplication, QDoubleSpinBox, QFrame,
-    QGridLayout, QHBoxLayout, QLabel, QPushButton,
-    QScrollArea, QSizePolicy, QSlider, QSpacerItem,
-    QStackedWidget, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractSpinBox, QApplication, QComboBox, QDoubleSpinBox,
+    QFrame, QGridLayout, QHBoxLayout, QLabel,
+    QPushButton, QScrollArea, QSizePolicy, QSlider,
+    QSpacerItem, QStackedWidget, QVBoxLayout, QWidget)
 
 from vtk.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 from ui import resources_rc
@@ -572,7 +572,7 @@ class Ui_Widget(object):
         self.scrollAreaGeometry.setWidgetResizable(True)
         self.scrollAreaWidgetContentsGeometry = QWidget()
         self.scrollAreaWidgetContentsGeometry.setObjectName(u"scrollAreaWidgetContentsGeometry")
-        self.scrollAreaWidgetContentsGeometry.setGeometry(QRect(0, 0, 314, 475))
+        self.scrollAreaWidgetContentsGeometry.setGeometry(QRect(0, -49, 314, 475))
         self.verticalLayout_28 = QVBoxLayout(self.scrollAreaWidgetContentsGeometry)
         self.verticalLayout_28.setSpacing(15)
         self.verticalLayout_28.setObjectName(u"verticalLayout_28")
@@ -757,388 +757,297 @@ class Ui_Widget(object):
         self.verticalLayout_35.setSpacing(0)
         self.verticalLayout_35.setObjectName(u"verticalLayout_35")
         self.verticalLayout_35.setContentsMargins(0, 1, 0, 0)
-        self.scrollAreaPositioning_2 = QScrollArea(self.settingsMeshingPage)
-        self.scrollAreaPositioning_2.setObjectName(u"scrollAreaPositioning_2")
-        self.scrollAreaPositioning_2.setWidgetResizable(True)
-        self.scrollAreaWidgetContentsPositioning_2 = QWidget()
-        self.scrollAreaWidgetContentsPositioning_2.setObjectName(u"scrollAreaWidgetContentsPositioning_2")
-        self.scrollAreaWidgetContentsPositioning_2.setGeometry(QRect(0, -25, 314, 1000))
-        self.verticalLayout_34 = QVBoxLayout(self.scrollAreaWidgetContentsPositioning_2)
+        self.scrollAreaMeshing = QScrollArea(self.settingsMeshingPage)
+        self.scrollAreaMeshing.setObjectName(u"scrollAreaMeshing")
+        self.scrollAreaMeshing.setWidgetResizable(True)
+        self.scrollAreaWidgetContentsMeshing = QWidget()
+        self.scrollAreaWidgetContentsMeshing.setObjectName(u"scrollAreaWidgetContentsMeshing")
+        self.scrollAreaWidgetContentsMeshing.setGeometry(QRect(0, 0, 314, 1410))
+        self.verticalLayout_34 = QVBoxLayout(self.scrollAreaWidgetContentsMeshing)
         self.verticalLayout_34.setSpacing(15)
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
-        self.verticalLayout_34.setContentsMargins(20, 20, 20, 20)
-        self.framePositioningA_2 = QFrame(self.scrollAreaWidgetContentsPositioning_2)
-        self.framePositioningA_2.setObjectName(u"framePositioningA_2")
-        self.framePositioningA_2.setMinimumSize(QSize(0, 400))
-        self.framePositioningA_2.setMaximumSize(QSize(16777215, 1000))
-        self.framePositioningA_2.setFrameShape(QFrame.Shape.StyledPanel)
-        self.framePositioningA_2.setFrameShadow(QFrame.Shadow.Raised)
-        self.gridLayout_2 = QGridLayout(self.framePositioningA_2)
+        self.frameMeshingA = QFrame(self.scrollAreaWidgetContentsMeshing)
+        self.frameMeshingA.setObjectName(u"frameMeshingA")
+        self.frameMeshingA.setMinimumSize(QSize(0, 400))
+        self.frameMeshingA.setMaximumSize(QSize(16777215, 1000))
+        self.frameMeshingA.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frameMeshingA.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_2 = QGridLayout(self.frameMeshingA)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.xRotationASlider_2 = QSlider(self.framePositioningA_2)
-        self.xRotationASlider_2.setObjectName(u"xRotationASlider_2")
-        self.xRotationASlider_2.setMaximum(100)
-        self.xRotationASlider_2.setValue(50)
-        self.xRotationASlider_2.setOrientation(Qt.Orientation.Horizontal)
+        self.gridLayout_2.setVerticalSpacing(10)
+        self.gridLayout_2.setContentsMargins(15, 15, 15, 15)
+        self.maxvolumeALabel = QLabel(self.frameMeshingA)
+        self.maxvolumeALabel.setObjectName(u"maxvolumeALabel")
 
-        self.gridLayout_2.addWidget(self.xRotationASlider_2, 9, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.maxvolumeALabel, 3, 0, 1, 1)
 
-        self.rotationPositionALabel_2 = QLabel(self.framePositioningA_2)
-        self.rotationPositionALabel_2.setObjectName(u"rotationPositionALabel_2")
-        self.rotationPositionALabel_2.setMinimumSize(QSize(0, 25))
-        self.rotationPositionALabel_2.setMaximumSize(QSize(16777215, 25))
+        self.mindihedralALabel = QLabel(self.frameMeshingA)
+        self.mindihedralALabel.setObjectName(u"mindihedralALabel")
 
-        self.gridLayout_2.addWidget(self.rotationPositionALabel_2, 8, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.mindihedralALabel, 6, 0, 1, 1)
 
-        self.resetPositionAButton_2 = QPushButton(self.framePositioningA_2)
-        self.resetPositionAButton_2.setObjectName(u"resetPositionAButton_2")
-        self.resetPositionAButton_2.setMaximumSize(QSize(50, 16777215))
+        self.minratioADescLabel = QLabel(self.frameMeshingA)
+        self.minratioADescLabel.setObjectName(u"minratioADescLabel")
+        self.minratioADescLabel.setWordWrap(True)
+
+        self.gridLayout_2.addWidget(self.minratioADescLabel, 11, 0, 1, 3)
+
+        self.pscADescLabel = QLabel(self.frameMeshingA)
+        self.pscADescLabel.setObjectName(u"pscADescLabel")
+        self.pscADescLabel.setWordWrap(True)
+
+        self.gridLayout_2.addWidget(self.pscADescLabel, 14, 0, 1, 3)
+
+        self.orderADescLabel = QLabel(self.frameMeshingA)
+        self.orderADescLabel.setObjectName(u"orderADescLabel")
+        self.orderADescLabel.setWordWrap(True)
+
+        self.gridLayout_2.addWidget(self.orderADescLabel, 17, 0, 1, 3)
+
+        self.minratioASlider = QSlider(self.frameMeshingA)
+        self.minratioASlider.setObjectName(u"minratioASlider")
+        self.minratioASlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_2.addWidget(self.minratioASlider, 10, 0, 1, 3)
+
+        self.maxvolumeASlider = QSlider(self.frameMeshingA)
+        self.maxvolumeASlider.setObjectName(u"maxvolumeASlider")
+        self.maxvolumeASlider.setMaximum(100)
+        self.maxvolumeASlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_2.addWidget(self.maxvolumeASlider, 4, 0, 1, 3)
+
+        self.resetMeshingAButton = QPushButton(self.frameMeshingA)
+        self.resetMeshingAButton.setObjectName(u"resetMeshingAButton")
+        self.resetMeshingAButton.setMaximumSize(QSize(50, 16777215))
         icon7 = QIcon()
         icon7.addFile(u":/icons/icons/undo-alt.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.resetPositionAButton_2.setIcon(icon7)
-        self.resetPositionAButton_2.setIconSize(QSize(12, 12))
+        self.resetMeshingAButton.setIcon(icon7)
+        self.resetMeshingAButton.setIconSize(QSize(12, 12))
 
-        self.gridLayout_2.addWidget(self.resetPositionAButton_2, 0, 3, 1, 1)
+        self.gridLayout_2.addWidget(self.resetMeshingAButton, 0, 2, 1, 1)
 
-        self.positionObjectALabel_2 = QLabel(self.framePositioningA_2)
-        self.positionObjectALabel_2.setObjectName(u"positionObjectALabel_2")
+        self.meshingObjectALabel = QLabel(self.frameMeshingA)
+        self.meshingObjectALabel.setObjectName(u"meshingObjectALabel")
 
-        self.gridLayout_2.addWidget(self.positionObjectALabel_2, 0, 0, 1, 3)
+        self.gridLayout_2.addWidget(self.meshingObjectALabel, 0, 0, 1, 2)
 
-        self.xRotationPositionALabel_2 = QLabel(self.framePositioningA_2)
-        self.xRotationPositionALabel_2.setObjectName(u"xRotationPositionALabel_2")
+        self.minratioALabel = QLabel(self.frameMeshingA)
+        self.minratioALabel.setObjectName(u"minratioALabel")
 
-        self.gridLayout_2.addWidget(self.xRotationPositionALabel_2, 9, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.minratioALabel, 9, 0, 1, 1)
 
-        self.xTranslationASpinbox_2 = QDoubleSpinBox(self.framePositioningA_2)
-        self.xTranslationASpinbox_2.setObjectName(u"xTranslationASpinbox_2")
-        self.xTranslationASpinbox_2.setStepType(QAbstractSpinBox.StepType.DefaultStepType)
+        self.pscASlider = QSlider(self.frameMeshingA)
+        self.pscASlider.setObjectName(u"pscASlider")
+        self.pscASlider.setOrientation(Qt.Orientation.Horizontal)
 
-        self.gridLayout_2.addWidget(self.xTranslationASpinbox_2, 5, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.pscASlider, 13, 0, 1, 3)
 
-        self.yTranslationUnitPositionALabel_2 = QLabel(self.framePositioningA_2)
-        self.yTranslationUnitPositionALabel_2.setObjectName(u"yTranslationUnitPositionALabel_2")
-        self.yTranslationUnitPositionALabel_2.setMaximumSize(QSize(50, 16777215))
+        self.mindihedralADescLabel = QLabel(self.frameMeshingA)
+        self.mindihedralADescLabel.setObjectName(u"mindihedralADescLabel")
+        self.mindihedralADescLabel.setWordWrap(True)
 
-        self.gridLayout_2.addWidget(self.yTranslationUnitPositionALabel_2, 6, 3, 1, 1)
+        self.gridLayout_2.addWidget(self.mindihedralADescLabel, 8, 0, 1, 3)
 
-        self.yTranslationASpinbox_2 = QDoubleSpinBox(self.framePositioningA_2)
-        self.yTranslationASpinbox_2.setObjectName(u"yTranslationASpinbox_2")
+        self.mindihedralASlider = QSlider(self.frameMeshingA)
+        self.mindihedralASlider.setObjectName(u"mindihedralASlider")
+        self.mindihedralASlider.setOrientation(Qt.Orientation.Horizontal)
 
-        self.gridLayout_2.addWidget(self.yTranslationASpinbox_2, 6, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.mindihedralASlider, 7, 0, 1, 3)
 
-        self.xTranslationUnitPositionALabel_2 = QLabel(self.framePositioningA_2)
-        self.xTranslationUnitPositionALabel_2.setObjectName(u"xTranslationUnitPositionALabel_2")
-        self.xTranslationUnitPositionALabel_2.setMaximumSize(QSize(50, 16777215))
+        self.pscALabel = QLabel(self.frameMeshingA)
+        self.pscALabel.setObjectName(u"pscALabel")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.pscALabel.sizePolicy().hasHeightForWidth())
+        self.pscALabel.setSizePolicy(sizePolicy2)
 
-        self.gridLayout_2.addWidget(self.xTranslationUnitPositionALabel_2, 5, 3, 1, 1)
+        self.gridLayout_2.addWidget(self.pscALabel, 12, 0, 1, 1)
 
-        self.zRotationUnitPositionALabel_2 = QLabel(self.framePositioningA_2)
-        self.zRotationUnitPositionALabel_2.setObjectName(u"zRotationUnitPositionALabel_2")
+        self.orderALabel = QLabel(self.frameMeshingA)
+        self.orderALabel.setObjectName(u"orderALabel")
 
-        self.gridLayout_2.addWidget(self.zRotationUnitPositionALabel_2, 11, 3, 1, 1)
+        self.gridLayout_2.addWidget(self.orderALabel, 15, 0, 1, 1)
 
-        self.yTranslationPositionALabel_2 = QLabel(self.framePositioningA_2)
-        self.yTranslationPositionALabel_2.setObjectName(u"yTranslationPositionALabel_2")
+        self.maxvolumeADescLabel = QLabel(self.frameMeshingA)
+        self.maxvolumeADescLabel.setObjectName(u"maxvolumeADescLabel")
+        self.maxvolumeADescLabel.setWordWrap(True)
 
-        self.gridLayout_2.addWidget(self.yTranslationPositionALabel_2, 6, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.maxvolumeADescLabel, 5, 0, 1, 3)
 
-        self.zTranslationPositionALabel_2 = QLabel(self.framePositioningA_2)
-        self.zTranslationPositionALabel_2.setObjectName(u"zTranslationPositionALabel_2")
+        self.orderAcomboBox = QComboBox(self.frameMeshingA)
+        self.orderAcomboBox.setObjectName(u"orderAcomboBox")
 
-        self.gridLayout_2.addWidget(self.zTranslationPositionALabel_2, 7, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.orderAcomboBox, 16, 0, 1, 3)
 
-        self.yRotationUnitPositionALabel_2 = QLabel(self.framePositioningA_2)
-        self.yRotationUnitPositionALabel_2.setObjectName(u"yRotationUnitPositionALabel_2")
-        self.yRotationUnitPositionALabel_2.setMaximumSize(QSize(50, 16777215))
 
-        self.gridLayout_2.addWidget(self.yRotationUnitPositionALabel_2, 10, 3, 1, 1)
+        self.verticalLayout_34.addWidget(self.frameMeshingA)
 
-        self.zRotationASlider_2 = QSlider(self.framePositioningA_2)
-        self.zRotationASlider_2.setObjectName(u"zRotationASlider_2")
-        self.zRotationASlider_2.setValue(50)
-        self.zRotationASlider_2.setOrientation(Qt.Orientation.Horizontal)
+        self.frameMeshingB = QFrame(self.scrollAreaWidgetContentsMeshing)
+        self.frameMeshingB.setObjectName(u"frameMeshingB")
+        self.frameMeshingB.setMinimumSize(QSize(0, 400))
+        self.frameMeshingB.setMaximumSize(QSize(16777215, 1000))
+        self.frameMeshingB.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frameMeshingB.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_5 = QGridLayout(self.frameMeshingB)
+        self.gridLayout_5.setObjectName(u"gridLayout_5")
+        self.gridLayout_5.setVerticalSpacing(10)
+        self.gridLayout_5.setContentsMargins(15, 15, 15, 15)
+        self.orderBLabel = QLabel(self.frameMeshingB)
+        self.orderBLabel.setObjectName(u"orderBLabel")
 
-        self.gridLayout_2.addWidget(self.zRotationASlider_2, 11, 2, 1, 1)
+        self.gridLayout_5.addWidget(self.orderBLabel, 15, 0, 1, 1)
 
-        self.yRotationPositionALabel_2 = QLabel(self.framePositioningA_2)
-        self.yRotationPositionALabel_2.setObjectName(u"yRotationPositionALabel_2")
+        self.mindihedralBLabel = QLabel(self.frameMeshingB)
+        self.mindihedralBLabel.setObjectName(u"mindihedralBLabel")
 
-        self.gridLayout_2.addWidget(self.yRotationPositionALabel_2, 10, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.mindihedralBLabel, 6, 0, 1, 1)
 
-        self.xTranslationPositionALabel_2 = QLabel(self.framePositioningA_2)
-        self.xTranslationPositionALabel_2.setObjectName(u"xTranslationPositionALabel_2")
+        self.orderBDescLabel = QLabel(self.frameMeshingB)
+        self.orderBDescLabel.setObjectName(u"orderBDescLabel")
+        self.orderBDescLabel.setWordWrap(True)
 
-        self.gridLayout_2.addWidget(self.xTranslationPositionALabel_2, 5, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.orderBDescLabel, 17, 0, 1, 3)
 
-        self.rotationPositionAIcon_2 = QLabel(self.framePositioningA_2)
-        self.rotationPositionAIcon_2.setObjectName(u"rotationPositionAIcon_2")
-        self.rotationPositionAIcon_2.setMinimumSize(QSize(11, 11))
-        self.rotationPositionAIcon_2.setMaximumSize(QSize(11, 11))
-        self.rotationPositionAIcon_2.setPixmap(QPixmap(u":/icons/icons/rotate-right.svg"))
-        self.rotationPositionAIcon_2.setScaledContents(True)
+        self.maxvolumeBSlider = QSlider(self.frameMeshingB)
+        self.maxvolumeBSlider.setObjectName(u"maxvolumeBSlider")
+        self.maxvolumeBSlider.setMaximum(100)
+        self.maxvolumeBSlider.setOrientation(Qt.Orientation.Horizontal)
 
-        self.gridLayout_2.addWidget(self.rotationPositionAIcon_2, 8, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.maxvolumeBSlider, 4, 0, 1, 3)
 
-        self.xRotationUnitPositionALabel_2 = QLabel(self.framePositioningA_2)
-        self.xRotationUnitPositionALabel_2.setObjectName(u"xRotationUnitPositionALabel_2")
-        self.xRotationUnitPositionALabel_2.setMaximumSize(QSize(50, 16777215))
+        self.mindihedralBDescLabel = QLabel(self.frameMeshingB)
+        self.mindihedralBDescLabel.setObjectName(u"mindihedralBDescLabel")
+        self.mindihedralBDescLabel.setWordWrap(True)
 
-        self.gridLayout_2.addWidget(self.xRotationUnitPositionALabel_2, 9, 3, 1, 1)
+        self.gridLayout_5.addWidget(self.mindihedralBDescLabel, 8, 0, 1, 3)
 
-        self.zRotationPositionALabel_2 = QLabel(self.framePositioningA_2)
-        self.zRotationPositionALabel_2.setObjectName(u"zRotationPositionALabel_2")
+        self.pscBLabel = QLabel(self.frameMeshingB)
+        self.pscBLabel.setObjectName(u"pscBLabel")
+        sizePolicy2.setHeightForWidth(self.pscBLabel.sizePolicy().hasHeightForWidth())
+        self.pscBLabel.setSizePolicy(sizePolicy2)
 
-        self.gridLayout_2.addWidget(self.zRotationPositionALabel_2, 11, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.pscBLabel, 12, 0, 1, 1)
 
-        self.zTranslationASpinbox_2 = QDoubleSpinBox(self.framePositioningA_2)
-        self.zTranslationASpinbox_2.setObjectName(u"zTranslationASpinbox_2")
+        self.mindihedralBSlider = QSlider(self.frameMeshingB)
+        self.mindihedralBSlider.setObjectName(u"mindihedralBSlider")
+        self.mindihedralBSlider.setOrientation(Qt.Orientation.Horizontal)
 
-        self.gridLayout_2.addWidget(self.zTranslationASpinbox_2, 7, 2, 1, 1)
+        self.gridLayout_5.addWidget(self.mindihedralBSlider, 7, 0, 1, 3)
 
-        self.translationPositionAIcon_2 = QLabel(self.framePositioningA_2)
-        self.translationPositionAIcon_2.setObjectName(u"translationPositionAIcon_2")
-        self.translationPositionAIcon_2.setMinimumSize(QSize(11, 11))
-        self.translationPositionAIcon_2.setMaximumSize(QSize(11, 11))
-        self.translationPositionAIcon_2.setPixmap(QPixmap(u":/icons/icons/arrows_dark.svg"))
-        self.translationPositionAIcon_2.setScaledContents(True)
+        self.maxvolumeBDescLabel = QLabel(self.frameMeshingB)
+        self.maxvolumeBDescLabel.setObjectName(u"maxvolumeBDescLabel")
+        self.maxvolumeBDescLabel.setWordWrap(True)
 
-        self.gridLayout_2.addWidget(self.translationPositionAIcon_2, 4, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.maxvolumeBDescLabel, 5, 0, 1, 3)
 
-        self.yRotationASlider_2 = QSlider(self.framePositioningA_2)
-        self.yRotationASlider_2.setObjectName(u"yRotationASlider_2")
-        self.yRotationASlider_2.setValue(50)
-        self.yRotationASlider_2.setOrientation(Qt.Orientation.Horizontal)
+        self.minratioBSlider = QSlider(self.frameMeshingB)
+        self.minratioBSlider.setObjectName(u"minratioBSlider")
+        self.minratioBSlider.setOrientation(Qt.Orientation.Horizontal)
 
-        self.gridLayout_2.addWidget(self.yRotationASlider_2, 10, 2, 1, 1)
+        self.gridLayout_5.addWidget(self.minratioBSlider, 10, 0, 1, 3)
 
-        self.translationPositionALabel_2 = QLabel(self.framePositioningA_2)
-        self.translationPositionALabel_2.setObjectName(u"translationPositionALabel_2")
-        self.translationPositionALabel_2.setMinimumSize(QSize(0, 25))
-        self.translationPositionALabel_2.setMaximumSize(QSize(16777215, 25))
+        self.maxvolumeBLabel = QLabel(self.frameMeshingB)
+        self.maxvolumeBLabel.setObjectName(u"maxvolumeBLabel")
 
-        self.gridLayout_2.addWidget(self.translationPositionALabel_2, 4, 2, 1, 1)
+        self.gridLayout_5.addWidget(self.maxvolumeBLabel, 3, 0, 1, 1)
 
-        self.zTranslationUnitPositionALabel_2 = QLabel(self.framePositioningA_2)
-        self.zTranslationUnitPositionALabel_2.setObjectName(u"zTranslationUnitPositionALabel_2")
-        self.zTranslationUnitPositionALabel_2.setMaximumSize(QSize(50, 16777215))
+        self.orderBcomboBox = QComboBox(self.frameMeshingB)
+        self.orderBcomboBox.setObjectName(u"orderBcomboBox")
 
-        self.gridLayout_2.addWidget(self.zTranslationUnitPositionALabel_2, 7, 3, 1, 1)
+        self.gridLayout_5.addWidget(self.orderBcomboBox, 16, 0, 1, 3)
 
-        self.generateMeshAButton = QPushButton(self.framePositioningA_2)
-        self.generateMeshAButton.setObjectName(u"generateMeshAButton")
-        self.generateMeshAButton.setMinimumSize(QSize(0, 35))
-        self.generateMeshAButton.setStyleSheet(u"\n"
+        self.pscBSlider = QSlider(self.frameMeshingB)
+        self.pscBSlider.setObjectName(u"pscBSlider")
+        self.pscBSlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_5.addWidget(self.pscBSlider, 13, 0, 1, 3)
+
+        self.pscBDescLabel = QLabel(self.frameMeshingB)
+        self.pscBDescLabel.setObjectName(u"pscBDescLabel")
+        self.pscBDescLabel.setWordWrap(True)
+
+        self.gridLayout_5.addWidget(self.pscBDescLabel, 14, 0, 1, 3)
+
+        self.minratioBDescLabel = QLabel(self.frameMeshingB)
+        self.minratioBDescLabel.setObjectName(u"minratioBDescLabel")
+        self.minratioBDescLabel.setWordWrap(True)
+
+        self.gridLayout_5.addWidget(self.minratioBDescLabel, 11, 0, 1, 3)
+
+        self.minratioBLabel = QLabel(self.frameMeshingB)
+        self.minratioBLabel.setObjectName(u"minratioBLabel")
+
+        self.gridLayout_5.addWidget(self.minratioBLabel, 9, 0, 1, 1)
+
+        self.resetMeshingBButton = QPushButton(self.frameMeshingB)
+        self.resetMeshingBButton.setObjectName(u"resetMeshingBButton")
+        self.resetMeshingBButton.setMaximumSize(QSize(50, 16777215))
+        self.resetMeshingBButton.setIcon(icon7)
+        self.resetMeshingBButton.setIconSize(QSize(12, 12))
+
+        self.gridLayout_5.addWidget(self.resetMeshingBButton, 0, 2, 1, 1)
+
+        self.meshingObjectBLabel = QLabel(self.frameMeshingB)
+        self.meshingObjectBLabel.setObjectName(u"meshingObjectBLabel")
+
+        self.gridLayout_5.addWidget(self.meshingObjectBLabel, 0, 0, 1, 2)
+
+
+        self.verticalLayout_34.addWidget(self.frameMeshingB)
+
+        self.line = QFrame(self.scrollAreaWidgetContentsMeshing)
+        self.line.setObjectName(u"line")
+        self.line.setFrameShape(QFrame.Shape.HLine)
+        self.line.setFrameShadow(QFrame.Shadow.Sunken)
+
+        self.verticalLayout_34.addWidget(self.line)
+
+        self.generateMeshButton = QPushButton(self.scrollAreaWidgetContentsMeshing)
+        self.generateMeshButton.setObjectName(u"generateMeshButton")
+        self.generateMeshButton.setMinimumSize(QSize(0, 35))
+        self.generateMeshButton.setStyleSheet(u"\n"
 "background-color: #1447e6")
         icon8 = QIcon()
         icon8.addFile(u":/icons/icons/warning_white.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.generateMeshAButton.setIcon(icon8)
-        self.generateMeshAButton.setIconSize(QSize(14, 14))
+        self.generateMeshButton.setIcon(icon8)
+        self.generateMeshButton.setIconSize(QSize(14, 14))
 
-        self.gridLayout_2.addWidget(self.generateMeshAButton, 1, 2, 1, 1)
+        self.verticalLayout_34.addWidget(self.generateMeshButton)
 
+        self.line_2 = QFrame(self.scrollAreaWidgetContentsMeshing)
+        self.line_2.setObjectName(u"line_2")
+        self.line_2.setFrameShape(QFrame.Shape.HLine)
+        self.line_2.setFrameShadow(QFrame.Shadow.Sunken)
 
-        self.verticalLayout_34.addWidget(self.framePositioningA_2)
+        self.verticalLayout_34.addWidget(self.line_2)
 
-        self.framePositioningB_2 = QFrame(self.scrollAreaWidgetContentsPositioning_2)
-        self.framePositioningB_2.setObjectName(u"framePositioningB_2")
-        self.framePositioningB_2.setMinimumSize(QSize(0, 400))
-        self.framePositioningB_2.setMaximumSize(QSize(16777215, 500))
-        self.framePositioningB_2.setFrameShape(QFrame.Shape.StyledPanel)
-        self.framePositioningB_2.setFrameShadow(QFrame.Shadow.Raised)
-        self.gridLayout_6 = QGridLayout(self.framePositioningB_2)
-        self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.gridLayout_6.setHorizontalSpacing(5)
-        self.gridLayout_6.setVerticalSpacing(0)
-        self.gridLayout_6.setContentsMargins(10, 0, 10, 0)
-        self.xTranslationBSpinbox_2 = QDoubleSpinBox(self.framePositioningB_2)
-        self.xTranslationBSpinbox_2.setObjectName(u"xTranslationBSpinbox_2")
-        self.xTranslationBSpinbox_2.setStepType(QAbstractSpinBox.StepType.DefaultStepType)
-
-        self.gridLayout_6.addWidget(self.xTranslationBSpinbox_2, 3, 1, 1, 1)
-
-        self.zRotationUnitPositionBLabel_2 = QLabel(self.framePositioningB_2)
-        self.zRotationUnitPositionBLabel_2.setObjectName(u"zRotationUnitPositionBLabel_2")
-
-        self.gridLayout_6.addWidget(self.zRotationUnitPositionBLabel_2, 9, 2, 1, 1)
-
-        self.translationPositionBIcon_2 = QLabel(self.framePositioningB_2)
-        self.translationPositionBIcon_2.setObjectName(u"translationPositionBIcon_2")
-        self.translationPositionBIcon_2.setMinimumSize(QSize(11, 11))
-        self.translationPositionBIcon_2.setMaximumSize(QSize(11, 11))
-        self.translationPositionBIcon_2.setPixmap(QPixmap(u":/icons/icons/arrows_dark.svg"))
-        self.translationPositionBIcon_2.setScaledContents(True)
-
-        self.gridLayout_6.addWidget(self.translationPositionBIcon_2, 2, 0, 1, 1)
-
-        self.resetPositionBButton_2 = QPushButton(self.framePositioningB_2)
-        self.resetPositionBButton_2.setObjectName(u"resetPositionBButton_2")
-        self.resetPositionBButton_2.setMaximumSize(QSize(50, 16777215))
-        self.resetPositionBButton_2.setIcon(icon7)
-        self.resetPositionBButton_2.setIconSize(QSize(12, 12))
-
-        self.gridLayout_6.addWidget(self.resetPositionBButton_2, 1, 2, 1, 1)
-
-        self.zRotationPositionBLabel_2 = QLabel(self.framePositioningB_2)
-        self.zRotationPositionBLabel_2.setObjectName(u"zRotationPositionBLabel_2")
-
-        self.gridLayout_6.addWidget(self.zRotationPositionBLabel_2, 9, 0, 1, 1)
-
-        self.yTranslationUnitPositionBLabel_2 = QLabel(self.framePositioningB_2)
-        self.yTranslationUnitPositionBLabel_2.setObjectName(u"yTranslationUnitPositionBLabel_2")
-        self.yTranslationUnitPositionBLabel_2.setMaximumSize(QSize(50, 16777215))
-
-        self.gridLayout_6.addWidget(self.yTranslationUnitPositionBLabel_2, 4, 2, 1, 1)
-
-        self.xTranslationPositionBLabel_2 = QLabel(self.framePositioningB_2)
-        self.xTranslationPositionBLabel_2.setObjectName(u"xTranslationPositionBLabel_2")
-
-        self.gridLayout_6.addWidget(self.xTranslationPositionBLabel_2, 3, 0, 1, 1)
-
-        self.zTranslationUnitPositionBLabel_2 = QLabel(self.framePositioningB_2)
-        self.zTranslationUnitPositionBLabel_2.setObjectName(u"zTranslationUnitPositionBLabel_2")
-        self.zTranslationUnitPositionBLabel_2.setMaximumSize(QSize(50, 16777215))
-
-        self.gridLayout_6.addWidget(self.zTranslationUnitPositionBLabel_2, 5, 2, 1, 1)
-
-        self.yRotationUnitPositionBLabel_2 = QLabel(self.framePositioningB_2)
-        self.yRotationUnitPositionBLabel_2.setObjectName(u"yRotationUnitPositionBLabel_2")
-        self.yRotationUnitPositionBLabel_2.setMaximumSize(QSize(50, 16777215))
-
-        self.gridLayout_6.addWidget(self.yRotationUnitPositionBLabel_2, 8, 2, 1, 1)
-
-        self.rotationPositionbIcon_2 = QLabel(self.framePositioningB_2)
-        self.rotationPositionbIcon_2.setObjectName(u"rotationPositionbIcon_2")
-        self.rotationPositionbIcon_2.setMinimumSize(QSize(11, 11))
-        self.rotationPositionbIcon_2.setMaximumSize(QSize(11, 11))
-        self.rotationPositionbIcon_2.setPixmap(QPixmap(u":/icons/icons/rotate-right.svg"))
-        self.rotationPositionbIcon_2.setScaledContents(True)
-
-        self.gridLayout_6.addWidget(self.rotationPositionbIcon_2, 6, 0, 1, 1)
-
-        self.yRotationBSlider_2 = QSlider(self.framePositioningB_2)
-        self.yRotationBSlider_2.setObjectName(u"yRotationBSlider_2")
-        self.yRotationBSlider_2.setMaximum(100)
-        self.yRotationBSlider_2.setValue(50)
-        self.yRotationBSlider_2.setOrientation(Qt.Orientation.Horizontal)
-
-        self.gridLayout_6.addWidget(self.yRotationBSlider_2, 8, 1, 1, 1)
-
-        self.zTranslationBSpinbox_2 = QDoubleSpinBox(self.framePositioningB_2)
-        self.zTranslationBSpinbox_2.setObjectName(u"zTranslationBSpinbox_2")
-
-        self.gridLayout_6.addWidget(self.zTranslationBSpinbox_2, 5, 1, 1, 1)
-
-        self.zRotationBSlider_2 = QSlider(self.framePositioningB_2)
-        self.zRotationBSlider_2.setObjectName(u"zRotationBSlider_2")
-        self.zRotationBSlider_2.setMaximum(100)
-        self.zRotationBSlider_2.setValue(50)
-        self.zRotationBSlider_2.setOrientation(Qt.Orientation.Horizontal)
-
-        self.gridLayout_6.addWidget(self.zRotationBSlider_2, 9, 1, 1, 1)
-
-        self.translationPositionBLabel_2 = QLabel(self.framePositioningB_2)
-        self.translationPositionBLabel_2.setObjectName(u"translationPositionBLabel_2")
-        self.translationPositionBLabel_2.setMinimumSize(QSize(0, 25))
-        self.translationPositionBLabel_2.setMaximumSize(QSize(16777215, 25))
-
-        self.gridLayout_6.addWidget(self.translationPositionBLabel_2, 2, 1, 1, 1)
-
-        self.yTranslationBSpinbox_2 = QDoubleSpinBox(self.framePositioningB_2)
-        self.yTranslationBSpinbox_2.setObjectName(u"yTranslationBSpinbox_2")
-
-        self.gridLayout_6.addWidget(self.yTranslationBSpinbox_2, 4, 1, 1, 1)
-
-        self.xRotationPositionBLabel_2 = QLabel(self.framePositioningB_2)
-        self.xRotationPositionBLabel_2.setObjectName(u"xRotationPositionBLabel_2")
-
-        self.gridLayout_6.addWidget(self.xRotationPositionBLabel_2, 7, 0, 1, 1)
-
-        self.positionObjectBLabel_2 = QLabel(self.framePositioningB_2)
-        self.positionObjectBLabel_2.setObjectName(u"positionObjectBLabel_2")
-
-        self.gridLayout_6.addWidget(self.positionObjectBLabel_2, 1, 0, 1, 2)
-
-        self.rotationPositionbLabel_2 = QLabel(self.framePositioningB_2)
-        self.rotationPositionbLabel_2.setObjectName(u"rotationPositionbLabel_2")
-        self.rotationPositionbLabel_2.setMinimumSize(QSize(0, 25))
-        self.rotationPositionbLabel_2.setMaximumSize(QSize(16777215, 25))
-
-        self.gridLayout_6.addWidget(self.rotationPositionbLabel_2, 6, 1, 1, 1)
-
-        self.xRotationUnitPositionBLabel_2 = QLabel(self.framePositioningB_2)
-        self.xRotationUnitPositionBLabel_2.setObjectName(u"xRotationUnitPositionBLabel_2")
-        self.xRotationUnitPositionBLabel_2.setMaximumSize(QSize(50, 16777215))
-
-        self.gridLayout_6.addWidget(self.xRotationUnitPositionBLabel_2, 7, 2, 1, 1)
-
-        self.yTranslationPositionBLabel_2 = QLabel(self.framePositioningB_2)
-        self.yTranslationPositionBLabel_2.setObjectName(u"yTranslationPositionBLabel_2")
-
-        self.gridLayout_6.addWidget(self.yTranslationPositionBLabel_2, 4, 0, 1, 1)
-
-        self.xRotationBSlider_2 = QSlider(self.framePositioningB_2)
-        self.xRotationBSlider_2.setObjectName(u"xRotationBSlider_2")
-        self.xRotationBSlider_2.setMaximum(100)
-        self.xRotationBSlider_2.setValue(50)
-        self.xRotationBSlider_2.setOrientation(Qt.Orientation.Horizontal)
-
-        self.gridLayout_6.addWidget(self.xRotationBSlider_2, 7, 1, 1, 1)
-
-        self.xTranslationUnitPositionBLabel_2 = QLabel(self.framePositioningB_2)
-        self.xTranslationUnitPositionBLabel_2.setObjectName(u"xTranslationUnitPositionBLabel_2")
-        self.xTranslationUnitPositionBLabel_2.setMaximumSize(QSize(50, 16777215))
-
-        self.gridLayout_6.addWidget(self.xTranslationUnitPositionBLabel_2, 3, 2, 1, 1)
-
-        self.yRotationPositionBLabel_2 = QLabel(self.framePositioningB_2)
-        self.yRotationPositionBLabel_2.setObjectName(u"yRotationPositionBLabel_2")
-
-        self.gridLayout_6.addWidget(self.yRotationPositionBLabel_2, 8, 0, 1, 1)
-
-        self.zTranslationPositionBLabel_2 = QLabel(self.framePositioningB_2)
-        self.zTranslationPositionBLabel_2.setObjectName(u"zTranslationPositionBLabel_2")
-
-        self.gridLayout_6.addWidget(self.zTranslationPositionBLabel_2, 5, 0, 1, 1)
-
-
-        self.verticalLayout_34.addWidget(self.framePositioningB_2)
-
-        self.framePositioningValidation_2 = QFrame(self.scrollAreaWidgetContentsPositioning_2)
-        self.framePositioningValidation_2.setObjectName(u"framePositioningValidation_2")
-        self.framePositioningValidation_2.setMinimumSize(QSize(0, 130))
-        self.framePositioningValidation_2.setMaximumSize(QSize(16777215, 130))
-        self.framePositioningValidation_2.setFrameShape(QFrame.Shape.StyledPanel)
-        self.framePositioningValidation_2.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_32 = QVBoxLayout(self.framePositioningValidation_2)
+        self.frameMeshinSummary = QFrame(self.scrollAreaWidgetContentsMeshing)
+        self.frameMeshinSummary.setObjectName(u"frameMeshinSummary")
+        self.frameMeshinSummary.setMinimumSize(QSize(0, 130))
+        self.frameMeshinSummary.setMaximumSize(QSize(16777215, 130))
+        self.frameMeshinSummary.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frameMeshinSummary.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_32 = QVBoxLayout(self.frameMeshinSummary)
         self.verticalLayout_32.setObjectName(u"verticalLayout_32")
         self.verticalLayout_32.setContentsMargins(10, 10, 10, 10)
-        self.validationPositioningLabel_2 = QLabel(self.framePositioningValidation_2)
-        self.validationPositioningLabel_2.setObjectName(u"validationPositioningLabel_2")
-        self.validationPositioningLabel_2.setMaximumSize(QSize(16777215, 20))
+        self.summaryMeshingLabel = QLabel(self.frameMeshinSummary)
+        self.summaryMeshingLabel.setObjectName(u"summaryMeshingLabel")
+        self.summaryMeshingLabel.setMaximumSize(QSize(16777215, 20))
 
-        self.verticalLayout_32.addWidget(self.validationPositioningLabel_2)
-
-        self.validationPositionButton_2 = QPushButton(self.framePositioningValidation_2)
-        self.validationPositionButton_2.setObjectName(u"validationPositionButton_2")
-        self.validationPositionButton_2.setMinimumSize(QSize(0, 35))
-        self.validationPositionButton_2.setStyleSheet(u"\n"
-"background-color: #1447e6")
-        self.validationPositionButton_2.setIcon(icon8)
-        self.validationPositionButton_2.setIconSize(QSize(14, 14))
-
-        self.verticalLayout_32.addWidget(self.validationPositionButton_2)
+        self.verticalLayout_32.addWidget(self.summaryMeshingLabel)
 
         self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_32.addItem(self.verticalSpacer_4)
 
 
-        self.verticalLayout_34.addWidget(self.framePositioningValidation_2)
+        self.verticalLayout_34.addWidget(self.frameMeshinSummary)
 
-        self.scrollAreaPositioning_2.setWidget(self.scrollAreaWidgetContentsPositioning_2)
+        self.scrollAreaMeshing.setWidget(self.scrollAreaWidgetContentsMeshing)
 
-        self.verticalLayout_35.addWidget(self.scrollAreaPositioning_2)
+        self.verticalLayout_35.addWidget(self.scrollAreaMeshing)
 
 
         self.verticalLayout_14.addWidget(self.settingsMeshingPage)
@@ -1313,7 +1222,7 @@ class Ui_Widget(object):
         self.scrollAreaPositioning.setWidgetResizable(True)
         self.scrollAreaWidgetContentsPositioning = QWidget()
         self.scrollAreaWidgetContentsPositioning.setObjectName(u"scrollAreaWidgetContentsPositioning")
-        self.scrollAreaWidgetContentsPositioning.setGeometry(QRect(0, 0, 314, 1000))
+        self.scrollAreaWidgetContentsPositioning.setGeometry(QRect(0, -574, 314, 1000))
         self.verticalLayout_33 = QVBoxLayout(self.scrollAreaWidgetContentsPositioning)
         self.verticalLayout_33.setSpacing(15)
         self.verticalLayout_33.setObjectName(u"verticalLayout_33")
@@ -1806,7 +1715,7 @@ class Ui_Widget(object):
         self.retranslateUi(Widget)
 
         self.stackedWidget.setCurrentIndex(1)
-        self.viewerStackedWidget.setCurrentIndex(0)
+        self.viewerStackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(Widget)
@@ -1839,45 +1748,32 @@ class Ui_Widget(object):
         self.validationGeometryLabel.setText(QCoreApplication.translate("Widget", u"Validation", None))
         self.maintitleMeshingPage.setText(QCoreApplication.translate("Widget", u"Step 3: Meshing", None))
         self.subtitleMeshingPage.setText(QCoreApplication.translate("Widget", u"Generate tetrahedral meshes for finite element analysis", None))
-        self.rotationPositionALabel_2.setText(QCoreApplication.translate("Widget", u"Rotation", None))
-        self.resetPositionAButton_2.setText("")
-        self.positionObjectALabel_2.setText(QCoreApplication.translate("Widget", u"Object A", None))
-        self.xRotationPositionALabel_2.setText(QCoreApplication.translate("Widget", u"x:", None))
-        self.yTranslationUnitPositionALabel_2.setText(QCoreApplication.translate("Widget", u"m", None))
-        self.xTranslationUnitPositionALabel_2.setText(QCoreApplication.translate("Widget", u"m", None))
-        self.zRotationUnitPositionALabel_2.setText(QCoreApplication.translate("Widget", u"0\u00b0", None))
-        self.yTranslationPositionALabel_2.setText(QCoreApplication.translate("Widget", u"y:", None))
-        self.zTranslationPositionALabel_2.setText(QCoreApplication.translate("Widget", u"z:", None))
-        self.yRotationUnitPositionALabel_2.setText(QCoreApplication.translate("Widget", u"0\u00b0", None))
-        self.yRotationPositionALabel_2.setText(QCoreApplication.translate("Widget", u"y:", None))
-        self.xTranslationPositionALabel_2.setText(QCoreApplication.translate("Widget", u"x:", None))
-        self.rotationPositionAIcon_2.setText("")
-        self.xRotationUnitPositionALabel_2.setText(QCoreApplication.translate("Widget", u"0\u00b0", None))
-        self.zRotationPositionALabel_2.setText(QCoreApplication.translate("Widget", u"z:", None))
-        self.translationPositionAIcon_2.setText("")
-        self.translationPositionALabel_2.setText(QCoreApplication.translate("Widget", u"Translation", None))
-        self.zTranslationUnitPositionALabel_2.setText(QCoreApplication.translate("Widget", u"m", None))
-        self.generateMeshAButton.setText(QCoreApplication.translate("Widget", u"Generate Mesh", None))
-        self.zRotationUnitPositionBLabel_2.setText(QCoreApplication.translate("Widget", u"0\u00b0", None))
-        self.translationPositionBIcon_2.setText("")
-        self.resetPositionBButton_2.setText("")
-        self.zRotationPositionBLabel_2.setText(QCoreApplication.translate("Widget", u"z:", None))
-        self.yTranslationUnitPositionBLabel_2.setText(QCoreApplication.translate("Widget", u"m", None))
-        self.xTranslationPositionBLabel_2.setText(QCoreApplication.translate("Widget", u"x:", None))
-        self.zTranslationUnitPositionBLabel_2.setText(QCoreApplication.translate("Widget", u"m", None))
-        self.yRotationUnitPositionBLabel_2.setText(QCoreApplication.translate("Widget", u"0\u00b0", None))
-        self.rotationPositionbIcon_2.setText("")
-        self.translationPositionBLabel_2.setText(QCoreApplication.translate("Widget", u"Translation", None))
-        self.xRotationPositionBLabel_2.setText(QCoreApplication.translate("Widget", u"x:", None))
-        self.positionObjectBLabel_2.setText(QCoreApplication.translate("Widget", u"Object B", None))
-        self.rotationPositionbLabel_2.setText(QCoreApplication.translate("Widget", u"Rotation", None))
-        self.xRotationUnitPositionBLabel_2.setText(QCoreApplication.translate("Widget", u"0\u00b0", None))
-        self.yTranslationPositionBLabel_2.setText(QCoreApplication.translate("Widget", u"y:", None))
-        self.xTranslationUnitPositionBLabel_2.setText(QCoreApplication.translate("Widget", u"m", None))
-        self.yRotationPositionBLabel_2.setText(QCoreApplication.translate("Widget", u"y:", None))
-        self.zTranslationPositionBLabel_2.setText(QCoreApplication.translate("Widget", u"z:", None))
-        self.validationPositioningLabel_2.setText(QCoreApplication.translate("Widget", u"Validation", None))
-        self.validationPositionButton_2.setText(QCoreApplication.translate("Widget", u" Check For Overlap", None))
+        self.maxvolumeALabel.setText(QCoreApplication.translate("Widget", u"maxvolume", None))
+        self.mindihedralALabel.setText(QCoreApplication.translate("Widget", u"mindihedral", None))
+        self.minratioADescLabel.setText(QCoreApplication.translate("Widget", u"Increasing this value improves mesh quality but may reduce meshability.", None))
+        self.pscADescLabel.setText(QCoreApplication.translate("Widget", u"Points per Surface Control. Useful for capturing sharp features or curved surfaces.", None))
+        self.orderADescLabel.setText(QCoreApplication.translate("Widget", u"Linear elements are recommended for large meshes or real-time workflows.", None))
+        self.resetMeshingAButton.setText("")
+        self.meshingObjectALabel.setText(QCoreApplication.translate("Widget", u"Object A", None))
+        self.minratioALabel.setText(QCoreApplication.translate("Widget", u"minratio", None))
+        self.mindihedralADescLabel.setText(QCoreApplication.translate("Widget", u"Improves numerical stability and solver robustness.", None))
+        self.pscALabel.setText(QCoreApplication.translate("Widget", u"psc", None))
+        self.orderALabel.setText(QCoreApplication.translate("Widget", u"Order", None))
+        self.maxvolumeADescLabel.setText(QCoreApplication.translate("Widget", u"Use smaller values for detailed geometry or high-accuracy simulations.", None))
+        self.orderBLabel.setText(QCoreApplication.translate("Widget", u"Order", None))
+        self.mindihedralBLabel.setText(QCoreApplication.translate("Widget", u"mindihedral", None))
+        self.orderBDescLabel.setText(QCoreApplication.translate("Widget", u"Linear elements are recommended for large meshes or real-time workflows.", None))
+        self.mindihedralBDescLabel.setText(QCoreApplication.translate("Widget", u"Improves numerical stability and solver robustness.", None))
+        self.pscBLabel.setText(QCoreApplication.translate("Widget", u"psc", None))
+        self.maxvolumeBDescLabel.setText(QCoreApplication.translate("Widget", u"Use smaller values for detailed geometry or high-accuracy simulations.", None))
+        self.maxvolumeBLabel.setText(QCoreApplication.translate("Widget", u"maxvolume", None))
+        self.pscBDescLabel.setText(QCoreApplication.translate("Widget", u"Points per Surface Control. Useful for capturing sharp features or curved surfaces.", None))
+        self.minratioBDescLabel.setText(QCoreApplication.translate("Widget", u"Increasing this value improves mesh quality but may reduce meshability.", None))
+        self.minratioBLabel.setText(QCoreApplication.translate("Widget", u"minratio", None))
+        self.resetMeshingBButton.setText("")
+        self.meshingObjectBLabel.setText(QCoreApplication.translate("Widget", u"Object B", None))
+        self.generateMeshButton.setText(QCoreApplication.translate("Widget", u"Generate Both Meshes", None))
+        self.summaryMeshingLabel.setText(QCoreApplication.translate("Widget", u"Mesh Summary", None))
         self.maintitleMaterialsPage.setText(QCoreApplication.translate("Widget", u"Step 4: Materials", None))
         self.subtitleMaterialsPage.setText(QCoreApplication.translate("Widget", u"Define thermal and material parameters for each object", None))
         self.maintitleSimulationPage.setText(QCoreApplication.translate("Widget", u"Step 5: Simulation", None))
