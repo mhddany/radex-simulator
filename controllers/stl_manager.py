@@ -2,6 +2,7 @@ import vtk
 import math
 import os
 import numpy as np
+import pyvista as pv
 import trimesh
 import tetgen
 from vtkmodules.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
@@ -11,9 +12,12 @@ class STLManager:
         """
         vtk_widget: QVTKRenderWindowInteractor instance from UI
         """        
-        self.actors = {}  # key: stl_number, value: vtkActor
-        self.transforms = {}
-        self.object_centers = {}
+        # Store actors, transforms, file paths, centers, and PyVista meshes
+        self.actors = {}           # vtkActor per stl_number
+        self.transforms = {}       # vtkTransform per stl_number
+        self.stl_paths = {}        # file path per stl_number
+        self.object_centers = {}   # center per stl_number
+        self.stl_mesh = {}         # PyVista PolyData per stl_number
         
         self.viewerInfoLabel = viewer_label
         self.vtk_widget = vtk_widget
@@ -31,8 +35,6 @@ class STLManager:
         
         self.tet_meshes = {}   # stl_number -> volume mesh data
         self.stl_paths = {}
-
-        
         
     def setup_camera_info(self):
         """
@@ -78,98 +80,62 @@ class STLManager:
             f"Dist: {distance:.1f} | Az: {azimuth:.1f}° | El: {elevation:.1f}°"
         )   
 
-    def load_stl(self, file_path, stl_number):
-        # Remove old actor if it exists
-        if stl_number in self.actors:
-            old_actor = self.actors[stl_number]
-            self.renderer.RemoveActor(old_actor)
-            
-        reader = vtk.vtkSTLReader()
-        reader.SetFileName(file_path)
-        reader.Update()
+    # -----------------------------
+    # Load STL as PyVista + VTK actor
+    # -----------------------------
+    def load_stl(self, file_path, stl_number, surface_color=(0.83, 0.83, 0.83), edge_color=(0.2, 0.2, 0.2)):
+        if not os.path.isfile(file_path):
+            raise FileNotFoundError(file_path)
 
-        mapper = vtk.vtkPolyDataMapper()
-        mapper.SetInputData(reader.GetOutput())
+        #  Load with PyVista
+        mesh = pv.read(file_path)
+        self.stl_mesh[stl_number] = mesh
 
-        actor = vtk.vtkActor()
-        actor.SetMapper(mapper)
-
+        #  Create VTK actor
+        actor = self._create_actor_from_mesh(mesh, surface_color, edge_color)
         transform = vtk.vtkTransform()
         actor.SetUserTransform(transform)
 
+        # Store references
         self.actors[stl_number] = actor
-        self.transforms[stl_number] = transform 
+        self.transforms[stl_number] = transform
         self.stl_paths[stl_number] = file_path
-        
-        center = actor.GetCenter()
-        self.object_centers[stl_number] = center
-                
+        self.object_centers[stl_number] = actor.GetCenter()
+
+        # Add to renderer
         self.renderer.AddActor(actor)
         self.renderer.ResetCamera()
         self.vtk_widget.GetRenderWindow().Render()
 
-    def display_polydata(self, polydata, stl_number: int, color=(0.83, 0.83, 0.83)):
-        """Display a vtkPolyData mesh"""
-        # Remove previous actor if exists
-        if stl_number in self.actors:
-            self.renderer.RemoveActor(self.actors[stl_number])
+    # -----------------------------
+    # Helper: Create actor from PyVista mesh
+    # -----------------------------
+    def _create_actor_from_mesh(self, mesh: pv.PolyData, surface_color, edge_color):
+        # Convert PyVista mesh to vtkPolyData
+        polydata = mesh
 
-        # Mapper
         mapper = vtk.vtkPolyDataMapper()
         mapper.SetInputData(polydata)
 
-        # Actor
         actor = vtk.vtkActor()
         actor.SetMapper(mapper)
-        actor.GetProperty().SetColor(*color)
-        actor.GetProperty().EdgeVisibilityOn()
-        actor.GetProperty().SetEdgeColor(0.2, 0.2, 0.2)
-        actor.GetProperty().SetLineWidth(1.0)
+        prop = actor.GetProperty()
+        prop.SetColor(*surface_color)
+        prop.EdgeVisibilityOn()
+        prop.SetEdgeColor(*edge_color)
+        prop.SetLineWidth(1.0)
+        prop.SetRepresentationToSurface()
 
-        # Store reference
-        self.actors[stl_number] = actor
+        return actor
 
-        # Add actor
-        self.renderer.AddActor(actor)
-        self.renderer.ResetCamera()
-        self.vtk_widget.GetRenderWindow().Render()
-
-    def clear_stl(self, stl_number):
-        if stl_number in self.actors:
-            self.renderer.RemoveActor(self.actors[stl_number])
-            del self.actors[stl_number]
-            del self.transforms[stl_number]
-
-            self.vtk_widget.GetRenderWindow().Render()
-
-
-    def set_translation(self, stl_number, x, y, z):
-        if stl_number not in self.transforms:
+    # -----------------------------
+    # Apply translation + rotation to PyVista mesh & actor
+    # -----------------------------
+    def set_transform(self, stl_number, tx=0, ty=0, tz=0, rx=0, ry=0, rz=0):
+        if stl_number not in self.transforms or stl_number not in self.stl_mesh:
             return
 
-        transform = self.transforms[stl_number]
-        transform.Identity()
-        transform.Translate(x, y, z)
-
-        self.vtk_widget.GetRenderWindow().Render()
-
-    def set_rotation(self, stl_number, rx, ry, rz):
-        if stl_number not in self.transforms:
-            return
-
-        transform = self.transforms[stl_number]
-        transform.Identity()
-        transform.RotateX(rx)
-        transform.RotateY(ry)
-        transform.RotateZ(rz)
-
-        self.vtk_widget.GetRenderWindow().Render()
-
-    def set_transform(self, stl_number, tx, ty, tz, rx, ry, rz):
-        """Combined translation + rotation"""
-        if stl_number not in self.transforms:
-            return
-
+        #  Update VTK transform for display
         transform = self.transforms[stl_number]
         transform.Identity()
         transform.Translate(tx, ty, tz)
@@ -177,26 +143,43 @@ class STLManager:
         transform.RotateY(ry)
         transform.RotateZ(rz)
 
+        #  Apply same transform to PyVista mesh (in-place)
+        mat = self._vtk_transform_to_numpy_matrix(transform)
+        self.stl_mesh[stl_number].transform(mat)
+
+        #  Refresh display
         self.vtk_widget.GetRenderWindow().Render()
 
+    # -----------------------------
+    # Helper: Convert vtkTransform to 4x4 numpy matrix
+    # -----------------------------
+    @staticmethod
+    def _vtk_transform_to_numpy_matrix(vtk_transform):
+        m = vtk_transform.GetMatrix()
+        mat = np.eye(4)
+        for i in range(4):
+            for j in range(4):
+                mat[i, j] = m.GetElement(i, j)
+        return mat
+
+    # -----------------------------
+    # Remove STL
+    # -----------------------------
+    def clear_stl(self, stl_number):
+        if stl_number in self.actors:
+            self.renderer.RemoveActor(self.actors[stl_number])
+            del self.actors[stl_number]
+            del self.transforms[stl_number]
+            del self.stl_mesh[stl_number]
+            self.vtk_widget.GetRenderWindow().Render()
+
+    # -----------------------------
+    # Validation
+    # -----------------------------
     def validate_stl(self, file_path):
-        """
-        Check if the STL file can be read and has polygons.
-        Returns True if valid, False otherwise.
-        """
         try:
-            reader = vtk.vtkSTLReader()
-            reader.SetFileName(file_path)
-            reader.Update()
-            polydata = reader.GetOutput()
-            
-            # Check if polydata has at least one polygon
-            if polydata.GetNumberOfPolys() > 0:                
-                return True
-            else:                
-                return False
+            mesh = pv.read(file_path)
+            return mesh.n_cells > 0
         except Exception as e:
             print("STL validation error:", e)
             return False
-        
-    

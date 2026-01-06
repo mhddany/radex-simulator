@@ -26,6 +26,7 @@ class Surf2TetMesh:
           
         self.tet_renderer.UseFXAAOn()
         self.tet_renderer.SetBackground(0.0588, 0.0902, 0.1686)      
+        
         # Initialize interactor
         self.tet_viewer.Initialize()
         self.tet_viewer.Start()

@@ -44,6 +44,15 @@ class Widget(QWidget, Ui_Widget):
         self.setup_transform_controls()
         
         self.generateMeshAButton.clicked.connect(self.generate_tet_meshes)
+        
+        # Define surface color (same for both)
+        self.surface_color = (0.5647, 0.6314, 0.7255)  # #90a1b9
+
+        # Define edge colors per mesh
+        self.edge_colors = {
+            1: (0.0235, 0.827, 0.953),  # #06d3f3 for mesh 1
+            2: (0.945, 0.537, 0.016),   # #f18904 for mesh 2
+        }
 
 
     def setup_connections(self):
@@ -78,7 +87,12 @@ class Widget(QWidget, Ui_Widget):
 
             # Load STL if valid
             if valid:
-                self.stl_manager.load_stl(file_path, stl_number)
+                self.stl_manager.load_stl(
+                    file_path, 
+                    stl_number, 
+                    surface_color=self.surface_color, 
+                    edge_color=self.edge_colors[stl_number]
+                )
 
             # Update individual STL UI
             if stl_number == 1:
