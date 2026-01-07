@@ -913,8 +913,8 @@ QWidget {
                         <property name="geometry">
                          <rect>
                           <x>0</x>
-                          <y>-49</y>
-                          <width>314</width>
+                          <y>0</y>
+                          <width>210</width>
                           <height>475</height>
                          </rect>
                         </property>
@@ -1359,7 +1359,7 @@ QWidget {
                         <property name="geometry">
                          <rect>
                           <x>0</x>
-                          <y>0</y>
+                          <y>-985</y>
                           <width>314</width>
                           <height>1410</height>
                          </rect>
@@ -1557,7 +1557,18 @@ QWidget {
                              </widget>
                             </item>
                             <item row="16" column="0" colspan="3">
-                             <widget class="QComboBox" name="orderAcomboBox"/>
+                             <widget class="QComboBox" name="orderAcomboBox">
+                              <item>
+                               <property name="text">
+                                <string>1. Linear</string>
+                               </property>
+                              </item>
+                              <item>
+                               <property name="text">
+                                <string>2. Quadratic</string>
+                               </property>
+                              </item>
+                             </widget>
                             </item>
                            </layout>
                           </widget>
@@ -1687,7 +1698,18 @@ QWidget {
                              </widget>
                             </item>
                             <item row="16" column="0" colspan="3">
-                             <widget class="QComboBox" name="orderBcomboBox"/>
+                             <widget class="QComboBox" name="orderBcomboBox">
+                              <item>
+                               <property name="text">
+                                <string>1. Linear</string>
+                               </property>
+                              </item>
+                              <item>
+                               <property name="text">
+                                <string>2. Quadratic</string>
+                               </property>
+                              </item>
+                             </widget>
                             </item>
                             <item row="13" column="0" colspan="3">
                              <widget class="QSlider" name="pscBSlider">
@@ -2226,8 +2248,8 @@ background-color: #1447e6</string>
                         <property name="geometry">
                          <rect>
                           <x>0</x>
-                          <y>-574</y>
-                          <width>314</width>
+                          <y>0</y>
+                          <width>220</width>
                           <height>1000</height>
                          </rect>
                         </property>

@@ -572,7 +572,7 @@ class Ui_Widget(object):
         self.scrollAreaGeometry.setWidgetResizable(True)
         self.scrollAreaWidgetContentsGeometry = QWidget()
         self.scrollAreaWidgetContentsGeometry.setObjectName(u"scrollAreaWidgetContentsGeometry")
-        self.scrollAreaWidgetContentsGeometry.setGeometry(QRect(0, -49, 314, 475))
+        self.scrollAreaWidgetContentsGeometry.setGeometry(QRect(0, 0, 210, 475))
         self.verticalLayout_28 = QVBoxLayout(self.scrollAreaWidgetContentsGeometry)
         self.verticalLayout_28.setSpacing(15)
         self.verticalLayout_28.setObjectName(u"verticalLayout_28")
@@ -762,7 +762,7 @@ class Ui_Widget(object):
         self.scrollAreaMeshing.setWidgetResizable(True)
         self.scrollAreaWidgetContentsMeshing = QWidget()
         self.scrollAreaWidgetContentsMeshing.setObjectName(u"scrollAreaWidgetContentsMeshing")
-        self.scrollAreaWidgetContentsMeshing.setGeometry(QRect(0, 0, 314, 1410))
+        self.scrollAreaWidgetContentsMeshing.setGeometry(QRect(0, -985, 314, 1410))
         self.verticalLayout_34 = QVBoxLayout(self.scrollAreaWidgetContentsMeshing)
         self.verticalLayout_34.setSpacing(15)
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
@@ -877,6 +877,8 @@ class Ui_Widget(object):
         self.gridLayout_2.addWidget(self.maxvolumeADescLabel, 5, 0, 1, 3)
 
         self.orderAcomboBox = QComboBox(self.frameMeshingA)
+        self.orderAcomboBox.addItem("")
+        self.orderAcomboBox.addItem("")
         self.orderAcomboBox.setObjectName(u"orderAcomboBox")
 
         self.gridLayout_2.addWidget(self.orderAcomboBox, 16, 0, 1, 3)
@@ -954,6 +956,8 @@ class Ui_Widget(object):
         self.gridLayout_5.addWidget(self.maxvolumeBLabel, 3, 0, 1, 1)
 
         self.orderBcomboBox = QComboBox(self.frameMeshingB)
+        self.orderBcomboBox.addItem("")
+        self.orderBcomboBox.addItem("")
         self.orderBcomboBox.setObjectName(u"orderBcomboBox")
 
         self.gridLayout_5.addWidget(self.orderBcomboBox, 16, 0, 1, 3)
@@ -1222,7 +1226,7 @@ class Ui_Widget(object):
         self.scrollAreaPositioning.setWidgetResizable(True)
         self.scrollAreaWidgetContentsPositioning = QWidget()
         self.scrollAreaWidgetContentsPositioning.setObjectName(u"scrollAreaWidgetContentsPositioning")
-        self.scrollAreaWidgetContentsPositioning.setGeometry(QRect(0, -574, 314, 1000))
+        self.scrollAreaWidgetContentsPositioning.setGeometry(QRect(0, 0, 220, 1000))
         self.verticalLayout_33 = QVBoxLayout(self.scrollAreaWidgetContentsPositioning)
         self.verticalLayout_33.setSpacing(15)
         self.verticalLayout_33.setObjectName(u"verticalLayout_33")
@@ -1760,6 +1764,9 @@ class Ui_Widget(object):
         self.pscALabel.setText(QCoreApplication.translate("Widget", u"psc", None))
         self.orderALabel.setText(QCoreApplication.translate("Widget", u"Order", None))
         self.maxvolumeADescLabel.setText(QCoreApplication.translate("Widget", u"Use smaller values for detailed geometry or high-accuracy simulations.", None))
+        self.orderAcomboBox.setItemText(0, QCoreApplication.translate("Widget", u"1. Linear", None))
+        self.orderAcomboBox.setItemText(1, QCoreApplication.translate("Widget", u"2. Quadratic", None))
+
         self.orderBLabel.setText(QCoreApplication.translate("Widget", u"Order", None))
         self.mindihedralBLabel.setText(QCoreApplication.translate("Widget", u"mindihedral", None))
         self.orderBDescLabel.setText(QCoreApplication.translate("Widget", u"Linear elements are recommended for large meshes or real-time workflows.", None))
@@ -1767,6 +1774,9 @@ class Ui_Widget(object):
         self.pscBLabel.setText(QCoreApplication.translate("Widget", u"psc", None))
         self.maxvolumeBDescLabel.setText(QCoreApplication.translate("Widget", u"Use smaller values for detailed geometry or high-accuracy simulations.", None))
         self.maxvolumeBLabel.setText(QCoreApplication.translate("Widget", u"maxvolume", None))
+        self.orderBcomboBox.setItemText(0, QCoreApplication.translate("Widget", u"1. Linear", None))
+        self.orderBcomboBox.setItemText(1, QCoreApplication.translate("Widget", u"2. Quadratic", None))
+
         self.pscBDescLabel.setText(QCoreApplication.translate("Widget", u"Points per Surface Control. Useful for capturing sharp features or curved surfaces.", None))
         self.minratioBDescLabel.setText(QCoreApplication.translate("Widget", u"Increasing this value improves mesh quality but may reduce meshability.", None))
         self.minratioBLabel.setText(QCoreApplication.translate("Widget", u"minratio", None))
