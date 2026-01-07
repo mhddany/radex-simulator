@@ -37,27 +37,58 @@ class Surf2TetMesh:
         Add a PyVista STL mesh.
         """
         self.stl_mesh[stl_number] = mesh
+    
+    def _read_parameters_from_widget(self, widget, stl_number: int) -> dict:
+        """
+        Read TetGen parameters from Widget UI for STL A or B
+        """
+        suffix = "A" if stl_number == 1 else "B"
 
-    def generate_fem_mesh(self, maxvolume=1.0, order=1, mindihedral=20, minratio=1.5, psc=1.0, verbose=0):
+        maxvolume = getattr(widget, f"maxvolume{suffix}Slider").value() * 0.01
+        mindihedral = getattr(widget, f"mindihedral{suffix}Slider").value()
+        minratio = getattr(widget, f"minratio{suffix}Slider").value() * 0.1
+        psc = getattr(widget, f"psc{suffix}Slider").value() * 0.1
+
+        order = (
+            1
+            if getattr(widget, f"order{suffix}comboBox").currentIndex() == 0
+            else 2
+        )
+
+        return dict(
+            maxvolume=maxvolume,
+            mindihedral=mindihedral,
+            minratio=minratio,
+            psc=psc,
+            order=order,
+            verbose=0,
+        )
+
+
+    def generate_fem_mesh(self, widget):
         """
         Generate tetrahedral FEM meshes for all STL meshes stored.
+        UI parameters are read directly from the widget.
         """
+        self.tet_meshes = {}
+
         for stl_number, mesh in self.stl_mesh.items():
+            params = self._read_parameters_from_widget(widget, stl_number)
+
             vertices = mesh.points
             faces = mesh.faces.reshape(-1, 4)[:, 1:]  # skip leading 3
 
             tet = tetgen.TetGen(vertices, faces)
-            tet.tetrahedralize(
-                order=order,
-                mindihedral=mindihedral,
-                minratio=minratio,
-                maxvolume=maxvolume,
-                psc=psc,
-                verbose=verbose
-            )
+            tet.tetrahedralize(**params)
 
             self.tet_meshes[stl_number] = tet.grid
-            print(f"STL {stl_number} → {tet.grid.n_cells} tetrahedra")
+
+            print(
+                f"STL {stl_number} → "
+                f"{tet.grid.n_cells} tetrahedra "
+                f"(maxvol={params['maxvolume']})"
+            )
+
 
     def tet_mesh_to_vtk_actor(self, tet_mesh):
         """

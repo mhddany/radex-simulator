@@ -175,9 +175,6 @@ class Widget(QWidget, Ui_Widget):
             combo.addItems(["1. Linear", "2. Quadratic"])
             combo.setCurrentIndex(0)
             
-        
-
-
         # -------- Object A --------
         init_slider(self.maxvolumeASlider, self.maxvolumeALabel,
                     1, 100, 100, scale=0.01)
@@ -462,14 +459,7 @@ class Widget(QWidget, Ui_Widget):
                 print(f"Failed to add STL {stl_number}: {e}")
                 continue
             
-        self.surf2tetmesh.generate_fem_mesh(
-            maxvolume = self.maxvolumeASlider.value() * 0.01,
-            mindihedral = self.mindihedralASlider.value(),
-            minratio = self.minratioASlider.value() * 0.1,
-            psc = self.pscASlider.value() * 0.1,
-            order = 1 if self.orderAcomboBox.currentIndex() == 0 else 2,
-            verbose=0        # set to 0 to silence output
-        )
+        self.surf2tetmesh.generate_fem_mesh(self)
 
         print("TetGen tetrahedral meshes generated for all STL meshes.")
         
