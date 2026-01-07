@@ -1,5 +1,6 @@
 
 from PySide6.QtWidgets import QWidget, QFileDialog, QDialog, QVBoxLayout, QLabel, QProgressBar
+from PySide6 import QtWidgets
 from PySide6.QtCore import QTimer, Qt, QTimer
 from PySide6.QtGui import QPixmap, QColor
 from ui.ui_widget import Ui_Widget 
@@ -42,6 +43,8 @@ class Widget(QWidget, Ui_Widget):
         
         
         self.setup_transform_controls()
+        self.init_tetgen_controls()
+
         
         self.generateMeshButton.clicked.connect(self.generate_tet_meshes)
         
@@ -130,6 +133,81 @@ class Widget(QWidget, Ui_Widget):
             else:
                 print("Not ready for positioning: One or both STLs missing.")
                 self.statusMessageLabel.setText("Not ready for positioning: One or both STLs missing.")
+
+
+    def _parameter_name_from_label(self, label: QtWidgets.QLabel) -> str:
+            """
+            Extract parameter name from QLabel objectName.
+            Example: 'maxVolumeALabel' or 'maxVolumeBLabel' -> 'maxVolume'
+            """
+            name = label.objectName()
+
+            for suffix in ("ALabel", "BLabel", "Label"):
+                if name.endswith(suffix):
+                    return name.replace(suffix, "")
+
+            return name  # fallback
+    
+    def init_tetgen_controls(self):
+        """
+        Initialize TetGen sliders, combo boxes, and value labels
+        for both Object A and Object B.
+        """
+
+        def init_slider(slider, label, min_v, max_v, default, scale=1.0, suffix=""):
+            slider.setMinimum(min_v)
+            slider.setMaximum(max_v)
+            slider.setValue(default)
+            slider.setSingleStep(1)
+            slider.setTracking(True)
+            
+            param_name = self._parameter_name_from_label(label)
+
+            def update_label(val):
+                real_value = val * scale
+                label.setText(f"{param_name}: {real_value:g}{suffix}")
+
+            slider.valueChanged.connect(update_label)
+            update_label(default)
+
+        def init_combobox(combo):
+            combo.clear()
+            combo.addItems(["1. Linear", "2. Quadratic"])
+            combo.setCurrentIndex(0)
+            
+        
+
+
+        # -------- Object A --------
+        init_slider(self.maxvolumeASlider, self.maxvolumeALabel,
+                    1, 100, 100, scale=0.01)
+
+        init_slider(self.mindihedralASlider, self.mindihedralALabel,
+                    5, 35, 20, suffix="°")
+
+        init_slider(self.minratioASlider, self.minratioALabel,
+                    10, 40, 15, scale=0.1)
+
+        init_slider(self.pscASlider, self.pscALabel,
+                    5, 30, 10, scale=0.1)
+
+        init_combobox(self.orderAcomboBox)
+
+        # -------- Object B --------
+        init_slider(self.maxvolumeBSlider, self.maxvolumeBLabel,
+                    1, 100, 100, scale=0.01)
+
+        init_slider(self.mindihedralBSlider, self.mindihedralBLabel,
+                    5, 35, 20, suffix="°")
+
+        init_slider(self.minratioBSlider, self.minratioBLabel,
+                    10, 40, 15, scale=0.1)
+
+        init_slider(self.pscBSlider, self.pscBLabel,
+                    5, 30, 10, scale=0.1)
+
+        init_combobox(self.orderBcomboBox)
+
 
     def setup_transform_controls(self):
         # ---------- COMMON SETTINGS ----------
@@ -235,6 +313,8 @@ class Widget(QWidget, Ui_Widget):
         transform.Translate(-cx, -cy, -cz)
 
         actor.SetUserTransform(transform)
+        
+        self.stl_manager.update_pyvista_mesh_from_actor(stl_number)
 
         self.vtkViewer.GetRenderWindow().Render()
         
@@ -375,9 +455,7 @@ class Widget(QWidget, Ui_Widget):
     def generate_tet_meshes(self):
         
         for stl_number, mesh in self.stl_manager.stl_mesh.items():
-            try:
-                self.stl_manager.update_pyvista_mesh_from_actor(stl_number)
-                # Add the already-loaded and transformed PyVista mesh
+            try:                
                 self.surf2tetmesh.add_stl_mesh(stl_number, mesh)
                 print(f"Added STL {stl_number} to Surf2TetMesh")
             except Exception as e:
@@ -385,11 +463,11 @@ class Widget(QWidget, Ui_Widget):
                 continue
             
         self.surf2tetmesh.generate_fem_mesh(
-            maxvolume=1.0,   # max tetrahedron volume (adjust for finer/coarser mesh)
-            order=1,         # linear tetrahedra
-            mindihedral=20,  # minimum dihedral angle
-            minratio=1.5,    # minimum ratio of tetrahedron edges
-            psc=1.0,         # points per surface control
+            maxvolume = self.maxvolumeASlider.value() * 0.01,
+            mindihedral = self.mindihedralASlider.value(),
+            minratio = self.minratioASlider.value() * 0.1,
+            psc = self.pscASlider.value() * 0.1,
+            order = 1 if self.orderAcomboBox.currentIndex() == 0 else 2,
             verbose=0        # set to 0 to silence output
         )
 
