@@ -18,7 +18,7 @@ class Widget(QWidget, Ui_Widget):
         
         # Connect sidebar buttons to stacked widget
         self.setup_connections()
-        self.switch_page(0)  # Default to settings first page
+        self.switch_page(0, self.geometryButton)  # Default to settings first page
             
         # Initialize STL Manager
         self.stl_manager = STLManager(
@@ -59,7 +59,7 @@ class Widget(QWidget, Ui_Widget):
 
 
     def setup_connections(self):
-        # Dictionary mapping buttons to page index
+        # Dictionary mapping buttons to main stackedWidget page index
         button_page_map = {
             self.geometryButton: 0,
             self.positioningButton: 5,
@@ -70,12 +70,19 @@ class Widget(QWidget, Ui_Widget):
         }
 
         for button, page_index in button_page_map.items():
-            button.clicked.connect(lambda checked, idx=page_index: self.switch_page(idx))
+            button.clicked.connect(lambda checked, btn=button, idx=page_index: self.switch_page(idx, btn))
 
-    def switch_page(self, index):
-        """Switch stacked widget to the given page index"""
+
+    def switch_page(self, index, button):
+        """Switch stackedWidget and viewerStackedWidget according to rules"""
+        # Switch main stacked widget
         self.stackedWidget.setCurrentIndex(index)
-        self.viewerStackedWidget.setCurrentIndex(index)
+
+        # Decide viewerStackedWidget page
+        if button in [self.geometryButton, self.positioningButton]:
+            self.viewerStackedWidget.setCurrentIndex(0)  # STL Viewer
+        elif button in [self.meshingButton, self.materialsButton]:
+            self.viewerStackedWidget.setCurrentIndex(1)  # Tet Viewer
         
     def update_status(self, message: str, success: bool = True):
         """
