@@ -76,6 +76,28 @@ class Widget(QWidget, Ui_Widget):
         """Switch stacked widget to the given page index"""
         self.stackedWidget.setCurrentIndex(index)
         self.viewerStackedWidget.setCurrentIndex(index)
+        
+    def update_status(self, message: str, success: bool = True):
+        """
+        Update the status bar with a message and appropriate styling.
+
+        Parameters:
+            message (str): The message to display.
+            success (bool): True for good/success messages, False for bad/error messages.
+        """
+        if success:
+            # Good message style
+            self.statusLayout.setStyleSheet("background-color: #032e15; border-color: #7bf1a8;")
+            self.statusMessageLabel.setStyleSheet("color: #7bf1a8;")
+            self.statusIcon.setPixmap(QPixmap(":/icons/icons/check_green.svg"))
+        else:
+            # Bad message style
+            self.statusLayout.setStyleSheet("background-color: #460809; border-color: #ffa2a2;")
+            self.statusMessageLabel.setStyleSheet("color: #ffa2a2;")
+            self.statusIcon.setPixmap(QPixmap(":/icons/icons/warning_red.svg"))
+
+        self.statusMessageLabel.setText(message)
+
 
     def open_stl_file(self, stl_number):
         dialog = QFileDialog(self)
@@ -125,10 +147,8 @@ class Widget(QWidget, Ui_Widget):
                 # Both loaded successfully
                 self.readyPositioningIcon.setPixmap(QPixmap(":/icons/icons/check_green.svg"))
                 self.readyPositioningLabel.setStyleSheet("color: #f1f5f9;")
-                self.statusLayout.setStyleSheet("background-color: #032e15; border-color: #7bf1a8; ")
-                self.statusMessageLabel.setText("Both STL files loaded successfully. Ready for positioning!")
-                self.statusMessageLabel.setStyleSheet("color: #7bf1a8;")
-                self.statusIcon.setPixmap(QPixmap(":/icons/icons/check_green.svg"))
+                
+                self.update_status("Both STL files loaded successfully. Ready for positioning!", success=True)
                 print("Both STL files loaded successfully. Ready for positioning!")
             else:
                 print("Not ready for positioning: One or both STLs missing.")
@@ -357,10 +377,7 @@ class Widget(QWidget, Ui_Widget):
         # Ensure both objects are loaded
         if 1 not in self.stl_manager.actors or 2 not in self.stl_manager.actors:
             print("One or both objects not loaded.")
-            self.statusMessageLabel.setText("One or both objects not loaded.")
-            self.statusMessageLabel.setStyleSheet("color: #ffa2a2;")
-            self.statusLayout.setStyleSheet("background-color: #460809; border-color: #ffa2a2; ")
-            self.statusIcon.setPixmap(QPixmap(":/icons/icons/warning_red.svg"))
+            self.update_status("One or both objects not loaded.", success=False)
             return False
 
         actor1 = self.stl_manager.actors[1]
@@ -380,16 +397,10 @@ class Widget(QWidget, Ui_Widget):
         # Update UI label
         if is_overlapping:
             print("Objects are overlapping!")
-            self.statusMessageLabel.setText("Overlap detected")
-            self.statusMessageLabel.setStyleSheet("color: #ffa2a2;")
-            self.statusLayout.setStyleSheet("background-color: #460809; border-color: #ffa2a2; ")
-            self.statusIcon.setPixmap(QPixmap(":/icons/icons/warning_red.svg"))
+            self.update_status("Objects are overlapping!", success=False)
         else:
             print("Objects do not overlap.")
-            self.statusMessageLabel.setText("Objects do not overlap.")
-            self.statusMessageLabel.setStyleSheet("color: #7bf1a8;")
-            self.statusLayout.setStyleSheet("background-color: #032e15; border-color: #7bf1a8; ")
-            self.statusIcon.setPixmap(QPixmap(":/icons/icons/check_green.svg"))
+            self.update_status("Objects do not overlap.", success=True)
 
         return is_overlapping
 
@@ -450,21 +461,54 @@ class Widget(QWidget, Ui_Widget):
         self._gif_timer.start(interval_ms)
         
     def generate_tet_meshes(self):
-        
+        """
+        Convert the loaded STL meshes into tetrahedral FEM meshes using TetGen.
+
+        Workflow:
+        1. Check that STL meshes have been loaded.
+        2. Add the transformed PyVista meshes from the STL manager to Surf2TetMesh.
+        3. Generate tetrahedral meshes using TetGen with parameters taken from the widget.
+        4. Display the tetrahedral meshes in the dedicated VTK viewer.
+        5. Switch the stacked widget to the TetMesh viewer tab.
+
+        Notes:
+        - Expects exactly two STL meshes to be loaded (stl_number=1 and stl_number=2).
+        - TetGen parameters (maxvolume, order, etc.) are read directly from widget UI components.
+        """
+        if not hasattr(self.stl_manager, "stl_mesh") or len(self.stl_manager.stl_mesh) < 2:
+            self.update_status("Error: Not enough STL meshes loaded. Please load two STL files first.", success=False)
+            return
+
+        # Add STL meshes to Surf2TetMesh
         for stl_number, mesh in self.stl_manager.stl_mesh.items():
-            try:                
+            try:
                 self.surf2tetmesh.add_stl_mesh(stl_number, mesh)
                 print(f"Added STL {stl_number} to Surf2TetMesh")
+                self.update_status(f"Added STL {stl_number} to Surf2TetMesh", success=True)
             except Exception as e:
-                print(f"Failed to add STL {stl_number}: {e}")
+                print(f"Failed to add STL {stl_number} to Surf2TetMesh: {e}")                
+                self.update_status(f"Failed to add STL {stl_number} to Surf2TetMesh: {e}", success=False)
                 continue
-            
-        self.surf2tetmesh.generate_fem_mesh(self)
 
-        print("TetGen tetrahedral meshes generated for all STL meshes.")
-        
-        self.viewerStackedWidget.setCurrentIndex(1) # Switch to Tetrahedral Mesh Viewer tab
-        self.surf2tetmesh.display_tet_meshes()
-        #self.surf2tetmesh.display_stl_meshes()
+        # Generate tetrahedral meshes using TetGen
+        try:
+            self.surf2tetmesh.generate_fem_mesh(self)
+            print("TetGen tetrahedral meshes generated for all STL meshes.")
+            self.update_status("TetGen tetrahedral meshes generated for all STL meshes.", success=True)
+        except Exception as e:
+            print(f"Failed to generate tetrahedral meshes: {e}")                
+            self.update_status(f"Failed to generate tetrahedral meshes: {e}", success=False)
+            return
 
+        # Switch to TetMesh viewer tab
+        self.viewerStackedWidget.setCurrentIndex(1)  # 0 = STL Viewer, 1 = TetMesh Viewer
+
+        # Display all generated tetrahedral meshes
+        try:
+            self.surf2tetmesh.display_tet_meshes()
+            print("Tet meshes displayed successfully.")
+            self.update_status("Tet meshes displayed successfully.", success=True)
+        except Exception as e:
+            print(f"Failed to display tetrahedral meshes: {e}")                
+            self.update_status(f"Failed to display tetrahedral meshes: {e}", success=False)
     

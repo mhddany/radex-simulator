@@ -84,25 +84,44 @@ class STLManager:
     # Load STL as PyVista + VTK actor
     # -----------------------------
     def load_stl(self, file_path, stl_number, surface_color=(0.83, 0.83, 0.83), edge_color=(0.2, 0.2, 0.2)):
+        """
+        Load STL as PyVista mesh and VTK actor, replacing any previous actor for this STL number.
+
+        Parameters:
+            file_path: str - path to the STL file
+            stl_number: int - index of the STL (1 or 2)
+            surface_color: tuple - RGB color for mesh surface
+            edge_color: tuple - RGB color for mesh edges
+        """
         if not os.path.isfile(file_path):
             raise FileNotFoundError(file_path)
 
-        #  Load with PyVista
+        # --- Remove old actor if it exists ---
+        if stl_number in self.actors:
+            old_actor = self.actors[stl_number]
+            self.renderer.RemoveActor(old_actor)
+            del self.actors[stl_number]
+
+        # Remove old PyVista mesh if exists
+        if hasattr(self, "stl_mesh") and stl_number in self.stl_mesh:
+            del self.stl_mesh[stl_number]
+
+        # --- Load STL as PyVista mesh ---
         mesh = pv.read(file_path)
         self.stl_mesh[stl_number] = mesh
 
-        #  Create VTK actor
+        # --- Create VTK actor from mesh ---
         actor = self._create_actor_from_mesh(mesh, surface_color, edge_color)
         transform = vtk.vtkTransform()
         actor.SetUserTransform(transform)
 
-        # Store references
+        # --- Store references ---
         self.actors[stl_number] = actor
         self.transforms[stl_number] = transform
         self.stl_paths[stl_number] = file_path
         self.object_centers[stl_number] = actor.GetCenter()
 
-        # Add to renderer
+        # --- Add actor to renderer ---
         self.renderer.AddActor(actor)
         self.renderer.ResetCamera()
         self.vtk_widget.GetRenderWindow().Render()
