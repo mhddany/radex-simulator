@@ -96,7 +96,13 @@ class Ui_Widget(object):
 "#mindihedralBDescLabel,\n"
 "#minratioBDescLabel,\n"
 "#pscBDescLabel,\n"
-"#orderBDescLabel{\n"
+"#orderBDescLabel,\n"
+"#matAEmissivityDescLabel,\n"
+"#matACpDescLabel,\n"
+"#matAKappaDescLabel,\n"
+"#matBEmissivityDescLabel,\n"
+"#matBCpDescLabel,\n"
+"#matBKappaDescLabel{\n"
 "    font-size: 9pt;\n"
 "    font-weight: normal;\n"
 "    color: #91a2be;\n"
@@ -108,16 +114,17 @@ class Ui_Widget(object):
 "#validationGeometryLabel,\n"
 "#validationPositioningLabel,\n"
 "#summaryMeshingLabel{\n"
-"    font-size: 10.5pt;\n"
+"    font-size"
+                        ": 10.5pt;\n"
 "    font-weight: normal;\n"
 "    color: #f1f5f9;\n"
 "    background-color: transparent;\n"
 "}\n"
 "\n"
 "#objectALabel,\n"
-"#positionObjectALa"
-                        "bel,\n"
-"#meshingObjectALabel{\n"
+"#positionObjectALabel,\n"
+"#meshingObjectALabel,\n"
+"#materialsObjectALabel{\n"
 "    font-size: 11pt;\n"
 "    font-weight: bold;\n"
 "    color: #06d3f3;\n"
@@ -134,7 +141,8 @@ class Ui_Widget(object):
 "\n"
 "#objectBLabel,\n"
 "#positionObjectBLabel,\n"
-"#meshingObjectBLabel{\n"
+"#meshingObjectBLabel,\n"
+"#materialsObjectBLabel{\n"
 "    font-size: 11pt;\n"
 "    font-weight: bold;\n"
 "    color: #f18904;\n"
@@ -152,7 +160,8 @@ class Ui_Widget(object):
 "\n"
 "/* =========================\n"
 "   Common bordered containers\n"
-"   ========================= */\n"
+"   ========="
+                        "================ */\n"
 "#topLayout,\n"
 "#centerLayout,\n"
 "#pipelineLayout,\n"
@@ -162,8 +171,7 @@ class Ui_Widget(object):
 "}\n"
 "\n"
 "#pipelineTitleLayout{\n"
-"    bo"
-                        "rder-bottom: 1px solid #314158;\n"
+"    border-bottom: 1px solid #314158;\n"
 "    border-top: 1px solid #314158;\n"
 "}\n"
 "\n"
@@ -197,7 +205,8 @@ class Ui_Widget(object):
 "\n"
 "/* =========================\n"
 "	Pipeline buttons\n"
-"   ========================= */\n"
+"   ======================="
+                        "== */\n"
 "#geometryButton,\n"
 "#materialsButton,\n"
 "#resultsButton,\n"
@@ -206,8 +215,7 @@ class Ui_Widget(object):
 "#meshingButton {\n"
 "    border: none;\n"
 "    background-color: #020618;   /* idle */\n"
-""
-                        "    color: #f1f5f9;\n"
+"    color: #f1f5f9;\n"
 "	padding-left: 15px;\n"
 "    text-align: left;\n"
 "}\n"
@@ -239,14 +247,14 @@ class Ui_Widget(object):
 "	border-left: 3px solid #50a2ff;\n"
 "}\n"
 "\n"
-"/* Pressed \u2013 slightly darker / inset feel */\n"
+"/* Pressed \u2013"
+                        " slightly darker / inset feel */\n"
 "#geometryButton:pressed,\n"
 "#materialsButton:pressed,\n"
 "#resultsButton:pressed,\n"
 "#simulationButton:pressed,\n"
 "#positioningButton:pressed,\n"
-"#meshingButton:press"
-                        "ed {\n"
+"#meshingButton:pressed {\n"
 "    background-color: #1253df;\n"
 "}\n"
 "\n"
@@ -280,14 +288,14 @@ class Ui_Widget(object):
 "}\n"
 "\n"
 "/* Pressed / clicked */\n"
-"#uploadFileAButton:pressed,\n"
+"#uploadFileAButton:pr"
+                        "essed,\n"
 "#uploadFileBButton:pressed,\n"
 "#resetPositionAButton:pressed,\n"
 "#resetPositionBButton:pressed,\n"
 "#validationPositionButton:pressed{\n"
 "    background-color: #253349;   /* darker */\n"
-"    b"
-                        "order-color: #314158;\n"
+"    border-color: #314158;\n"
 "}\n"
 "\n"
 "/* Disabled (optional but recommended) */\n"
@@ -321,15 +329,15 @@ class Ui_Widget(object):
 "\n"
 "#settingsSimulationPage,\n"
 "#settingsResultsPage,\n"
-"#settingsPositioningPage,\n"
+"#settings"
+                        "PositioningPage,\n"
 "#settingsMeshingPage,\n"
 "#settingsMaterialsPage,\n"
 "#settingsGeometryPage,\n"
 "#frameGeometryValidation,\n"
 "#framePositioningValidation,\n"
 "#frameMeshingSummary{\n"
-"    border-top: "
-                        "1px solid #314158;\n"
+"    border-top: 1px solid #314158;\n"
 "    background-color: transparent;\n"
 "}\n"
 "\n"
@@ -338,7 +346,9 @@ class Ui_Widget(object):
 "#framePositioningA,\n"
 "#framePositioningB,\n"
 "#frameMeshingA,\n"
-"#frameMeshingB{\n"
+"#frameMeshingB,\n"
+"#frameMaterialsA,\n"
+"#frameMaterialsB{\n"
 "	background-color: #1d293d;\n"
 "	border: 1px solid #314158;\n"
 "	border-radius: 15px;\n"
@@ -787,7 +797,7 @@ class Ui_Widget(object):
         self.scrollAreaMeshing.setWidgetResizable(True)
         self.scrollAreaWidgetContentsMeshing = QWidget()
         self.scrollAreaWidgetContentsMeshing.setObjectName(u"scrollAreaWidgetContentsMeshing")
-        self.scrollAreaWidgetContentsMeshing.setGeometry(QRect(0, -61, 786, 793))
+        self.scrollAreaWidgetContentsMeshing.setGeometry(QRect(0, 0, 786, 793))
         self.gridLayout_6 = QGridLayout(self.scrollAreaWidgetContentsMeshing)
         self.gridLayout_6.setSpacing(15)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
@@ -1172,6 +1182,287 @@ class Ui_Widget(object):
 
         self.settingsMaterialsPage = QWidget(self.materialsPageLayout)
         self.settingsMaterialsPage.setObjectName(u"settingsMaterialsPage")
+        self.verticalLayout_32 = QVBoxLayout(self.settingsMaterialsPage)
+        self.verticalLayout_32.setSpacing(0)
+        self.verticalLayout_32.setObjectName(u"verticalLayout_32")
+        self.verticalLayout_32.setContentsMargins(0, 1, 0, 0)
+        self.scrollAreaMaterials = QScrollArea(self.settingsMaterialsPage)
+        self.scrollAreaMaterials.setObjectName(u"scrollAreaMaterials")
+        self.scrollAreaMaterials.setWidgetResizable(True)
+        self.scrollAreaWidgetContentsMaterials = QWidget()
+        self.scrollAreaWidgetContentsMaterials.setObjectName(u"scrollAreaWidgetContentsMaterials")
+        self.scrollAreaWidgetContentsMaterials.setGeometry(QRect(0, 0, 786, 802))
+        self.verticalLayout_34 = QVBoxLayout(self.scrollAreaWidgetContentsMaterials)
+        self.verticalLayout_34.setSpacing(20)
+        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
+        self.verticalLayout_34.setContentsMargins(20, 20, 20, 20)
+        self.frameMaterialsA = QFrame(self.scrollAreaWidgetContentsMaterials)
+        self.frameMaterialsA.setObjectName(u"frameMaterialsA")
+        self.frameMaterialsA.setMinimumSize(QSize(0, 0))
+        self.frameMaterialsA.setMaximumSize(QSize(1000, 1000))
+        self.frameMaterialsA.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frameMaterialsA.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_9 = QGridLayout(self.frameMaterialsA)
+        self.gridLayout_9.setObjectName(u"gridLayout_9")
+        self.gridLayout_9.setVerticalSpacing(10)
+        self.gridLayout_9.setContentsMargins(15, 15, 15, 15)
+        self.matAKappaSpinner = QDoubleSpinBox(self.frameMaterialsA)
+        self.matAKappaSpinner.setObjectName(u"matAKappaSpinner")
+
+        self.gridLayout_9.addWidget(self.matAKappaSpinner, 11, 1, 1, 1)
+
+        self.matACpDescLabel = QLabel(self.frameMaterialsA)
+        self.matACpDescLabel.setObjectName(u"matACpDescLabel")
+        self.matACpDescLabel.setWordWrap(True)
+
+        self.gridLayout_9.addWidget(self.matACpDescLabel, 9, 0, 1, 1)
+
+        self.matAEmissivitySpinner = QDoubleSpinBox(self.frameMaterialsA)
+        self.matAEmissivitySpinner.setObjectName(u"matAEmissivitySpinner")
+
+        self.gridLayout_9.addWidget(self.matAEmissivitySpinner, 4, 1, 1, 1)
+
+        self.matAInitTemperatureLabel = QLabel(self.frameMaterialsA)
+        self.matAInitTemperatureLabel.setObjectName(u"matAInitTemperatureLabel")
+        self.matAInitTemperatureLabel.setWordWrap(True)
+
+        self.gridLayout_9.addWidget(self.matAInitTemperatureLabel, 1, 0, 1, 1)
+
+        self.matAEmissivityDescLabel = QLabel(self.frameMaterialsA)
+        self.matAEmissivityDescLabel.setObjectName(u"matAEmissivityDescLabel")
+        self.matAEmissivityDescLabel.setWordWrap(True)
+
+        self.gridLayout_9.addWidget(self.matAEmissivityDescLabel, 5, 0, 1, 1)
+
+        self.matACpLabel = QLabel(self.frameMaterialsA)
+        self.matACpLabel.setObjectName(u"matACpLabel")
+
+        self.gridLayout_9.addWidget(self.matACpLabel, 7, 0, 1, 1)
+
+        self.matACpSlider = QSlider(self.frameMaterialsA)
+        self.matACpSlider.setObjectName(u"matACpSlider")
+        self.matACpSlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_9.addWidget(self.matACpSlider, 8, 0, 1, 1)
+
+        self.matAKappaLabel = QLabel(self.frameMaterialsA)
+        self.matAKappaLabel.setObjectName(u"matAKappaLabel")
+        self.matAKappaLabel.setWordWrap(True)
+
+        self.gridLayout_9.addWidget(self.matAKappaLabel, 10, 0, 1, 1)
+
+        self.matAEmissivityLabel = QLabel(self.frameMaterialsA)
+        self.matAEmissivityLabel.setObjectName(u"matAEmissivityLabel")
+
+        self.gridLayout_9.addWidget(self.matAEmissivityLabel, 3, 0, 1, 1)
+
+        self.matAKappaSlider = QSlider(self.frameMaterialsA)
+        self.matAKappaSlider.setObjectName(u"matAKappaSlider")
+        self.matAKappaSlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_9.addWidget(self.matAKappaSlider, 11, 0, 1, 1)
+
+        self.matAEmissivitySlider = QSlider(self.frameMaterialsA)
+        self.matAEmissivitySlider.setObjectName(u"matAEmissivitySlider")
+        self.matAEmissivitySlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_9.addWidget(self.matAEmissivitySlider, 4, 0, 1, 1)
+
+        self.matAKappaDescLabel = QLabel(self.frameMaterialsA)
+        self.matAKappaDescLabel.setObjectName(u"matAKappaDescLabel")
+        self.matAKappaDescLabel.setWordWrap(True)
+
+        self.gridLayout_9.addWidget(self.matAKappaDescLabel, 12, 0, 1, 1)
+
+        self.matAInitTemperatureSlider = QSlider(self.frameMaterialsA)
+        self.matAInitTemperatureSlider.setObjectName(u"matAInitTemperatureSlider")
+        self.matAInitTemperatureSlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_9.addWidget(self.matAInitTemperatureSlider, 2, 0, 1, 1)
+
+        self.matACpSpinner = QDoubleSpinBox(self.frameMaterialsA)
+        self.matACpSpinner.setObjectName(u"matACpSpinner")
+
+        self.gridLayout_9.addWidget(self.matACpSpinner, 8, 1, 1, 1)
+
+        self.matAEmissivityUnitLabel = QLabel(self.frameMaterialsA)
+        self.matAEmissivityUnitLabel.setObjectName(u"matAEmissivityUnitLabel")
+
+        self.gridLayout_9.addWidget(self.matAEmissivityUnitLabel, 4, 2, 1, 1)
+
+        self.matACpUnitLabel = QLabel(self.frameMaterialsA)
+        self.matACpUnitLabel.setObjectName(u"matACpUnitLabel")
+
+        self.gridLayout_9.addWidget(self.matACpUnitLabel, 8, 2, 1, 1)
+
+        self.matAKappaUnitLabel = QLabel(self.frameMaterialsA)
+        self.matAKappaUnitLabel.setObjectName(u"matAKappaUnitLabel")
+
+        self.gridLayout_9.addWidget(self.matAKappaUnitLabel, 11, 2, 1, 1)
+
+        self.matAInitTemperatureUnitLabel = QLabel(self.frameMaterialsA)
+        self.matAInitTemperatureUnitLabel.setObjectName(u"matAInitTemperatureUnitLabel")
+
+        self.gridLayout_9.addWidget(self.matAInitTemperatureUnitLabel, 2, 2, 1, 1)
+
+        self.matAInitTemperatureSpinner = QDoubleSpinBox(self.frameMaterialsA)
+        self.matAInitTemperatureSpinner.setObjectName(u"matAInitTemperatureSpinner")
+
+        self.gridLayout_9.addWidget(self.matAInitTemperatureSpinner, 2, 1, 1, 1)
+
+        self.materialsObjectALabel = QLabel(self.frameMaterialsA)
+        self.materialsObjectALabel.setObjectName(u"materialsObjectALabel")
+
+        self.gridLayout_9.addWidget(self.materialsObjectALabel, 0, 0, 1, 1)
+
+        self.matAPresetsComboBox = QComboBox(self.frameMaterialsA)
+        self.matAPresetsComboBox.addItem("")
+        self.matAPresetsComboBox.addItem("")
+        self.matAPresetsComboBox.addItem("")
+        self.matAPresetsComboBox.addItem("")
+        self.matAPresetsComboBox.addItem("")
+        self.matAPresetsComboBox.setObjectName(u"matAPresetsComboBox")
+
+        self.gridLayout_9.addWidget(self.matAPresetsComboBox, 0, 1, 1, 2)
+
+
+        self.verticalLayout_34.addWidget(self.frameMaterialsA)
+
+        self.frameMaterialsB = QFrame(self.scrollAreaWidgetContentsMaterials)
+        self.frameMaterialsB.setObjectName(u"frameMaterialsB")
+        self.frameMaterialsB.setMinimumSize(QSize(0, 0))
+        self.frameMaterialsB.setMaximumSize(QSize(1000, 1000))
+        self.frameMaterialsB.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frameMaterialsB.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_10 = QGridLayout(self.frameMaterialsB)
+        self.gridLayout_10.setObjectName(u"gridLayout_10")
+        self.gridLayout_10.setVerticalSpacing(10)
+        self.gridLayout_10.setContentsMargins(15, 15, 15, 15)
+        self.matBKappaSpinner = QDoubleSpinBox(self.frameMaterialsB)
+        self.matBKappaSpinner.setObjectName(u"matBKappaSpinner")
+
+        self.gridLayout_10.addWidget(self.matBKappaSpinner, 11, 1, 1, 1)
+
+        self.matBCpDescLabel = QLabel(self.frameMaterialsB)
+        self.matBCpDescLabel.setObjectName(u"matBCpDescLabel")
+        self.matBCpDescLabel.setWordWrap(True)
+
+        self.gridLayout_10.addWidget(self.matBCpDescLabel, 9, 0, 1, 1)
+
+        self.matBEmissivitySpinner = QDoubleSpinBox(self.frameMaterialsB)
+        self.matBEmissivitySpinner.setObjectName(u"matBEmissivitySpinner")
+
+        self.gridLayout_10.addWidget(self.matBEmissivitySpinner, 4, 1, 1, 1)
+
+        self.matBInitTemperatureLabel = QLabel(self.frameMaterialsB)
+        self.matBInitTemperatureLabel.setObjectName(u"matBInitTemperatureLabel")
+        self.matBInitTemperatureLabel.setWordWrap(True)
+
+        self.gridLayout_10.addWidget(self.matBInitTemperatureLabel, 1, 0, 1, 1)
+
+        self.matBEmissivityDescLabel = QLabel(self.frameMaterialsB)
+        self.matBEmissivityDescLabel.setObjectName(u"matBEmissivityDescLabel")
+        self.matBEmissivityDescLabel.setWordWrap(True)
+
+        self.gridLayout_10.addWidget(self.matBEmissivityDescLabel, 5, 0, 1, 1)
+
+        self.matBCpLabel = QLabel(self.frameMaterialsB)
+        self.matBCpLabel.setObjectName(u"matBCpLabel")
+
+        self.gridLayout_10.addWidget(self.matBCpLabel, 7, 0, 1, 1)
+
+        self.matBCpSlider = QSlider(self.frameMaterialsB)
+        self.matBCpSlider.setObjectName(u"matBCpSlider")
+        self.matBCpSlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_10.addWidget(self.matBCpSlider, 8, 0, 1, 1)
+
+        self.matBKappaLabel = QLabel(self.frameMaterialsB)
+        self.matBKappaLabel.setObjectName(u"matBKappaLabel")
+
+        self.gridLayout_10.addWidget(self.matBKappaLabel, 10, 0, 1, 1)
+
+        self.matBEmissivityLabel = QLabel(self.frameMaterialsB)
+        self.matBEmissivityLabel.setObjectName(u"matBEmissivityLabel")
+
+        self.gridLayout_10.addWidget(self.matBEmissivityLabel, 3, 0, 1, 1)
+
+        self.matBKappaSlider = QSlider(self.frameMaterialsB)
+        self.matBKappaSlider.setObjectName(u"matBKappaSlider")
+        self.matBKappaSlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_10.addWidget(self.matBKappaSlider, 11, 0, 1, 1)
+
+        self.matBEmissivitySlider = QSlider(self.frameMaterialsB)
+        self.matBEmissivitySlider.setObjectName(u"matBEmissivitySlider")
+        self.matBEmissivitySlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_10.addWidget(self.matBEmissivitySlider, 4, 0, 1, 1)
+
+        self.matBKappaDescLabel = QLabel(self.frameMaterialsB)
+        self.matBKappaDescLabel.setObjectName(u"matBKappaDescLabel")
+        self.matBKappaDescLabel.setWordWrap(True)
+
+        self.gridLayout_10.addWidget(self.matBKappaDescLabel, 12, 0, 1, 1)
+
+        self.matBInitTemperatureSlider = QSlider(self.frameMaterialsB)
+        self.matBInitTemperatureSlider.setObjectName(u"matBInitTemperatureSlider")
+        self.matBInitTemperatureSlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_10.addWidget(self.matBInitTemperatureSlider, 2, 0, 1, 1)
+
+        self.matBCpSpinner = QDoubleSpinBox(self.frameMaterialsB)
+        self.matBCpSpinner.setObjectName(u"matBCpSpinner")
+
+        self.gridLayout_10.addWidget(self.matBCpSpinner, 8, 1, 1, 1)
+
+        self.matBEmissivityUnitLabel = QLabel(self.frameMaterialsB)
+        self.matBEmissivityUnitLabel.setObjectName(u"matBEmissivityUnitLabel")
+
+        self.gridLayout_10.addWidget(self.matBEmissivityUnitLabel, 4, 2, 1, 1)
+
+        self.matBCpUnitLabel = QLabel(self.frameMaterialsB)
+        self.matBCpUnitLabel.setObjectName(u"matBCpUnitLabel")
+
+        self.gridLayout_10.addWidget(self.matBCpUnitLabel, 8, 2, 1, 1)
+
+        self.matBKappaUnitLabel = QLabel(self.frameMaterialsB)
+        self.matBKappaUnitLabel.setObjectName(u"matBKappaUnitLabel")
+
+        self.gridLayout_10.addWidget(self.matBKappaUnitLabel, 11, 2, 1, 1)
+
+        self.matBInitTemperatureUnitLabel = QLabel(self.frameMaterialsB)
+        self.matBInitTemperatureUnitLabel.setObjectName(u"matBInitTemperatureUnitLabel")
+
+        self.gridLayout_10.addWidget(self.matBInitTemperatureUnitLabel, 2, 2, 1, 1)
+
+        self.matBInitTemperatureSpinner = QDoubleSpinBox(self.frameMaterialsB)
+        self.matBInitTemperatureSpinner.setObjectName(u"matBInitTemperatureSpinner")
+
+        self.gridLayout_10.addWidget(self.matBInitTemperatureSpinner, 2, 1, 1, 1)
+
+        self.materialsObjectBLabel = QLabel(self.frameMaterialsB)
+        self.materialsObjectBLabel.setObjectName(u"materialsObjectBLabel")
+
+        self.gridLayout_10.addWidget(self.materialsObjectBLabel, 0, 0, 1, 1)
+
+        self.matBPresetsComboBox = QComboBox(self.frameMaterialsB)
+        self.matBPresetsComboBox.addItem("")
+        self.matBPresetsComboBox.addItem("")
+        self.matBPresetsComboBox.addItem("")
+        self.matBPresetsComboBox.addItem("")
+        self.matBPresetsComboBox.addItem("")
+        self.matBPresetsComboBox.setObjectName(u"matBPresetsComboBox")
+
+        self.gridLayout_10.addWidget(self.matBPresetsComboBox, 0, 1, 1, 2)
+
+
+        self.verticalLayout_34.addWidget(self.frameMaterialsB)
+
+        self.scrollAreaMaterials.setWidget(self.scrollAreaWidgetContentsMaterials)
+
+        self.verticalLayout_32.addWidget(self.scrollAreaMaterials)
+
 
         self.verticalLayout_9.addWidget(self.settingsMaterialsPage)
 
@@ -1797,7 +2088,7 @@ class Ui_Widget(object):
 
         self.retranslateUi(Widget)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
         self.viewerStackedWidget.setCurrentIndex(1)
 
 
@@ -1876,6 +2167,42 @@ class Ui_Widget(object):
         self.meshTotalNumOfNodesLabel.setText(QCoreApplication.translate("Widget", u"Tota Nodes", None))
         self.maintitleMaterialsPage.setText(QCoreApplication.translate("Widget", u"Step 4: Materials", None))
         self.subtitleMaterialsPage.setText(QCoreApplication.translate("Widget", u"Define thermal and material parameters for each object", None))
+        self.matACpDescLabel.setText(QCoreApplication.translate("Widget", u"Energy needed to raise temperature", None))
+        self.matAInitTemperatureLabel.setText(QCoreApplication.translate("Widget", u"Initial Temperature (T\u2080)", None))
+        self.matAEmissivityDescLabel.setText(QCoreApplication.translate("Widget", u"Radiation efficiency (0 = mirror, 1 = black body)", None))
+        self.matACpLabel.setText(QCoreApplication.translate("Widget", u"Specific Heat Capacity (c)", None))
+        self.matAKappaLabel.setText(QCoreApplication.translate("Widget", u"Thermal Conductivity (k)", None))
+        self.matAEmissivityLabel.setText(QCoreApplication.translate("Widget", u"Emissivity (\u03b5)", None))
+        self.matAKappaDescLabel.setText(QCoreApplication.translate("Widget", u"Rate of heat transfer through material", None))
+        self.matAEmissivityUnitLabel.setText(QCoreApplication.translate("Widget", u"unitless", None))
+        self.matACpUnitLabel.setText(QCoreApplication.translate("Widget", u"J/(kg\u00b7K)", None))
+        self.matAKappaUnitLabel.setText(QCoreApplication.translate("Widget", u"W/(m\u00b7K)", None))
+        self.matAInitTemperatureUnitLabel.setText(QCoreApplication.translate("Widget", u"Kelvin", None))
+        self.materialsObjectALabel.setText(QCoreApplication.translate("Widget", u"Object A", None))
+        self.matAPresetsComboBox.setItemText(0, QCoreApplication.translate("Widget", u"Aluminium", None))
+        self.matAPresetsComboBox.setItemText(1, QCoreApplication.translate("Widget", u"Steel", None))
+        self.matAPresetsComboBox.setItemText(2, QCoreApplication.translate("Widget", u"Copper", None))
+        self.matAPresetsComboBox.setItemText(3, QCoreApplication.translate("Widget", u"Ceramic", None))
+        self.matAPresetsComboBox.setItemText(4, QCoreApplication.translate("Widget", u"Custom", None))
+
+        self.matBCpDescLabel.setText(QCoreApplication.translate("Widget", u"Energy needed to raise temperature", None))
+        self.matBInitTemperatureLabel.setText(QCoreApplication.translate("Widget", u"Initial Temperature (T\u2080)", None))
+        self.matBEmissivityDescLabel.setText(QCoreApplication.translate("Widget", u"Radiation efficiency (0 = mirror, 1 = black body)", None))
+        self.matBCpLabel.setText(QCoreApplication.translate("Widget", u"Specific Heat Capacity (c)", None))
+        self.matBKappaLabel.setText(QCoreApplication.translate("Widget", u"Thermal Conductivity (k)", None))
+        self.matBEmissivityLabel.setText(QCoreApplication.translate("Widget", u"Emissivity (\u03b5)", None))
+        self.matBKappaDescLabel.setText(QCoreApplication.translate("Widget", u"Rate of heat transfer through material", None))
+        self.matBEmissivityUnitLabel.setText(QCoreApplication.translate("Widget", u"unitless", None))
+        self.matBCpUnitLabel.setText(QCoreApplication.translate("Widget", u"J/(kg\u00b7K)", None))
+        self.matBKappaUnitLabel.setText(QCoreApplication.translate("Widget", u"W/(m\u00b7K)", None))
+        self.matBInitTemperatureUnitLabel.setText(QCoreApplication.translate("Widget", u"Kelvin", None))
+        self.materialsObjectBLabel.setText(QCoreApplication.translate("Widget", u"Object B", None))
+        self.matBPresetsComboBox.setItemText(0, QCoreApplication.translate("Widget", u"Aluminium", None))
+        self.matBPresetsComboBox.setItemText(1, QCoreApplication.translate("Widget", u"Steel", None))
+        self.matBPresetsComboBox.setItemText(2, QCoreApplication.translate("Widget", u"Copper", None))
+        self.matBPresetsComboBox.setItemText(3, QCoreApplication.translate("Widget", u"Ceramic", None))
+        self.matBPresetsComboBox.setItemText(4, QCoreApplication.translate("Widget", u"Custom", None))
+
         self.maintitleSimulationPage.setText(QCoreApplication.translate("Widget", u"Step 5: Simulation", None))
         self.subtitleSimulationPage.setText(QCoreApplication.translate("Widget", u"Configure and run the transient thermal radiation simulation", None))
         self.maintitleResultsPage.setText(QCoreApplication.translate("Widget", u"Step 6: Results", None))

@@ -63,6 +63,11 @@ class Widget(QWidget, Ui_Widget):
             1: (0.0235, 0.827, 0.953),  # #06d3f3 for mesh 1
             2: (0.945, 0.537, 0.016),   # #f18904 for mesh 2
         }
+        
+        # init thermal controls
+        self.init_thermal_controls()
+
+
 
 
     def setup_connections(self):
@@ -91,7 +96,7 @@ class Widget(QWidget, Ui_Widget):
         }
 
         width_map = {
-            self.materialsButton: 800,
+            self.materialsButton: 400,
             self.simulationButton: 800,
             self.meshingButton: 800
         }
@@ -328,6 +333,139 @@ class Widget(QWidget, Ui_Widget):
 
         init_combobox(self.orderBcomboBox)
 
+    def init_thermal_controls(self):
+        """
+        Initialize thermal properties controls (slider + spinbox + material combo)
+        for Object A and Object B.
+        """
+        # Material database
+        self.material_properties = {
+            "Aluminium": {
+                "T0": 25,
+                "emissivity": 0.09,
+                "cp": 900,
+                "k": 237,
+            },
+            "Steel": {
+                "T0": 25,
+                "emissivity": 0.70,
+                "cp": 500,
+                "k": 50,
+            },
+            "Copper": {
+                "T0": 25,
+                "emissivity": 0.03,
+                "cp": 385,
+                "k": 401,
+            },
+            "Ceramic": {
+                "T0": 25,
+                "emissivity": 0.95,
+                "cp": 700,
+                "k": 30,
+            },
+        }
+        # Helper: slider <-> spinbox
+        def init_slider_spinbox(
+            slider, spinbox,
+            min_v, max_v, step,
+            default,
+            scale=1.0
+        ):
+            """
+            scale is used when slider works in integer space
+            but the physical value is float (e.g. emissivity).
+            """
+            slider.setMinimum(int(min_v / scale))
+            slider.setMaximum(int(max_v / scale))
+            slider.setSingleStep(1)
+            slider.setValue(int(default / scale))
+
+            spinbox.setMinimum(min_v)
+            spinbox.setMaximum(max_v)
+            spinbox.setSingleStep(step)
+            spinbox.setValue(default)
+
+            # slider -> spinbox
+            slider.valueChanged.connect(
+                lambda v: spinbox.setValue(v * scale)
+            )
+
+            # spinbox -> slider
+            spinbox.valueChanged.connect(
+                lambda v: slider.setValue(int(v / scale))
+            )
+
+        # Helper: material selection
+        def init_material_combobox(combo, setters):
+            combo.clear()
+            combo.addItems(self.material_properties.keys())
+
+            def on_material_changed(material):
+                props = self.material_properties[material]
+                setters(props)
+
+            combo.currentTextChanged.connect(on_material_changed)
+
+        # Object A
+        init_slider_spinbox(
+            self.matAInitTemperatureSlider, self.matAInitTemperatureSpinner,
+            min_v=273, max_v=1273, step=10, default=298
+        )
+
+        init_slider_spinbox(
+            self.matAEmissivitySlider, self.matAEmissivitySpinner,
+            min_v=0.0, max_v=1.0, step=0.01, default=0.09,
+            scale=0.01
+        )
+
+        init_slider_spinbox(
+            self.matACpSlider, self.matACpSpinner,
+            min_v=100, max_v=2000, step=10, default=900
+        )
+
+        init_slider_spinbox(
+            self.matAKappaSlider, self.matAKappaSpinner,
+            min_v=1, max_v=500, step=1, default=298
+        )
+
+        def set_material_A(props):
+            self.matAInitTemperatureSpinner.setValue(props["T0"])
+            self.matAEmissivitySpinner.setValue(props["emissivity"])
+            self.matACpSpinner.setValue(props["cp"])
+            self.matAKappaSpinner.setValue(props["k"])
+
+        init_material_combobox(self.matAPresetsComboBox, set_material_A)
+
+        # Object B
+        init_slider_spinbox(
+            self.matBInitTemperatureSlider, self.matBInitTemperatureSpinner,
+            min_v=273, max_v=1273, step=10, default=298
+        )
+
+        init_slider_spinbox(
+            self.matBEmissivitySlider, self.matBEmissivitySpinner,
+            min_v=0.0, max_v=1.0, step=0.01, default=0.70,
+            scale=0.01
+        )
+
+        init_slider_spinbox(
+            self.matBCpSlider, self.matBCpSpinner,
+            min_v=100, max_v=2000, step=10, default=500
+        )
+
+        init_slider_spinbox(
+            self.matBKappaSlider, self.matBKappaSpinner,
+            min_v=1, max_v=500, step=1, default=50
+        )
+
+        def set_material_B(props):
+            self.matBInitTemperatureSpinner.setValue(props["T0"])
+            self.matBEmissivitySpinner.setValue(props["emissivity"])
+            self.matBCpSpinner.setValue(props["cp"])
+            self.matBKappaSpinner.setValue(props["k"])
+
+        init_material_combobox(self.matBPresetsComboBox, set_material_B)
 
     def setup_transform_controls(self):
         # ---------- COMMON SETTINGS ----------
