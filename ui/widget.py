@@ -31,6 +31,10 @@ class Widget(QWidget, Ui_Widget):
             vtk_widget=self.tetViewer
         )
         
+        # Initialize controls
+        self.setup_transform_controls()
+        self.init_tetgen_controls()
+        
         # Connect buttons
         self.uploadFileAButton.clicked.connect(lambda: self.open_stl_file(1))
         self.uploadFileBButton.clicked.connect(lambda: self.open_stl_file(2))
@@ -42,8 +46,7 @@ class Widget(QWidget, Ui_Widget):
         #self.validationPositionButton.clicked.connect(lambda: self.rotate_for_gif(steps=360, angle_per_step=2, interval_ms=30))
         
         
-        self.setup_transform_controls()
-        self.init_tetgen_controls()
+        
 
         
         self.generateMeshButton.clicked.connect(self.generate_tet_meshes)
@@ -74,15 +77,29 @@ class Widget(QWidget, Ui_Widget):
 
 
     def switch_page(self, index, button):
-        """Switch stackedWidget and viewerStackedWidget according to rules"""
-        # Switch main stacked widget
         self.stackedWidget.setCurrentIndex(index)
 
-        # Decide viewerStackedWidget page
-        if button in [self.geometryButton, self.positioningButton]:
-            self.viewerStackedWidget.setCurrentIndex(0)  # STL Viewer
-        elif button in [self.meshingButton, self.materialsButton]:
-            self.viewerStackedWidget.setCurrentIndex(1)  # Tet Viewer
+        viewer_map = {
+            self.geometryButton: 0,
+            self.positioningButton: 0,
+            self.meshingButton: 1,
+            self.materialsButton: 1,
+        }
+
+        width_map = {
+            self.materialsButton: 800,
+            self.simulationButton: 800,
+            self.meshingButton: 800
+        }
+
+        # Viewer page
+        if button in viewer_map:
+            self.viewerStackedWidget.setCurrentIndex(viewer_map[button])
+
+        # Minimum width
+        self.settingsLayout.setMaximumWidth(width_map.get(button, 400))
+                
+        
         
     def update_status(self, message: str, success: bool = True):
         """

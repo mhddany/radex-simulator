@@ -27,7 +27,7 @@ class Ui_Widget(object):
     def setupUi(self, Widget):
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
-        Widget.resize(986, 611)
+        Widget.resize(1269, 921)
         Widget.setStyleSheet(u"/* =========================\n"
 "   Global application style\n"
 "   ========================= */\n"
@@ -385,6 +385,12 @@ class Ui_Widget(object):
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.pipelineLayout = QWidget(self.centerLayout)
         self.pipelineLayout.setObjectName(u"pipelineLayout")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pipelineLayout.sizePolicy().hasHeightForWidth())
+        self.pipelineLayout.setSizePolicy(sizePolicy)
+        self.pipelineLayout.setMinimumSize(QSize(170, 0))
         self.pipelineLayout.setMaximumSize(QSize(170, 16777215))
         self.verticalLayout_2 = QVBoxLayout(self.pipelineLayout)
         self.verticalLayout_2.setSpacing(0)
@@ -392,11 +398,11 @@ class Ui_Widget(object):
         self.verticalLayout_2.setContentsMargins(1, 0, 1, 0)
         self.pipelineTitleLayout = QWidget(self.pipelineLayout)
         self.pipelineTitleLayout.setObjectName(u"pipelineTitleLayout")
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pipelineTitleLayout.sizePolicy().hasHeightForWidth())
-        self.pipelineTitleLayout.setSizePolicy(sizePolicy)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.pipelineTitleLayout.sizePolicy().hasHeightForWidth())
+        self.pipelineTitleLayout.setSizePolicy(sizePolicy1)
         self.pipelineTitleLayout.setMinimumSize(QSize(0, 50))
         self.pipelineTitleLayout.setMaximumSize(QSize(16777215, 50))
         self.verticalLayout_3 = QVBoxLayout(self.pipelineTitleLayout)
@@ -404,11 +410,11 @@ class Ui_Widget(object):
         self.verticalLayout_3.setContentsMargins(15, 6, -1, 15)
         self.pipelineTitleLabel = QLabel(self.pipelineTitleLayout)
         self.pipelineTitleLabel.setObjectName(u"pipelineTitleLabel")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.pipelineTitleLabel.sizePolicy().hasHeightForWidth())
-        self.pipelineTitleLabel.setSizePolicy(sizePolicy1)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.pipelineTitleLabel.sizePolicy().hasHeightForWidth())
+        self.pipelineTitleLabel.setSizePolicy(sizePolicy2)
         self.pipelineTitleLabel.setMinimumSize(QSize(0, 40))
         self.pipelineTitleLabel.setMaximumSize(QSize(16777215, 40))
         self.pipelineTitleLabel.setWordWrap(True)
@@ -522,7 +528,7 @@ class Ui_Widget(object):
 
         self.settingsLayout = QWidget(self.centerLayout)
         self.settingsLayout.setObjectName(u"settingsLayout")
-        self.settingsLayout.setMinimumSize(QSize(0, 0))
+        self.settingsLayout.setMinimumSize(QSize(400, 0))
         self.settingsLayout.setMaximumSize(QSize(400, 16777215))
         self.verticalLayout_5 = QVBoxLayout(self.settingsLayout)
         self.verticalLayout_5.setSpacing(0)
@@ -762,53 +768,46 @@ class Ui_Widget(object):
         self.scrollAreaMeshing.setWidgetResizable(True)
         self.scrollAreaWidgetContentsMeshing = QWidget()
         self.scrollAreaWidgetContentsMeshing.setObjectName(u"scrollAreaWidgetContentsMeshing")
-        self.scrollAreaWidgetContentsMeshing.setGeometry(QRect(0, -985, 314, 1410))
-        self.verticalLayout_34 = QVBoxLayout(self.scrollAreaWidgetContentsMeshing)
-        self.verticalLayout_34.setSpacing(15)
-        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
+        self.scrollAreaWidgetContentsMeshing.setGeometry(QRect(0, -84, 386, 986))
+        self.gridLayout_6 = QGridLayout(self.scrollAreaWidgetContentsMeshing)
+        self.gridLayout_6.setSpacing(15)
+        self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.gridLayout_6.setContentsMargins(15, 15, 15, 15)
+        self.line = QFrame(self.scrollAreaWidgetContentsMeshing)
+        self.line.setObjectName(u"line")
+        self.line.setFrameShape(QFrame.Shape.HLine)
+        self.line.setFrameShadow(QFrame.Shadow.Sunken)
+
+        self.gridLayout_6.addWidget(self.line, 1, 0, 1, 1)
+
         self.frameMeshingA = QFrame(self.scrollAreaWidgetContentsMeshing)
         self.frameMeshingA.setObjectName(u"frameMeshingA")
-        self.frameMeshingA.setMinimumSize(QSize(0, 400))
-        self.frameMeshingA.setMaximumSize(QSize(16777215, 1000))
+        self.frameMeshingA.setMinimumSize(QSize(0, 0))
+        self.frameMeshingA.setMaximumSize(QSize(1000, 1000))
         self.frameMeshingA.setFrameShape(QFrame.Shape.StyledPanel)
         self.frameMeshingA.setFrameShadow(QFrame.Shadow.Raised)
         self.gridLayout_2 = QGridLayout(self.frameMeshingA)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setVerticalSpacing(10)
         self.gridLayout_2.setContentsMargins(15, 15, 15, 15)
-        self.maxvolumeALabel = QLabel(self.frameMeshingA)
-        self.maxvolumeALabel.setObjectName(u"maxvolumeALabel")
-
-        self.gridLayout_2.addWidget(self.maxvolumeALabel, 3, 0, 1, 1)
-
-        self.mindihedralALabel = QLabel(self.frameMeshingA)
-        self.mindihedralALabel.setObjectName(u"mindihedralALabel")
-
-        self.gridLayout_2.addWidget(self.mindihedralALabel, 6, 0, 1, 1)
-
-        self.minratioADescLabel = QLabel(self.frameMeshingA)
-        self.minratioADescLabel.setObjectName(u"minratioADescLabel")
-        self.minratioADescLabel.setWordWrap(True)
-
-        self.gridLayout_2.addWidget(self.minratioADescLabel, 11, 0, 1, 3)
-
-        self.pscADescLabel = QLabel(self.frameMeshingA)
-        self.pscADescLabel.setObjectName(u"pscADescLabel")
-        self.pscADescLabel.setWordWrap(True)
-
-        self.gridLayout_2.addWidget(self.pscADescLabel, 14, 0, 1, 3)
-
         self.orderADescLabel = QLabel(self.frameMeshingA)
         self.orderADescLabel.setObjectName(u"orderADescLabel")
         self.orderADescLabel.setWordWrap(True)
 
         self.gridLayout_2.addWidget(self.orderADescLabel, 17, 0, 1, 3)
 
-        self.minratioASlider = QSlider(self.frameMeshingA)
-        self.minratioASlider.setObjectName(u"minratioASlider")
-        self.minratioASlider.setOrientation(Qt.Orientation.Horizontal)
+        self.mindihedralADescLabel = QLabel(self.frameMeshingA)
+        self.mindihedralADescLabel.setObjectName(u"mindihedralADescLabel")
+        self.mindihedralADescLabel.setWordWrap(True)
 
-        self.gridLayout_2.addWidget(self.minratioASlider, 10, 0, 1, 3)
+        self.gridLayout_2.addWidget(self.mindihedralADescLabel, 8, 0, 1, 3)
+
+        self.orderAcomboBox = QComboBox(self.frameMeshingA)
+        self.orderAcomboBox.addItem("")
+        self.orderAcomboBox.addItem("")
+        self.orderAcomboBox.setObjectName(u"orderAcomboBox")
+
+        self.gridLayout_2.addWidget(self.orderAcomboBox, 16, 0, 1, 3)
 
         self.maxvolumeASlider = QSlider(self.frameMeshingA)
         self.maxvolumeASlider.setObjectName(u"maxvolumeASlider")
@@ -816,6 +815,71 @@ class Ui_Widget(object):
         self.maxvolumeASlider.setOrientation(Qt.Orientation.Horizontal)
 
         self.gridLayout_2.addWidget(self.maxvolumeASlider, 4, 0, 1, 3)
+
+        self.pscADescLabel = QLabel(self.frameMeshingA)
+        self.pscADescLabel.setObjectName(u"pscADescLabel")
+        self.pscADescLabel.setWordWrap(True)
+
+        self.gridLayout_2.addWidget(self.pscADescLabel, 14, 0, 1, 3)
+
+        self.mindihedralALabel = QLabel(self.frameMeshingA)
+        self.mindihedralALabel.setObjectName(u"mindihedralALabel")
+
+        self.gridLayout_2.addWidget(self.mindihedralALabel, 6, 0, 1, 1)
+
+        self.minratioASlider = QSlider(self.frameMeshingA)
+        self.minratioASlider.setObjectName(u"minratioASlider")
+        self.minratioASlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_2.addWidget(self.minratioASlider, 10, 0, 1, 3)
+
+        self.minratioALabel = QLabel(self.frameMeshingA)
+        self.minratioALabel.setObjectName(u"minratioALabel")
+
+        self.gridLayout_2.addWidget(self.minratioALabel, 9, 0, 1, 1)
+
+        self.pscALabel = QLabel(self.frameMeshingA)
+        self.pscALabel.setObjectName(u"pscALabel")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.pscALabel.sizePolicy().hasHeightForWidth())
+        self.pscALabel.setSizePolicy(sizePolicy3)
+
+        self.gridLayout_2.addWidget(self.pscALabel, 12, 0, 1, 1)
+
+        self.maxvolumeADescLabel = QLabel(self.frameMeshingA)
+        self.maxvolumeADescLabel.setObjectName(u"maxvolumeADescLabel")
+        self.maxvolumeADescLabel.setWordWrap(True)
+
+        self.gridLayout_2.addWidget(self.maxvolumeADescLabel, 5, 0, 1, 3)
+
+        self.meshingObjectALabel = QLabel(self.frameMeshingA)
+        self.meshingObjectALabel.setObjectName(u"meshingObjectALabel")
+
+        self.gridLayout_2.addWidget(self.meshingObjectALabel, 0, 0, 1, 2)
+
+        self.mindihedralASlider = QSlider(self.frameMeshingA)
+        self.mindihedralASlider.setObjectName(u"mindihedralASlider")
+        self.mindihedralASlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_2.addWidget(self.mindihedralASlider, 7, 0, 1, 3)
+
+        self.orderALabel = QLabel(self.frameMeshingA)
+        self.orderALabel.setObjectName(u"orderALabel")
+
+        self.gridLayout_2.addWidget(self.orderALabel, 15, 0, 1, 1)
+
+        self.minratioADescLabel = QLabel(self.frameMeshingA)
+        self.minratioADescLabel.setObjectName(u"minratioADescLabel")
+        self.minratioADescLabel.setWordWrap(True)
+
+        self.gridLayout_2.addWidget(self.minratioADescLabel, 11, 0, 1, 3)
+
+        self.maxvolumeALabel = QLabel(self.frameMeshingA)
+        self.maxvolumeALabel.setObjectName(u"maxvolumeALabel")
+
+        self.gridLayout_2.addWidget(self.maxvolumeALabel, 3, 0, 1, 1)
 
         self.resetMeshingAButton = QPushButton(self.frameMeshingA)
         self.resetMeshingAButton.setObjectName(u"resetMeshingAButton")
@@ -827,69 +891,26 @@ class Ui_Widget(object):
 
         self.gridLayout_2.addWidget(self.resetMeshingAButton, 0, 2, 1, 1)
 
-        self.meshingObjectALabel = QLabel(self.frameMeshingA)
-        self.meshingObjectALabel.setObjectName(u"meshingObjectALabel")
-
-        self.gridLayout_2.addWidget(self.meshingObjectALabel, 0, 0, 1, 2)
-
-        self.minratioALabel = QLabel(self.frameMeshingA)
-        self.minratioALabel.setObjectName(u"minratioALabel")
-
-        self.gridLayout_2.addWidget(self.minratioALabel, 9, 0, 1, 1)
-
         self.pscASlider = QSlider(self.frameMeshingA)
         self.pscASlider.setObjectName(u"pscASlider")
         self.pscASlider.setOrientation(Qt.Orientation.Horizontal)
 
         self.gridLayout_2.addWidget(self.pscASlider, 13, 0, 1, 3)
 
-        self.mindihedralADescLabel = QLabel(self.frameMeshingA)
-        self.mindihedralADescLabel.setObjectName(u"mindihedralADescLabel")
-        self.mindihedralADescLabel.setWordWrap(True)
 
-        self.gridLayout_2.addWidget(self.mindihedralADescLabel, 8, 0, 1, 3)
+        self.gridLayout_6.addWidget(self.frameMeshingA, 0, 0, 1, 2)
 
-        self.mindihedralASlider = QSlider(self.frameMeshingA)
-        self.mindihedralASlider.setObjectName(u"mindihedralASlider")
-        self.mindihedralASlider.setOrientation(Qt.Orientation.Horizontal)
+        self.line_2 = QFrame(self.scrollAreaWidgetContentsMeshing)
+        self.line_2.setObjectName(u"line_2")
+        self.line_2.setFrameShape(QFrame.Shape.HLine)
+        self.line_2.setFrameShadow(QFrame.Shadow.Sunken)
 
-        self.gridLayout_2.addWidget(self.mindihedralASlider, 7, 0, 1, 3)
-
-        self.pscALabel = QLabel(self.frameMeshingA)
-        self.pscALabel.setObjectName(u"pscALabel")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.pscALabel.sizePolicy().hasHeightForWidth())
-        self.pscALabel.setSizePolicy(sizePolicy2)
-
-        self.gridLayout_2.addWidget(self.pscALabel, 12, 0, 1, 1)
-
-        self.orderALabel = QLabel(self.frameMeshingA)
-        self.orderALabel.setObjectName(u"orderALabel")
-
-        self.gridLayout_2.addWidget(self.orderALabel, 15, 0, 1, 1)
-
-        self.maxvolumeADescLabel = QLabel(self.frameMeshingA)
-        self.maxvolumeADescLabel.setObjectName(u"maxvolumeADescLabel")
-        self.maxvolumeADescLabel.setWordWrap(True)
-
-        self.gridLayout_2.addWidget(self.maxvolumeADescLabel, 5, 0, 1, 3)
-
-        self.orderAcomboBox = QComboBox(self.frameMeshingA)
-        self.orderAcomboBox.addItem("")
-        self.orderAcomboBox.addItem("")
-        self.orderAcomboBox.setObjectName(u"orderAcomboBox")
-
-        self.gridLayout_2.addWidget(self.orderAcomboBox, 16, 0, 1, 3)
-
-
-        self.verticalLayout_34.addWidget(self.frameMeshingA)
+        self.gridLayout_6.addWidget(self.line_2, 3, 0, 1, 1)
 
         self.frameMeshingB = QFrame(self.scrollAreaWidgetContentsMeshing)
         self.frameMeshingB.setObjectName(u"frameMeshingB")
-        self.frameMeshingB.setMinimumSize(QSize(0, 400))
-        self.frameMeshingB.setMaximumSize(QSize(16777215, 1000))
+        self.frameMeshingB.setMinimumSize(QSize(0, 0))
+        self.frameMeshingB.setMaximumSize(QSize(1000, 1000))
         self.frameMeshingB.setFrameShape(QFrame.Shape.StyledPanel)
         self.frameMeshingB.setFrameShadow(QFrame.Shadow.Raised)
         self.gridLayout_5 = QGridLayout(self.frameMeshingB)
@@ -927,8 +948,8 @@ class Ui_Widget(object):
 
         self.pscBLabel = QLabel(self.frameMeshingB)
         self.pscBLabel.setObjectName(u"pscBLabel")
-        sizePolicy2.setHeightForWidth(self.pscBLabel.sizePolicy().hasHeightForWidth())
-        self.pscBLabel.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.pscBLabel.sizePolicy().hasHeightForWidth())
+        self.pscBLabel.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.pscBLabel, 12, 0, 1, 1)
 
@@ -999,14 +1020,7 @@ class Ui_Widget(object):
         self.gridLayout_5.addWidget(self.meshingObjectBLabel, 0, 0, 1, 2)
 
 
-        self.verticalLayout_34.addWidget(self.frameMeshingB)
-
-        self.line = QFrame(self.scrollAreaWidgetContentsMeshing)
-        self.line.setObjectName(u"line")
-        self.line.setFrameShape(QFrame.Shape.HLine)
-        self.line.setFrameShadow(QFrame.Shadow.Sunken)
-
-        self.verticalLayout_34.addWidget(self.line)
+        self.gridLayout_6.addWidget(self.frameMeshingB, 0, 2, 1, 2)
 
         self.generateMeshButton = QPushButton(self.scrollAreaWidgetContentsMeshing)
         self.generateMeshButton.setObjectName(u"generateMeshButton")
@@ -1018,14 +1032,7 @@ class Ui_Widget(object):
         self.generateMeshButton.setIcon(icon8)
         self.generateMeshButton.setIconSize(QSize(14, 14))
 
-        self.verticalLayout_34.addWidget(self.generateMeshButton)
-
-        self.line_2 = QFrame(self.scrollAreaWidgetContentsMeshing)
-        self.line_2.setObjectName(u"line_2")
-        self.line_2.setFrameShape(QFrame.Shape.HLine)
-        self.line_2.setFrameShadow(QFrame.Shadow.Sunken)
-
-        self.verticalLayout_34.addWidget(self.line_2)
+        self.gridLayout_6.addWidget(self.generateMeshButton, 3, 1, 1, 2)
 
         self.frameMeshinSummary = QFrame(self.scrollAreaWidgetContentsMeshing)
         self.frameMeshinSummary.setObjectName(u"frameMeshinSummary")
@@ -1047,7 +1054,7 @@ class Ui_Widget(object):
         self.verticalLayout_32.addItem(self.verticalSpacer_4)
 
 
-        self.verticalLayout_34.addWidget(self.frameMeshinSummary)
+        self.gridLayout_6.addWidget(self.frameMeshinSummary, 4, 0, 1, 4)
 
         self.scrollAreaMeshing.setWidget(self.scrollAreaWidgetContentsMeshing)
 
@@ -1226,7 +1233,7 @@ class Ui_Widget(object):
         self.scrollAreaPositioning.setWidgetResizable(True)
         self.scrollAreaWidgetContentsPositioning = QWidget()
         self.scrollAreaWidgetContentsPositioning.setObjectName(u"scrollAreaWidgetContentsPositioning")
-        self.scrollAreaWidgetContentsPositioning.setGeometry(QRect(0, 0, 220, 1000))
+        self.scrollAreaWidgetContentsPositioning.setGeometry(QRect(0, 0, 222, 1000))
         self.verticalLayout_33 = QVBoxLayout(self.scrollAreaWidgetContentsPositioning)
         self.verticalLayout_33.setSpacing(15)
         self.verticalLayout_33.setObjectName(u"verticalLayout_33")
@@ -1680,7 +1687,6 @@ class Ui_Widget(object):
 
         self.horizontalLayout.setStretch(0, 1)
         self.horizontalLayout.setStretch(1, 2)
-        self.horizontalLayout.setStretch(2, 3)
 
         self.MainLayout.addWidget(self.centerLayout)
 
@@ -1752,21 +1758,21 @@ class Ui_Widget(object):
         self.validationGeometryLabel.setText(QCoreApplication.translate("Widget", u"Validation", None))
         self.maintitleMeshingPage.setText(QCoreApplication.translate("Widget", u"Step 3: Meshing", None))
         self.subtitleMeshingPage.setText(QCoreApplication.translate("Widget", u"Generate tetrahedral meshes for finite element analysis", None))
-        self.maxvolumeALabel.setText(QCoreApplication.translate("Widget", u"maxvolume", None))
-        self.mindihedralALabel.setText(QCoreApplication.translate("Widget", u"mindihedral", None))
-        self.minratioADescLabel.setText(QCoreApplication.translate("Widget", u"Increasing this value improves mesh quality but may reduce meshability.", None))
-        self.pscADescLabel.setText(QCoreApplication.translate("Widget", u"Points per Surface Control. Useful for capturing sharp features or curved surfaces.", None))
         self.orderADescLabel.setText(QCoreApplication.translate("Widget", u"Linear elements are recommended for large meshes or real-time workflows.", None))
-        self.resetMeshingAButton.setText("")
-        self.meshingObjectALabel.setText(QCoreApplication.translate("Widget", u"Object A", None))
-        self.minratioALabel.setText(QCoreApplication.translate("Widget", u"minratio", None))
         self.mindihedralADescLabel.setText(QCoreApplication.translate("Widget", u"Improves numerical stability and solver robustness.", None))
-        self.pscALabel.setText(QCoreApplication.translate("Widget", u"psc", None))
-        self.orderALabel.setText(QCoreApplication.translate("Widget", u"Order", None))
-        self.maxvolumeADescLabel.setText(QCoreApplication.translate("Widget", u"Use smaller values for detailed geometry or high-accuracy simulations.", None))
         self.orderAcomboBox.setItemText(0, QCoreApplication.translate("Widget", u"1. Linear", None))
         self.orderAcomboBox.setItemText(1, QCoreApplication.translate("Widget", u"2. Quadratic", None))
 
+        self.pscADescLabel.setText(QCoreApplication.translate("Widget", u"Points per Surface Control. Useful for capturing sharp features or curved surfaces.", None))
+        self.mindihedralALabel.setText(QCoreApplication.translate("Widget", u"mindihedral", None))
+        self.minratioALabel.setText(QCoreApplication.translate("Widget", u"minratio", None))
+        self.pscALabel.setText(QCoreApplication.translate("Widget", u"psc", None))
+        self.maxvolumeADescLabel.setText(QCoreApplication.translate("Widget", u"Use smaller values for detailed geometry or high-accuracy simulations.", None))
+        self.meshingObjectALabel.setText(QCoreApplication.translate("Widget", u"Object A", None))
+        self.orderALabel.setText(QCoreApplication.translate("Widget", u"Order", None))
+        self.minratioADescLabel.setText(QCoreApplication.translate("Widget", u"Increasing this value improves mesh quality but may reduce meshability.", None))
+        self.maxvolumeALabel.setText(QCoreApplication.translate("Widget", u"maxvolume", None))
+        self.resetMeshingAButton.setText("")
         self.orderBLabel.setText(QCoreApplication.translate("Widget", u"Order", None))
         self.mindihedralBLabel.setText(QCoreApplication.translate("Widget", u"mindihedral", None))
         self.orderBDescLabel.setText(QCoreApplication.translate("Widget", u"Linear elements are recommended for large meshes or real-time workflows.", None))
