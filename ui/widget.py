@@ -33,7 +33,12 @@ class Widget(QWidget, Ui_Widget):
         
         # Initialize controls
         self.setup_transform_controls()
+        
+        self._define_tetgen_defaults()
         self.init_tetgen_controls()
+        self.resetMeshingAButton.clicked.connect(lambda: self.reset_tetgen_object("A"))
+        self.resetMeshingBButton.clicked.connect(lambda: self.reset_tetgen_object("B"))
+
         
         # Connect buttons
         self.uploadFileAButton.clicked.connect(lambda: self.open_stl_file(1))
@@ -44,10 +49,6 @@ class Widget(QWidget, Ui_Widget):
 
         # rotate viewer
         #self.validationPositionButton.clicked.connect(lambda: self.rotate_for_gif(steps=360, angle_per_step=2, interval_ms=30))
-        
-        
-        
-
         
         self.generateMeshButton.clicked.connect(self.generate_tet_meshes)
         
@@ -121,6 +122,51 @@ class Widget(QWidget, Ui_Widget):
             self.statusIcon.setPixmap(QPixmap(":/icons/icons/warning_red.svg"))
 
         self.statusMessageLabel.setText(message)
+        
+    def set_busy_status_style(self):
+        """Apply busy (working) style to status bar."""
+        self.statusLayout.setStyleSheet(
+            "background-color: #1e293b; border-color: #60a5fa;"
+        )
+        self.statusMessageLabel.setStyleSheet("color: #93c5fd;")
+        self.statusIcon.setPixmap(QPixmap(":/icons/icons/rotate.svg"))
+        
+    def start_status_animation(self, base_message="Generating FEM mesh"):
+        """
+        Start animated 'working' message in the status bar.
+        """
+        self._status_base_message = base_message
+        self._status_dot_count = 0
+
+        # apply busy style once
+        self.set_busy_status_style()
+        self.statusMessageLabel.setText(base_message)
+
+        # timer for animation
+        self._status_timer = QTimer(self)
+        self._status_timer.timeout.connect(self._update_status_animation)
+        self._status_timer.start(400)
+        
+    def _update_status_animation(self):
+        self._status_dot_count = (self._status_dot_count + 1) % 4
+        dots = "." * self._status_dot_count
+        self.statusMessageLabel.setText(
+            f"{self._status_base_message}{dots}"
+        )
+        
+    def stop_status_animation(self, message, success=True):
+        """
+        Stop busy animation and show final status message.
+        """
+        if hasattr(self, "_status_timer"):
+            self._status_timer.stop()
+            self._status_timer.deleteLater()
+
+        # reuse your existing logic
+        self.update_status(message, success)
+
+
+
 
 
     def open_stl_file(self, stl_number):
@@ -191,6 +237,38 @@ class Widget(QWidget, Ui_Widget):
                     return name.replace(suffix, "")
 
             return name  # fallback
+        
+    def _define_tetgen_defaults(self):
+        self.tetgen_defaults = {
+            "A": {
+                "maxvolume": 100,
+                "mindihedral": 20,
+                "minratio": 15,
+                "psc": 10,
+                "order": 0,
+            },
+            "B": {
+                "maxvolume": 100,
+                "mindihedral": 20,
+                "minratio": 15,
+                "psc": 10,
+                "order": 0,
+            },
+        }
+    
+    def reset_tetgen_object(self, obj: str):
+        """
+        Reset TetGen controls for Object A or B.
+        obj must be "A" or "B"
+        """
+        d = self.tetgen_defaults[obj]
+
+        getattr(self, f"maxvolume{obj}Slider").setValue(d["maxvolume"])
+        getattr(self, f"mindihedral{obj}Slider").setValue(d["mindihedral"])
+        getattr(self, f"minratio{obj}Slider").setValue(d["minratio"])
+        getattr(self, f"psc{obj}Slider").setValue(d["psc"])
+        getattr(self, f"order{obj}comboBox").setCurrentIndex(d["order"])
+        self.update_status(f"TetGen settings for Object {obj} reset", success=True)
     
     def init_tetgen_controls(self):
         """
@@ -515,13 +593,16 @@ class Widget(QWidget, Ui_Widget):
                 continue
 
         # Generate tetrahedral meshes using TetGen
+        self.start_status_animation("Generating FEM mesh")
         try:
             self.surf2tetmesh.generate_fem_mesh(self)
+            # update UI once after all meshes are done
+            self.surf2tetmesh.update_mesh_count_labels(self)
             print("TetGen tetrahedral meshes generated for all STL meshes.")
-            self.update_status("TetGen tetrahedral meshes generated for all STL meshes.", success=True)
+            self.stop_status_animation("Mesh generation completed", success=True)
         except Exception as e:
             print(f"Failed to generate tetrahedral meshes: {e}")                
-            self.update_status(f"Failed to generate tetrahedral meshes: {e}", success=False)
+            self.stop_status_animation("Mesh generation failed", success=False)
             return
 
         # Switch to TetMesh viewer tab

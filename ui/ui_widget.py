@@ -35,7 +35,7 @@ class Ui_Widget(object):
 "    background-color: transparent;\n"
 "    font-family: \"Segoe UI\", Arial, sans-serif;\n"
 "    font-size: 10pt;\n"
-"    color: #90A1B9;\n"
+"    color: #c6ddff;\n"
 "}\n"
 "\n"
 "/* =========================\n"
@@ -84,55 +84,67 @@ class Ui_Widget(object):
 "    background-color: transparent;\n"
 "}\n"
 "\n"
-"\n"
 "/* =========================\n"
 "   Subtitles (shared)\n"
 "   ========================= */\n"
-"#subtitleSimulationPage,\n"
-"#subtitleResultsPage,\n"
-"#subtitlePositioningPage,\n"
-"#subtitleMeshingPage,\n"
-"#subtitleMaterialsPage,\n"
-"#subtitleGeometryPage,\n"
-"#stlfileAlabel ,\n"
-"#stlfileBlabel,\n"
-"#objectALoadedIcon,\n"
-"#objectBLoadedIcon,\n"
-"#objectALoadedLabel,\n"
-"#objectBLoadedLabel,\n"
-"#readyPositioningLabel,\n"
-"#readyPositioningIcon,\n"
-"#mainTitleViewLabel,\n"
-"#subTitleViewLabel,\n"
-"#subTitleViewIcon{\n"
-"    font-size: 10pt;\n"
+"#maxvolumeADescLabel,\n"
+"#mindihedralADescLabel,\n"
+"#minratioADescLabel,\n"
+"#pscADescLabel,\n"
+"#orderADescLabel,\n"
+"#maxvolumeBDescLabel,\n"
+"#mindihedralBDescLabel,\n"
+"#minratioBDescLabel,\n"
+"#pscBDescLabel,\n"
+"#orderBDescLabel{\n"
+"    font-size: 9pt;\n"
 "    font-weight: normal;\n"
-"    color: #90A1B9;\n"
+"    color: #91a2be;\n"
 "    background-color: transparent;\n"
 "}\n"
 "\n"
 "\n"
+"\n"
 "#validationGeometryLabel,\n"
-"#validationPositioningLabel{\n"
-"  "
-                        "  font-size: 10.5pt;\n"
+"#validationPositioningLabel,\n"
+"#summaryMeshingLabel{\n"
+"    font-size: 10.5pt;\n"
 "    font-weight: normal;\n"
 "    color: #f1f5f9;\n"
 "    background-color: transparent;\n"
 "}\n"
 "\n"
 "#objectALabel,\n"
-"#positionObjectALabel{\n"
+"#positionObjectALa"
+                        "bel,\n"
+"#meshingObjectALabel{\n"
 "    font-size: 11pt;\n"
 "    font-weight: bold;\n"
 "    color: #06d3f3;\n"
 "    background-color: transparent;\n"
 "}\n"
 "\n"
+"#meshSummaryObjectALabel,\n"
+"#meshANumOfElementsLabel,\n"
+"#meshANumOfNodesLabel{\n"
+"    font-size: 10pt;\n"
+"    color: #06d3f3;\n"
+"    background-color: transparent;\n"
+"}\n"
+"\n"
 "#objectBLabel,\n"
-"#positionObjectBLabel{\n"
+"#positionObjectBLabel,\n"
+"#meshingObjectBLabel{\n"
 "    font-size: 11pt;\n"
 "    font-weight: bold;\n"
+"    color: #f18904;\n"
+"    background-color: transparent;\n"
+"}\n"
+"\n"
+"#meshSummaryObjectBLabel,\n"
+"#meshBNumOfElementsLabel,\n"
+"#meshBNumOfNodesLabel{\n"
+"    font-size: 10pt;\n"
 "    color: #f18904;\n"
 "    background-color: transparent;\n"
 "}\n"
@@ -150,7 +162,8 @@ class Ui_Widget(object):
 "}\n"
 "\n"
 "#pipelineTitleLayout{\n"
-"    border-bottom: 1px solid #314158;\n"
+"    bo"
+                        "rder-bottom: 1px solid #314158;\n"
 "    border-top: 1px solid #314158;\n"
 "}\n"
 "\n"
@@ -161,8 +174,7 @@ class Ui_Widget(object):
 "/* =========================\n"
 "   Dark panel containers\n"
 "   ========================= */\n"
-"#setting"
-                        "sLayout,\n"
+"#settingsLayout,\n"
 "#simulationPageLayout,\n"
 "#resultsPageLayout,\n"
 "#positioningPageLayout,\n"
@@ -194,7 +206,8 @@ class Ui_Widget(object):
 "#meshingButton {\n"
 "    border: none;\n"
 "    background-color: #020618;   /* idle */\n"
-"    color: #f1f5f9;\n"
+""
+                        "    color: #f1f5f9;\n"
 "	padding-left: 15px;\n"
 "    text-align: left;\n"
 "}\n"
@@ -205,8 +218,7 @@ class Ui_Widget(object):
 "\n"
 "/* Hover \u2013 slightly lighter background */\n"
 "#geometryButton:hover,\n"
-""
-                        "#materialsButton:hover,\n"
+"#materialsButton:hover,\n"
 "#resultsButton:hover,\n"
 "#simulationButton:hover,\n"
 "#positioningButton:hover,\n"
@@ -233,7 +245,8 @@ class Ui_Widget(object):
 "#resultsButton:pressed,\n"
 "#simulationButton:pressed,\n"
 "#positioningButton:pressed,\n"
-"#meshingButton:pressed {\n"
+"#meshingButton:press"
+                        "ed {\n"
 "    background-color: #1253df;\n"
 "}\n"
 "\n"
@@ -242,11 +255,13 @@ class Ui_Widget(object):
 "#uploadFileBButton,\n"
 "#resetPositionAButton,\n"
 "#resetPositionBButton,\n"
-"#validationPositionButton{\n"
+"#resetMeshingAButton,\n"
+"#resetMeshingBButton,\n"
+"#validationPositionButton,\n"
+"#generateMeshButton{\n"
 "    font-weight: bold;\n"
 "    border-radius: 7px;\n"
-"    border"
-                        ": 1px solid #314158;\n"
+"    border: 1px solid #314158;\n"
 "\n"
 "    /* Idle state */\n"
 "    background-color: #314158;\n"
@@ -271,7 +286,8 @@ class Ui_Widget(object):
 "#resetPositionBButton:pressed,\n"
 "#validationPositionButton:pressed{\n"
 "    background-color: #253349;   /* darker */\n"
-"    border-color: #314158;\n"
+"    b"
+                        "order-color: #314158;\n"
 "}\n"
 "\n"
 "/* Disabled (optional but recommended) */\n"
@@ -282,8 +298,7 @@ class Ui_Widget(object):
 "#validationPositionButton:disabled{\n"
 "    background-color: #1a2333;\n"
 "    border-color: #1a2333;\n"
-"    colo"
-                        "r: #5f6f85;\n"
+"    color: #5f6f85;\n"
 "}\n"
 "\n"
 "\n"
@@ -311,15 +326,19 @@ class Ui_Widget(object):
 "#settingsMaterialsPage,\n"
 "#settingsGeometryPage,\n"
 "#frameGeometryValidation,\n"
-"#framePositioningValidation{\n"
-"    border-top: 1px solid #314158;\n"
+"#framePositioningValidation,\n"
+"#frameMeshingSummary{\n"
+"    border-top: "
+                        "1px solid #314158;\n"
 "    background-color: transparent;\n"
 "}\n"
 "\n"
 "#frameGeometryA,\n"
 "#frameGeometryB,\n"
 "#framePositioningA,\n"
-"#framePositioningB{\n"
+"#framePositioningB,\n"
+"#frameMeshingA,\n"
+"#frameMeshingB{\n"
 "	background-color: #1d293d;\n"
 "	border: 1px solid #314158;\n"
 "	border-radius: 15px;\n"
@@ -529,7 +548,7 @@ class Ui_Widget(object):
         self.settingsLayout = QWidget(self.centerLayout)
         self.settingsLayout.setObjectName(u"settingsLayout")
         self.settingsLayout.setMinimumSize(QSize(400, 0))
-        self.settingsLayout.setMaximumSize(QSize(400, 16777215))
+        self.settingsLayout.setMaximumSize(QSize(800, 16777215))
         self.verticalLayout_5 = QVBoxLayout(self.settingsLayout)
         self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
@@ -578,7 +597,7 @@ class Ui_Widget(object):
         self.scrollAreaGeometry.setWidgetResizable(True)
         self.scrollAreaWidgetContentsGeometry = QWidget()
         self.scrollAreaWidgetContentsGeometry.setObjectName(u"scrollAreaWidgetContentsGeometry")
-        self.scrollAreaWidgetContentsGeometry.setGeometry(QRect(0, 0, 210, 475))
+        self.scrollAreaWidgetContentsGeometry.setGeometry(QRect(0, 0, 798, 726))
         self.verticalLayout_28 = QVBoxLayout(self.scrollAreaWidgetContentsGeometry)
         self.verticalLayout_28.setSpacing(15)
         self.verticalLayout_28.setObjectName(u"verticalLayout_28")
@@ -768,18 +787,11 @@ class Ui_Widget(object):
         self.scrollAreaMeshing.setWidgetResizable(True)
         self.scrollAreaWidgetContentsMeshing = QWidget()
         self.scrollAreaWidgetContentsMeshing.setObjectName(u"scrollAreaWidgetContentsMeshing")
-        self.scrollAreaWidgetContentsMeshing.setGeometry(QRect(0, -84, 386, 986))
+        self.scrollAreaWidgetContentsMeshing.setGeometry(QRect(0, -61, 786, 793))
         self.gridLayout_6 = QGridLayout(self.scrollAreaWidgetContentsMeshing)
         self.gridLayout_6.setSpacing(15)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
         self.gridLayout_6.setContentsMargins(15, 15, 15, 15)
-        self.line = QFrame(self.scrollAreaWidgetContentsMeshing)
-        self.line.setObjectName(u"line")
-        self.line.setFrameShape(QFrame.Shape.HLine)
-        self.line.setFrameShadow(QFrame.Shadow.Sunken)
-
-        self.gridLayout_6.addWidget(self.line, 1, 0, 1, 1)
-
         self.frameMeshingA = QFrame(self.scrollAreaWidgetContentsMeshing)
         self.frameMeshingA.setObjectName(u"frameMeshingA")
         self.frameMeshingA.setMinimumSize(QSize(0, 0))
@@ -1027,34 +1039,93 @@ class Ui_Widget(object):
         self.generateMeshButton.setMinimumSize(QSize(0, 35))
         self.generateMeshButton.setStyleSheet(u"\n"
 "background-color: #1447e6")
-        icon8 = QIcon()
-        icon8.addFile(u":/icons/icons/warning_white.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.generateMeshButton.setIcon(icon8)
+        self.generateMeshButton.setIcon(icon2)
         self.generateMeshButton.setIconSize(QSize(14, 14))
 
         self.gridLayout_6.addWidget(self.generateMeshButton, 3, 1, 1, 2)
 
-        self.frameMeshinSummary = QFrame(self.scrollAreaWidgetContentsMeshing)
-        self.frameMeshinSummary.setObjectName(u"frameMeshinSummary")
-        self.frameMeshinSummary.setMinimumSize(QSize(0, 130))
-        self.frameMeshinSummary.setMaximumSize(QSize(16777215, 130))
-        self.frameMeshinSummary.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frameMeshinSummary.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_32 = QVBoxLayout(self.frameMeshinSummary)
-        self.verticalLayout_32.setObjectName(u"verticalLayout_32")
-        self.verticalLayout_32.setContentsMargins(10, 10, 10, 10)
-        self.summaryMeshingLabel = QLabel(self.frameMeshinSummary)
-        self.summaryMeshingLabel.setObjectName(u"summaryMeshingLabel")
-        self.summaryMeshingLabel.setMaximumSize(QSize(16777215, 20))
+        self.frameMeshingSummary = QFrame(self.scrollAreaWidgetContentsMeshing)
+        self.frameMeshingSummary.setObjectName(u"frameMeshingSummary")
+        self.frameMeshingSummary.setMinimumSize(QSize(0, 130))
+        self.frameMeshingSummary.setMaximumSize(QSize(16777215, 130))
+        self.frameMeshingSummary.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frameMeshingSummary.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_7 = QGridLayout(self.frameMeshingSummary)
+        self.gridLayout_7.setObjectName(u"gridLayout_7")
+        self.meshBNumOfNodesLabel = QLabel(self.frameMeshingSummary)
+        self.meshBNumOfNodesLabel.setObjectName(u"meshBNumOfNodesLabel")
 
-        self.verticalLayout_32.addWidget(self.summaryMeshingLabel)
+        self.gridLayout_7.addWidget(self.meshBNumOfNodesLabel, 3, 2, 1, 1)
+
+        self.meshANumOfNodesLabel = QLabel(self.frameMeshingSummary)
+        self.meshANumOfNodesLabel.setObjectName(u"meshANumOfNodesLabel")
+
+        self.gridLayout_7.addWidget(self.meshANumOfNodesLabel, 3, 1, 1, 1)
+
+        self.meshSummaryObjectBLabel = QLabel(self.frameMeshingSummary)
+        self.meshSummaryObjectBLabel.setObjectName(u"meshSummaryObjectBLabel")
+
+        self.gridLayout_7.addWidget(self.meshSummaryObjectBLabel, 1, 2, 1, 1)
 
         self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.verticalLayout_32.addItem(self.verticalSpacer_4)
+        self.gridLayout_7.addItem(self.verticalSpacer_4, 5, 1, 1, 1)
+
+        self.meshSummaryNumOfNodesLabel = QLabel(self.frameMeshingSummary)
+        self.meshSummaryNumOfNodesLabel.setObjectName(u"meshSummaryNumOfNodesLabel")
+
+        self.gridLayout_7.addWidget(self.meshSummaryNumOfNodesLabel, 3, 0, 1, 1)
+
+        self.meshSummaryNumOfElementsLabel = QLabel(self.frameMeshingSummary)
+        self.meshSummaryNumOfElementsLabel.setObjectName(u"meshSummaryNumOfElementsLabel")
+
+        self.gridLayout_7.addWidget(self.meshSummaryNumOfElementsLabel, 2, 0, 1, 1)
+
+        self.meshBNumOfElementsLabel = QLabel(self.frameMeshingSummary)
+        self.meshBNumOfElementsLabel.setObjectName(u"meshBNumOfElementsLabel")
+
+        self.gridLayout_7.addWidget(self.meshBNumOfElementsLabel, 2, 2, 1, 1)
+
+        self.meshANumOfElementsLabel = QLabel(self.frameMeshingSummary)
+        self.meshANumOfElementsLabel.setObjectName(u"meshANumOfElementsLabel")
+
+        self.gridLayout_7.addWidget(self.meshANumOfElementsLabel, 2, 1, 1, 1)
+
+        self.summaryMeshingLabel = QLabel(self.frameMeshingSummary)
+        self.summaryMeshingLabel.setObjectName(u"summaryMeshingLabel")
+        self.summaryMeshingLabel.setMaximumSize(QSize(16777215, 20))
+
+        self.gridLayout_7.addWidget(self.summaryMeshingLabel, 0, 0, 1, 1)
+
+        self.meshSummaryObjectALabel = QLabel(self.frameMeshingSummary)
+        self.meshSummaryObjectALabel.setObjectName(u"meshSummaryObjectALabel")
+
+        self.gridLayout_7.addWidget(self.meshSummaryObjectALabel, 1, 1, 1, 1)
+
+        self.meshSummaryTotalLabel = QLabel(self.frameMeshingSummary)
+        self.meshSummaryTotalLabel.setObjectName(u"meshSummaryTotalLabel")
+
+        self.gridLayout_7.addWidget(self.meshSummaryTotalLabel, 1, 3, 1, 1)
+
+        self.meshTotalNumOfElementsLabel = QLabel(self.frameMeshingSummary)
+        self.meshTotalNumOfElementsLabel.setObjectName(u"meshTotalNumOfElementsLabel")
+
+        self.gridLayout_7.addWidget(self.meshTotalNumOfElementsLabel, 2, 3, 1, 1)
+
+        self.meshTotalNumOfNodesLabel = QLabel(self.frameMeshingSummary)
+        self.meshTotalNumOfNodesLabel.setObjectName(u"meshTotalNumOfNodesLabel")
+
+        self.gridLayout_7.addWidget(self.meshTotalNumOfNodesLabel, 3, 3, 1, 1)
 
 
-        self.gridLayout_6.addWidget(self.frameMeshinSummary, 4, 0, 1, 4)
+        self.gridLayout_6.addWidget(self.frameMeshingSummary, 4, 0, 1, 4)
+
+        self.line = QFrame(self.scrollAreaWidgetContentsMeshing)
+        self.line.setObjectName(u"line")
+        self.line.setFrameShape(QFrame.Shape.HLine)
+        self.line.setFrameShadow(QFrame.Shadow.Sunken)
+
+        self.gridLayout_6.addWidget(self.line, 1, 0, 1, 4)
 
         self.scrollAreaMeshing.setWidget(self.scrollAreaWidgetContentsMeshing)
 
@@ -1233,7 +1304,7 @@ class Ui_Widget(object):
         self.scrollAreaPositioning.setWidgetResizable(True)
         self.scrollAreaWidgetContentsPositioning = QWidget()
         self.scrollAreaWidgetContentsPositioning.setObjectName(u"scrollAreaWidgetContentsPositioning")
-        self.scrollAreaWidgetContentsPositioning.setGeometry(QRect(0, 0, 222, 1000))
+        self.scrollAreaWidgetContentsPositioning.setGeometry(QRect(0, 0, 786, 1000))
         self.verticalLayout_33 = QVBoxLayout(self.scrollAreaWidgetContentsPositioning)
         self.verticalLayout_33.setSpacing(15)
         self.verticalLayout_33.setObjectName(u"verticalLayout_33")
@@ -1584,6 +1655,8 @@ class Ui_Widget(object):
         self.validationPositionButton.setMinimumSize(QSize(0, 35))
         self.validationPositionButton.setStyleSheet(u"\n"
 "background-color: #1447e6")
+        icon8 = QIcon()
+        icon8.addFile(u":/icons/icons/warning_white.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.validationPositionButton.setIcon(icon8)
         self.validationPositionButton.setIconSize(QSize(14, 14))
 
@@ -1788,8 +1861,19 @@ class Ui_Widget(object):
         self.minratioBLabel.setText(QCoreApplication.translate("Widget", u"minratio", None))
         self.resetMeshingBButton.setText("")
         self.meshingObjectBLabel.setText(QCoreApplication.translate("Widget", u"Object B", None))
-        self.generateMeshButton.setText(QCoreApplication.translate("Widget", u"Generate Both Meshes", None))
+        self.generateMeshButton.setText(QCoreApplication.translate("Widget", u"  Generate Both Meshes", None))
+        self.meshBNumOfNodesLabel.setText(QCoreApplication.translate("Widget", u"Object B nodes", None))
+        self.meshANumOfNodesLabel.setText(QCoreApplication.translate("Widget", u"Object A nodes", None))
+        self.meshSummaryObjectBLabel.setText(QCoreApplication.translate("Widget", u"Object B", None))
+        self.meshSummaryNumOfNodesLabel.setText(QCoreApplication.translate("Widget", u"Number of Nodes", None))
+        self.meshSummaryNumOfElementsLabel.setText(QCoreApplication.translate("Widget", u"Number of Elements", None))
+        self.meshBNumOfElementsLabel.setText(QCoreApplication.translate("Widget", u"Object B Elements", None))
+        self.meshANumOfElementsLabel.setText(QCoreApplication.translate("Widget", u"Object A Elements", None))
         self.summaryMeshingLabel.setText(QCoreApplication.translate("Widget", u"Mesh Summary", None))
+        self.meshSummaryObjectALabel.setText(QCoreApplication.translate("Widget", u"Object A", None))
+        self.meshSummaryTotalLabel.setText(QCoreApplication.translate("Widget", u"Total", None))
+        self.meshTotalNumOfElementsLabel.setText(QCoreApplication.translate("Widget", u"Total elements", None))
+        self.meshTotalNumOfNodesLabel.setText(QCoreApplication.translate("Widget", u"Tota Nodes", None))
         self.maintitleMaterialsPage.setText(QCoreApplication.translate("Widget", u"Step 4: Materials", None))
         self.subtitleMaterialsPage.setText(QCoreApplication.translate("Widget", u"Define thermal and material parameters for each object", None))
         self.maintitleSimulationPage.setText(QCoreApplication.translate("Widget", u"Step 5: Simulation", None))

@@ -71,6 +71,7 @@ class Surf2TetMesh:
         UI parameters are read directly from the widget.
         """
         self.tet_meshes = {}
+        self.mesh_counts = {}   # <-- store nodes & elements here
 
         for stl_number, mesh in self.stl_mesh.items():
             params = self._read_parameters_from_widget(widget, stl_number)
@@ -81,13 +82,52 @@ class Surf2TetMesh:
             tet = tetgen.TetGen(vertices, faces)
             tet.tetrahedralize(**params)
 
-            self.tet_meshes[stl_number] = tet.grid
+            grid = tet.grid
+            self.tet_meshes[stl_number] = grid
+
+            # --- store counts (cheap & direct) ---
+            n_nodes = grid.n_points
+            n_elements = grid.n_cells
+
+            self.mesh_counts[stl_number] = {
+                "nodes": n_nodes,
+                "elements": n_elements,
+            }
 
             print(
                 f"STL {stl_number} → "
-                f"{tet.grid.n_cells} tetrahedra "
+                f"{n_elements} tetrahedra, "
+                f"{n_nodes} nodes "
                 f"(maxvol={params['maxvolume']})"
             )
+
+        # update UI once after all meshes are done
+        self.update_mesh_count_labels(widget)
+    
+    def update_mesh_count_labels(self, widget):
+        """
+        Update QLabel widgets with node/element counts
+        for Object A, Object B, and totals.
+        """
+
+        # Default to zero if missing
+        a = self.mesh_counts.get(1, {"nodes": 0, "elements": 0})
+        b = self.mesh_counts.get(2, {"nodes": 0, "elements": 0})
+
+        nA, eA = a["nodes"], a["elements"]
+        nB, eB = b["nodes"], b["elements"]
+
+        # --- per object ---
+        widget.meshANumOfNodesLabel.setText(f"{nA:,}")
+        widget.meshANumOfElementsLabel.setText(f"{eA:,}")
+
+        widget.meshBNumOfNodesLabel.setText(f"{nB:,}")
+        widget.meshBNumOfElementsLabel.setText(f"{eB:,}")
+
+        # --- totals ---
+        widget.meshTotalNumOfNodesLabel.setText(f"{nA + nB:,}")
+        widget.meshTotalNumOfElementsLabel.setText(f"{eA + eB:,}")
+
 
 
     def tet_mesh_to_vtk_actor(self, tet_mesh):

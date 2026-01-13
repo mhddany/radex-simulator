@@ -21,7 +21,7 @@ QWidget {
     background-color: transparent;
     font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
     font-size: 10pt;
-    color: #90A1B9;
+    color: #c6ddff;
 }
 
 /* =========================
@@ -69,36 +69,30 @@ QWidget {
     background-color: transparent;
 }
 
-
 /* =========================
    Subtitles (shared)
    ========================= */
-#subtitleSimulationPage,
-#subtitleResultsPage,
-#subtitlePositioningPage,
-#subtitleMeshingPage,
-#subtitleMaterialsPage,
-#subtitleGeometryPage,
-#stlfileAlabel ,
-#stlfileBlabel,
-#objectALoadedIcon,
-#objectBLoadedIcon,
-#objectALoadedLabel,
-#objectBLoadedLabel,
-#readyPositioningLabel,
-#readyPositioningIcon,
-#mainTitleViewLabel,
-#subTitleViewLabel,
-#subTitleViewIcon{
-    font-size: 10pt;
+#maxvolumeADescLabel,
+#mindihedralADescLabel,
+#minratioADescLabel,
+#pscADescLabel,
+#orderADescLabel,
+#maxvolumeBDescLabel,
+#mindihedralBDescLabel,
+#minratioBDescLabel,
+#pscBDescLabel,
+#orderBDescLabel{
+    font-size: 9pt;
     font-weight: normal;
-    color: #90A1B9;
+    color: #91a2be;
     background-color: transparent;
 }
 
 
+
 #validationGeometryLabel,
-#validationPositioningLabel{
+#validationPositioningLabel,
+#summaryMeshingLabel{
     font-size: 10.5pt;
     font-weight: normal;
     color: #f1f5f9;
@@ -106,17 +100,35 @@ QWidget {
 }
 
 #objectALabel,
-#positionObjectALabel{
+#positionObjectALabel,
+#meshingObjectALabel{
     font-size: 11pt;
     font-weight: bold;
     color: #06d3f3;
     background-color: transparent;
 }
 
+#meshSummaryObjectALabel,
+#meshANumOfElementsLabel,
+#meshANumOfNodesLabel{
+    font-size: 10pt;
+    color: #06d3f3;
+    background-color: transparent;
+}
+
 #objectBLabel,
-#positionObjectBLabel{
+#positionObjectBLabel,
+#meshingObjectBLabel{
     font-size: 11pt;
     font-weight: bold;
+    color: #f18904;
+    background-color: transparent;
+}
+
+#meshSummaryObjectBLabel,
+#meshBNumOfElementsLabel,
+#meshBNumOfNodesLabel{
+    font-size: 10pt;
     color: #f18904;
     background-color: transparent;
 }
@@ -224,7 +236,10 @@ QWidget {
 #uploadFileBButton,
 #resetPositionAButton,
 #resetPositionBButton,
-#validationPositionButton{
+#resetMeshingAButton,
+#resetMeshingBButton,
+#validationPositionButton,
+#generateMeshButton{
     font-weight: bold;
     border-radius: 7px;
     border: 1px solid #314158;
@@ -291,7 +306,8 @@ QWidget {
 #settingsMaterialsPage,
 #settingsGeometryPage,
 #frameGeometryValidation,
-#framePositioningValidation{
+#framePositioningValidation,
+#frameMeshingSummary{
     border-top: 1px solid #314158;
     background-color: transparent;
 }
@@ -299,7 +315,9 @@ QWidget {
 #frameGeometryA,
 #frameGeometryB,
 #framePositioningA,
-#framePositioningB{
+#framePositioningB,
+#frameMeshingA,
+#frameMeshingB{
 	background-color: #1d293d;
 	border: 1px solid #314158;
 	border-radius: 15px;
@@ -800,7 +818,7 @@ QWidget {
           </property>
           <property name="maximumSize">
            <size>
-            <width>400</width>
+            <width>800</width>
             <height>16777215</height>
            </size>
           </property>
@@ -926,8 +944,8 @@ QWidget {
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>210</width>
-                          <height>475</height>
+                          <width>798</width>
+                          <height>726</height>
                          </rect>
                         </property>
                         <layout class="QVBoxLayout" name="verticalLayout_28">
@@ -1371,9 +1389,9 @@ QWidget {
                         <property name="geometry">
                          <rect>
                           <x>0</x>
-                          <y>-84</y>
-                          <width>386</width>
-                          <height>986</height>
+                          <y>-61</y>
+                          <width>786</width>
+                          <height>793</height>
                          </rect>
                         </property>
                         <layout class="QGridLayout" name="gridLayout_6">
@@ -1392,13 +1410,6 @@ QWidget {
                          <property name="spacing">
                           <number>15</number>
                          </property>
-                         <item row="1" column="0">
-                          <widget class="Line" name="line">
-                           <property name="orientation">
-                            <enum>Qt::Orientation::Horizontal</enum>
-                           </property>
-                          </widget>
-                         </item>
                          <item row="0" column="0" colspan="2">
                           <widget class="QFrame" name="frameMeshingA">
                            <property name="minimumSize">
@@ -1829,11 +1840,11 @@ QWidget {
 background-color: #1447e6</string>
                            </property>
                            <property name="text">
-                            <string>Generate Both Meshes</string>
+                            <string>  Generate Both Meshes</string>
                            </property>
                            <property name="icon">
                             <iconset resource="resources.qrc">
-                             <normaloff>:/icons/icons/warning_white.svg</normaloff>:/icons/icons/warning_white.svg</iconset>
+                             <normaloff>:/icons/icons/mesh_white.svg</normaloff>:/icons/icons/mesh_white.svg</iconset>
                            </property>
                            <property name="iconSize">
                             <size>
@@ -1844,7 +1855,7 @@ background-color: #1447e6</string>
                           </widget>
                          </item>
                          <item row="4" column="0" colspan="4">
-                          <widget class="QFrame" name="frameMeshinSummary">
+                          <widget class="QFrame" name="frameMeshingSummary">
                            <property name="minimumSize">
                             <size>
                              <width>0</width>
@@ -1863,33 +1874,29 @@ background-color: #1447e6</string>
                            <property name="frameShadow">
                             <enum>QFrame::Shadow::Raised</enum>
                            </property>
-                           <layout class="QVBoxLayout" name="verticalLayout_32">
-                            <property name="leftMargin">
-                             <number>10</number>
-                            </property>
-                            <property name="topMargin">
-                             <number>10</number>
-                            </property>
-                            <property name="rightMargin">
-                             <number>10</number>
-                            </property>
-                            <property name="bottomMargin">
-                             <number>10</number>
-                            </property>
-                            <item>
-                             <widget class="QLabel" name="summaryMeshingLabel">
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>20</height>
-                               </size>
-                              </property>
+                           <layout class="QGridLayout" name="gridLayout_7">
+                            <item row="3" column="2">
+                             <widget class="QLabel" name="meshBNumOfNodesLabel">
                               <property name="text">
-                               <string>Mesh Summary</string>
+                               <string>Object B nodes</string>
                               </property>
                              </widget>
                             </item>
-                            <item>
+                            <item row="3" column="1">
+                             <widget class="QLabel" name="meshANumOfNodesLabel">
+                              <property name="text">
+                               <string>Object A nodes</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="2">
+                             <widget class="QLabel" name="meshSummaryObjectBLabel">
+                              <property name="text">
+                               <string>Object B</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="5" column="1">
                              <spacer name="verticalSpacer_4">
                               <property name="orientation">
                                <enum>Qt::Orientation::Vertical</enum>
@@ -1902,7 +1909,83 @@ background-color: #1447e6</string>
                               </property>
                              </spacer>
                             </item>
+                            <item row="3" column="0">
+                             <widget class="QLabel" name="meshSummaryNumOfNodesLabel">
+                              <property name="text">
+                               <string>Number of Nodes</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="2" column="0">
+                             <widget class="QLabel" name="meshSummaryNumOfElementsLabel">
+                              <property name="text">
+                               <string>Number of Elements</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="2" column="2">
+                             <widget class="QLabel" name="meshBNumOfElementsLabel">
+                              <property name="text">
+                               <string>Object B Elements</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="2" column="1">
+                             <widget class="QLabel" name="meshANumOfElementsLabel">
+                              <property name="text">
+                               <string>Object A Elements</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="0" column="0">
+                             <widget class="QLabel" name="summaryMeshingLabel">
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>20</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>Mesh Summary</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="1">
+                             <widget class="QLabel" name="meshSummaryObjectALabel">
+                              <property name="text">
+                               <string>Object A</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="3">
+                             <widget class="QLabel" name="meshSummaryTotalLabel">
+                              <property name="text">
+                               <string>Total</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="2" column="3">
+                             <widget class="QLabel" name="meshTotalNumOfElementsLabel">
+                              <property name="text">
+                               <string>Total elements</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="3" column="3">
+                             <widget class="QLabel" name="meshTotalNumOfNodesLabel">
+                              <property name="text">
+                               <string>Tota Nodes</string>
+                              </property>
+                             </widget>
+                            </item>
                            </layout>
+                          </widget>
+                         </item>
+                         <item row="1" column="0" colspan="4">
+                          <widget class="Line" name="line">
+                           <property name="orientation">
+                            <enum>Qt::Orientation::Horizontal</enum>
+                           </property>
                           </widget>
                          </item>
                         </layout>
@@ -2273,7 +2356,7 @@ background-color: #1447e6</string>
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>222</width>
+                          <width>786</width>
                           <height>1000</height>
                          </rect>
                         </property>
