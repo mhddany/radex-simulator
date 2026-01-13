@@ -130,7 +130,7 @@ class Widget(QWidget, Ui_Widget):
         """Apply busy (working) style to status bar."""
         self.statusLayout.setStyleSheet("background-color: #1e293b; border-color: #60a5fa;")
         self.statusMessageLabel.setStyleSheet("color: #93c5fd;")
-        self.statusIcon.setPixmap(QPixmap(":/icons/icons/rotate.svg"))
+        self.statusIcon.setPixmap(QPixmap(":/icons/icons/info.svg"))
         
     def start_status_animation(self, base_message="Generating FEM mesh"):
         """
