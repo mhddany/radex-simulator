@@ -97,8 +97,9 @@ class Widget(QWidget, Ui_Widget):
 
         width_map = {
             self.materialsButton: 400,
-            self.simulationButton: 800,
-            self.meshingButton: 800
+            self.positioningButton: 700,
+            self.simulationButton: 700,
+            self.meshingButton: 700
         }
 
         # Viewer page
@@ -571,8 +572,6 @@ class Widget(QWidget, Ui_Widget):
         transform.Translate(-cx, -cy, -cz)
 
         actor.SetUserTransform(transform)
-        
-        self.stl_manager.update_pyvista_mesh_from_actor(stl_number)
 
         self.vtkViewer.GetRenderWindow().Render()
         
@@ -722,7 +721,8 @@ class Widget(QWidget, Ui_Widget):
 
         # Add STL meshes to Surf2TetMesh
         for stl_number, mesh in self.stl_manager.stl_mesh.items():
-            try:
+            try:                
+                self.stl_manager.update_pyvista_mesh_from_actor(stl_number)
                 self.surf2tetmesh.add_stl_mesh(stl_number, mesh)
                 print(f"Added STL {stl_number} to Surf2TetMesh")
                 self.update_status(f"Added STL {stl_number} to Surf2TetMesh", success=True)

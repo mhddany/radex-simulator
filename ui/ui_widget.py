@@ -797,11 +797,11 @@ class Ui_Widget(object):
         self.scrollAreaMeshing.setWidgetResizable(True)
         self.scrollAreaWidgetContentsMeshing = QWidget()
         self.scrollAreaWidgetContentsMeshing.setObjectName(u"scrollAreaWidgetContentsMeshing")
-        self.scrollAreaWidgetContentsMeshing.setGeometry(QRect(0, 0, 786, 793))
+        self.scrollAreaWidgetContentsMeshing.setGeometry(QRect(0, 0, 786, 878))
         self.gridLayout_6 = QGridLayout(self.scrollAreaWidgetContentsMeshing)
-        self.gridLayout_6.setSpacing(15)
+        self.gridLayout_6.setSpacing(20)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.gridLayout_6.setContentsMargins(15, 15, 15, 15)
+        self.gridLayout_6.setContentsMargins(20, 20, 20, 20)
         self.frameMeshingA = QFrame(self.scrollAreaWidgetContentsMeshing)
         self.frameMeshingA.setObjectName(u"frameMeshingA")
         self.frameMeshingA.setMinimumSize(QSize(0, 0))
@@ -921,6 +921,13 @@ class Ui_Widget(object):
 
 
         self.gridLayout_6.addWidget(self.frameMeshingA, 0, 0, 1, 2)
+
+        self.line = QFrame(self.scrollAreaWidgetContentsMeshing)
+        self.line.setObjectName(u"line")
+        self.line.setFrameShape(QFrame.Shape.HLine)
+        self.line.setFrameShadow(QFrame.Shadow.Sunken)
+
+        self.gridLayout_6.addWidget(self.line, 1, 0, 1, 4)
 
         self.line_2 = QFrame(self.scrollAreaWidgetContentsMeshing)
         self.line_2.setObjectName(u"line_2")
@@ -1130,12 +1137,9 @@ class Ui_Widget(object):
 
         self.gridLayout_6.addWidget(self.frameMeshingSummary, 4, 0, 1, 4)
 
-        self.line = QFrame(self.scrollAreaWidgetContentsMeshing)
-        self.line.setObjectName(u"line")
-        self.line.setFrameShape(QFrame.Shape.HLine)
-        self.line.setFrameShadow(QFrame.Shadow.Sunken)
+        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.gridLayout_6.addWidget(self.line, 1, 0, 1, 4)
+        self.gridLayout_6.addItem(self.verticalSpacer_6, 5, 0, 1, 1)
 
         self.scrollAreaMeshing.setWidget(self.scrollAreaWidgetContentsMeshing)
 
@@ -1191,7 +1195,7 @@ class Ui_Widget(object):
         self.scrollAreaMaterials.setWidgetResizable(True)
         self.scrollAreaWidgetContentsMaterials = QWidget()
         self.scrollAreaWidgetContentsMaterials.setObjectName(u"scrollAreaWidgetContentsMaterials")
-        self.scrollAreaWidgetContentsMaterials.setGeometry(QRect(0, 0, 786, 802))
+        self.scrollAreaWidgetContentsMaterials.setGeometry(QRect(0, 0, 786, 862))
         self.verticalLayout_34 = QVBoxLayout(self.scrollAreaWidgetContentsMaterials)
         self.verticalLayout_34.setSpacing(20)
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
@@ -1459,6 +1463,10 @@ class Ui_Widget(object):
 
         self.verticalLayout_34.addWidget(self.frameMaterialsB)
 
+        self.verticalSpacer_7 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_34.addItem(self.verticalSpacer_7)
+
         self.scrollAreaMaterials.setWidget(self.scrollAreaWidgetContentsMaterials)
 
         self.verticalLayout_32.addWidget(self.scrollAreaMaterials)
@@ -1595,172 +1603,59 @@ class Ui_Widget(object):
         self.scrollAreaPositioning.setWidgetResizable(True)
         self.scrollAreaWidgetContentsPositioning = QWidget()
         self.scrollAreaWidgetContentsPositioning.setObjectName(u"scrollAreaWidgetContentsPositioning")
-        self.scrollAreaWidgetContentsPositioning.setGeometry(QRect(0, 0, 786, 1000))
-        self.verticalLayout_33 = QVBoxLayout(self.scrollAreaWidgetContentsPositioning)
-        self.verticalLayout_33.setSpacing(15)
-        self.verticalLayout_33.setObjectName(u"verticalLayout_33")
-        self.verticalLayout_33.setContentsMargins(20, 20, 20, 20)
-        self.framePositioningA = QFrame(self.scrollAreaWidgetContentsPositioning)
-        self.framePositioningA.setObjectName(u"framePositioningA")
-        self.framePositioningA.setMinimumSize(QSize(0, 400))
-        self.framePositioningA.setMaximumSize(QSize(16777215, 1000))
-        self.framePositioningA.setFrameShape(QFrame.Shape.StyledPanel)
-        self.framePositioningA.setFrameShadow(QFrame.Shadow.Raised)
-        self.gridLayout_3 = QGridLayout(self.framePositioningA)
-        self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.gridLayout_3.setHorizontalSpacing(5)
-        self.gridLayout_3.setVerticalSpacing(0)
-        self.gridLayout_3.setContentsMargins(10, 0, 10, 0)
-        self.xTranslationPositionALabel = QLabel(self.framePositioningA)
-        self.xTranslationPositionALabel.setObjectName(u"xTranslationPositionALabel")
+        self.scrollAreaWidgetContentsPositioning.setGeometry(QRect(0, 0, 798, 726))
+        self.gridLayout_8 = QGridLayout(self.scrollAreaWidgetContentsPositioning)
+        self.gridLayout_8.setSpacing(20)
+        self.gridLayout_8.setObjectName(u"gridLayout_8")
+        self.gridLayout_8.setContentsMargins(20, 20, 20, 20)
+        self.framePositioningValidation = QFrame(self.scrollAreaWidgetContentsPositioning)
+        self.framePositioningValidation.setObjectName(u"framePositioningValidation")
+        self.framePositioningValidation.setMinimumSize(QSize(0, 130))
+        self.framePositioningValidation.setMaximumSize(QSize(16777215, 130))
+        self.framePositioningValidation.setFrameShape(QFrame.Shape.StyledPanel)
+        self.framePositioningValidation.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_11 = QGridLayout(self.framePositioningValidation)
+        self.gridLayout_11.setObjectName(u"gridLayout_11")
+        self.validationPositioningLabel = QLabel(self.framePositioningValidation)
+        self.validationPositioningLabel.setObjectName(u"validationPositioningLabel")
+        self.validationPositioningLabel.setMaximumSize(QSize(16777215, 20))
 
-        self.gridLayout_3.addWidget(self.xTranslationPositionALabel, 2, 0, 1, 1)
+        self.gridLayout_11.addWidget(self.validationPositioningLabel, 0, 0, 1, 1)
 
-        self.zTranslationASpinbox = QDoubleSpinBox(self.framePositioningA)
-        self.zTranslationASpinbox.setObjectName(u"zTranslationASpinbox")
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout_3.addWidget(self.zTranslationASpinbox, 4, 1, 1, 1)
+        self.gridLayout_11.addItem(self.horizontalSpacer_2, 2, 3, 1, 1)
 
-        self.yTranslationUnitPositionALabel = QLabel(self.framePositioningA)
-        self.yTranslationUnitPositionALabel.setObjectName(u"yTranslationUnitPositionALabel")
-        self.yTranslationUnitPositionALabel.setMaximumSize(QSize(50, 16777215))
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout_3.addWidget(self.yTranslationUnitPositionALabel, 3, 2, 1, 1)
+        self.gridLayout_11.addItem(self.horizontalSpacer, 2, 0, 1, 1)
 
-        self.yTranslationASpinbox = QDoubleSpinBox(self.framePositioningA)
-        self.yTranslationASpinbox.setObjectName(u"yTranslationASpinbox")
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout_3.addWidget(self.yTranslationASpinbox, 3, 1, 1, 1)
+        self.gridLayout_11.addItem(self.horizontalSpacer_3, 2, 2, 1, 1)
 
-        self.yRotationPositionALabel = QLabel(self.framePositioningA)
-        self.yRotationPositionALabel.setObjectName(u"yRotationPositionALabel")
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout_3.addWidget(self.yRotationPositionALabel, 8, 0, 1, 1)
+        self.gridLayout_11.addItem(self.horizontalSpacer_4, 2, 4, 1, 1)
 
-        self.translationPositionALabel = QLabel(self.framePositioningA)
-        self.translationPositionALabel.setObjectName(u"translationPositionALabel")
-        self.translationPositionALabel.setMinimumSize(QSize(0, 25))
-        self.translationPositionALabel.setMaximumSize(QSize(16777215, 25))
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.gridLayout_3.addWidget(self.translationPositionALabel, 1, 1, 1, 1)
+        self.gridLayout_11.addItem(self.verticalSpacer_3, 6, 2, 1, 1)
 
-        self.xTranslationASpinbox = QDoubleSpinBox(self.framePositioningA)
-        self.xTranslationASpinbox.setObjectName(u"xTranslationASpinbox")
-        self.xTranslationASpinbox.setStepType(QAbstractSpinBox.StepType.DefaultStepType)
+        self.validationPositionButton = QPushButton(self.framePositioningValidation)
+        self.validationPositionButton.setObjectName(u"validationPositionButton")
+        self.validationPositionButton.setMinimumSize(QSize(0, 35))
+        self.validationPositionButton.setStyleSheet(u"\n"
+"background-color: #1447e6")
+        icon8 = QIcon()
+        icon8.addFile(u":/icons/icons/warning_white.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.validationPositionButton.setIcon(icon8)
+        self.validationPositionButton.setIconSize(QSize(14, 14))
 
-        self.gridLayout_3.addWidget(self.xTranslationASpinbox, 2, 1, 1, 1)
-
-        self.translationPositionAIcon = QLabel(self.framePositioningA)
-        self.translationPositionAIcon.setObjectName(u"translationPositionAIcon")
-        self.translationPositionAIcon.setMinimumSize(QSize(11, 11))
-        self.translationPositionAIcon.setMaximumSize(QSize(11, 11))
-        self.translationPositionAIcon.setPixmap(QPixmap(u":/icons/icons/arrows_dark.svg"))
-        self.translationPositionAIcon.setScaledContents(True)
-
-        self.gridLayout_3.addWidget(self.translationPositionAIcon, 1, 0, 1, 1)
-
-        self.positionObjectALabel = QLabel(self.framePositioningA)
-        self.positionObjectALabel.setObjectName(u"positionObjectALabel")
-
-        self.gridLayout_3.addWidget(self.positionObjectALabel, 0, 0, 1, 2)
-
-        self.xRotationPositionALabel = QLabel(self.framePositioningA)
-        self.xRotationPositionALabel.setObjectName(u"xRotationPositionALabel")
-
-        self.gridLayout_3.addWidget(self.xRotationPositionALabel, 7, 0, 1, 1)
-
-        self.zRotationPositionALabel = QLabel(self.framePositioningA)
-        self.zRotationPositionALabel.setObjectName(u"zRotationPositionALabel")
-
-        self.gridLayout_3.addWidget(self.zRotationPositionALabel, 9, 0, 1, 1)
-
-        self.resetPositionAButton = QPushButton(self.framePositioningA)
-        self.resetPositionAButton.setObjectName(u"resetPositionAButton")
-        self.resetPositionAButton.setMaximumSize(QSize(50, 16777215))
-        self.resetPositionAButton.setIcon(icon7)
-        self.resetPositionAButton.setIconSize(QSize(12, 12))
-
-        self.gridLayout_3.addWidget(self.resetPositionAButton, 0, 2, 1, 1)
-
-        self.zRotationUnitPositionALabel = QLabel(self.framePositioningA)
-        self.zRotationUnitPositionALabel.setObjectName(u"zRotationUnitPositionALabel")
-
-        self.gridLayout_3.addWidget(self.zRotationUnitPositionALabel, 9, 2, 1, 1)
-
-        self.yTranslationPositionALabel = QLabel(self.framePositioningA)
-        self.yTranslationPositionALabel.setObjectName(u"yTranslationPositionALabel")
-
-        self.gridLayout_3.addWidget(self.yTranslationPositionALabel, 3, 0, 1, 1)
-
-        self.rotationPositionALabel = QLabel(self.framePositioningA)
-        self.rotationPositionALabel.setObjectName(u"rotationPositionALabel")
-        self.rotationPositionALabel.setMinimumSize(QSize(0, 25))
-        self.rotationPositionALabel.setMaximumSize(QSize(16777215, 25))
-
-        self.gridLayout_3.addWidget(self.rotationPositionALabel, 5, 1, 1, 1)
-
-        self.xRotationUnitPositionALabel = QLabel(self.framePositioningA)
-        self.xRotationUnitPositionALabel.setObjectName(u"xRotationUnitPositionALabel")
-        self.xRotationUnitPositionALabel.setMaximumSize(QSize(50, 16777215))
-
-        self.gridLayout_3.addWidget(self.xRotationUnitPositionALabel, 7, 2, 1, 1)
-
-        self.rotationPositionAIcon = QLabel(self.framePositioningA)
-        self.rotationPositionAIcon.setObjectName(u"rotationPositionAIcon")
-        self.rotationPositionAIcon.setMinimumSize(QSize(11, 11))
-        self.rotationPositionAIcon.setMaximumSize(QSize(11, 11))
-        self.rotationPositionAIcon.setPixmap(QPixmap(u":/icons/icons/rotate-right.svg"))
-        self.rotationPositionAIcon.setScaledContents(True)
-
-        self.gridLayout_3.addWidget(self.rotationPositionAIcon, 5, 0, 1, 1)
-
-        self.zTranslationUnitPositionALabel = QLabel(self.framePositioningA)
-        self.zTranslationUnitPositionALabel.setObjectName(u"zTranslationUnitPositionALabel")
-        self.zTranslationUnitPositionALabel.setMaximumSize(QSize(50, 16777215))
-
-        self.gridLayout_3.addWidget(self.zTranslationUnitPositionALabel, 4, 2, 1, 1)
-
-        self.xTranslationUnitPositionALabel = QLabel(self.framePositioningA)
-        self.xTranslationUnitPositionALabel.setObjectName(u"xTranslationUnitPositionALabel")
-        self.xTranslationUnitPositionALabel.setMaximumSize(QSize(50, 16777215))
-
-        self.gridLayout_3.addWidget(self.xTranslationUnitPositionALabel, 2, 2, 1, 1)
-
-        self.yRotationUnitPositionALabel = QLabel(self.framePositioningA)
-        self.yRotationUnitPositionALabel.setObjectName(u"yRotationUnitPositionALabel")
-        self.yRotationUnitPositionALabel.setMaximumSize(QSize(50, 16777215))
-
-        self.gridLayout_3.addWidget(self.yRotationUnitPositionALabel, 8, 2, 1, 1)
-
-        self.zTranslationPositionALabel = QLabel(self.framePositioningA)
-        self.zTranslationPositionALabel.setObjectName(u"zTranslationPositionALabel")
-
-        self.gridLayout_3.addWidget(self.zTranslationPositionALabel, 4, 0, 1, 1)
-
-        self.xRotationASlider = QSlider(self.framePositioningA)
-        self.xRotationASlider.setObjectName(u"xRotationASlider")
-        self.xRotationASlider.setMaximum(100)
-        self.xRotationASlider.setValue(50)
-        self.xRotationASlider.setOrientation(Qt.Orientation.Horizontal)
-
-        self.gridLayout_3.addWidget(self.xRotationASlider, 7, 1, 1, 1)
-
-        self.yRotationASlider = QSlider(self.framePositioningA)
-        self.yRotationASlider.setObjectName(u"yRotationASlider")
-        self.yRotationASlider.setValue(50)
-        self.yRotationASlider.setOrientation(Qt.Orientation.Horizontal)
-
-        self.gridLayout_3.addWidget(self.yRotationASlider, 8, 1, 1, 1)
-
-        self.zRotationASlider = QSlider(self.framePositioningA)
-        self.zRotationASlider.setObjectName(u"zRotationASlider")
-        self.zRotationASlider.setValue(50)
-        self.zRotationASlider.setOrientation(Qt.Orientation.Horizontal)
-
-        self.gridLayout_3.addWidget(self.zRotationASlider, 9, 1, 1, 1)
+        self.gridLayout_11.addWidget(self.validationPositionButton, 1, 2, 1, 2)
 
 
-        self.verticalLayout_33.addWidget(self.framePositioningA)
+        self.gridLayout_8.addWidget(self.framePositioningValidation, 2, 0, 1, 2)
 
         self.framePositioningB = QFrame(self.scrollAreaWidgetContentsPositioning)
         self.framePositioningB.setObjectName(u"framePositioningB")
@@ -1924,41 +1819,173 @@ class Ui_Widget(object):
         self.gridLayout_4.addWidget(self.zRotationBSlider, 9, 1, 1, 1)
 
 
-        self.verticalLayout_33.addWidget(self.framePositioningB)
+        self.gridLayout_8.addWidget(self.framePositioningB, 0, 1, 1, 1)
 
-        self.framePositioningValidation = QFrame(self.scrollAreaWidgetContentsPositioning)
-        self.framePositioningValidation.setObjectName(u"framePositioningValidation")
-        self.framePositioningValidation.setMinimumSize(QSize(0, 130))
-        self.framePositioningValidation.setMaximumSize(QSize(16777215, 130))
-        self.framePositioningValidation.setFrameShape(QFrame.Shape.StyledPanel)
-        self.framePositioningValidation.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_31 = QVBoxLayout(self.framePositioningValidation)
-        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
-        self.verticalLayout_31.setContentsMargins(10, 10, 10, 10)
-        self.validationPositioningLabel = QLabel(self.framePositioningValidation)
-        self.validationPositioningLabel.setObjectName(u"validationPositioningLabel")
-        self.validationPositioningLabel.setMaximumSize(QSize(16777215, 20))
+        self.framePositioningA = QFrame(self.scrollAreaWidgetContentsPositioning)
+        self.framePositioningA.setObjectName(u"framePositioningA")
+        self.framePositioningA.setMinimumSize(QSize(0, 400))
+        self.framePositioningA.setMaximumSize(QSize(16777215, 1000))
+        self.framePositioningA.setFrameShape(QFrame.Shape.StyledPanel)
+        self.framePositioningA.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_3 = QGridLayout(self.framePositioningA)
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.gridLayout_3.setHorizontalSpacing(5)
+        self.gridLayout_3.setVerticalSpacing(0)
+        self.gridLayout_3.setContentsMargins(10, 0, 10, 0)
+        self.xTranslationPositionALabel = QLabel(self.framePositioningA)
+        self.xTranslationPositionALabel.setObjectName(u"xTranslationPositionALabel")
 
-        self.verticalLayout_31.addWidget(self.validationPositioningLabel)
+        self.gridLayout_3.addWidget(self.xTranslationPositionALabel, 2, 0, 1, 1)
 
-        self.validationPositionButton = QPushButton(self.framePositioningValidation)
-        self.validationPositionButton.setObjectName(u"validationPositionButton")
-        self.validationPositionButton.setMinimumSize(QSize(0, 35))
-        self.validationPositionButton.setStyleSheet(u"\n"
-"background-color: #1447e6")
-        icon8 = QIcon()
-        icon8.addFile(u":/icons/icons/warning_white.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.validationPositionButton.setIcon(icon8)
-        self.validationPositionButton.setIconSize(QSize(14, 14))
+        self.zTranslationASpinbox = QDoubleSpinBox(self.framePositioningA)
+        self.zTranslationASpinbox.setObjectName(u"zTranslationASpinbox")
 
-        self.verticalLayout_31.addWidget(self.validationPositionButton)
+        self.gridLayout_3.addWidget(self.zTranslationASpinbox, 4, 1, 1, 1)
 
-        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.yTranslationUnitPositionALabel = QLabel(self.framePositioningA)
+        self.yTranslationUnitPositionALabel.setObjectName(u"yTranslationUnitPositionALabel")
+        self.yTranslationUnitPositionALabel.setMaximumSize(QSize(50, 16777215))
 
-        self.verticalLayout_31.addItem(self.verticalSpacer_3)
+        self.gridLayout_3.addWidget(self.yTranslationUnitPositionALabel, 3, 2, 1, 1)
+
+        self.yTranslationASpinbox = QDoubleSpinBox(self.framePositioningA)
+        self.yTranslationASpinbox.setObjectName(u"yTranslationASpinbox")
+
+        self.gridLayout_3.addWidget(self.yTranslationASpinbox, 3, 1, 1, 1)
+
+        self.yRotationPositionALabel = QLabel(self.framePositioningA)
+        self.yRotationPositionALabel.setObjectName(u"yRotationPositionALabel")
+
+        self.gridLayout_3.addWidget(self.yRotationPositionALabel, 8, 0, 1, 1)
+
+        self.translationPositionALabel = QLabel(self.framePositioningA)
+        self.translationPositionALabel.setObjectName(u"translationPositionALabel")
+        self.translationPositionALabel.setMinimumSize(QSize(0, 25))
+        self.translationPositionALabel.setMaximumSize(QSize(16777215, 25))
+
+        self.gridLayout_3.addWidget(self.translationPositionALabel, 1, 1, 1, 1)
+
+        self.xTranslationASpinbox = QDoubleSpinBox(self.framePositioningA)
+        self.xTranslationASpinbox.setObjectName(u"xTranslationASpinbox")
+        self.xTranslationASpinbox.setStepType(QAbstractSpinBox.StepType.DefaultStepType)
+
+        self.gridLayout_3.addWidget(self.xTranslationASpinbox, 2, 1, 1, 1)
+
+        self.translationPositionAIcon = QLabel(self.framePositioningA)
+        self.translationPositionAIcon.setObjectName(u"translationPositionAIcon")
+        self.translationPositionAIcon.setMinimumSize(QSize(11, 11))
+        self.translationPositionAIcon.setMaximumSize(QSize(11, 11))
+        self.translationPositionAIcon.setPixmap(QPixmap(u":/icons/icons/arrows_dark.svg"))
+        self.translationPositionAIcon.setScaledContents(True)
+
+        self.gridLayout_3.addWidget(self.translationPositionAIcon, 1, 0, 1, 1)
+
+        self.positionObjectALabel = QLabel(self.framePositioningA)
+        self.positionObjectALabel.setObjectName(u"positionObjectALabel")
+
+        self.gridLayout_3.addWidget(self.positionObjectALabel, 0, 0, 1, 2)
+
+        self.xRotationPositionALabel = QLabel(self.framePositioningA)
+        self.xRotationPositionALabel.setObjectName(u"xRotationPositionALabel")
+
+        self.gridLayout_3.addWidget(self.xRotationPositionALabel, 7, 0, 1, 1)
+
+        self.zRotationPositionALabel = QLabel(self.framePositioningA)
+        self.zRotationPositionALabel.setObjectName(u"zRotationPositionALabel")
+
+        self.gridLayout_3.addWidget(self.zRotationPositionALabel, 9, 0, 1, 1)
+
+        self.resetPositionAButton = QPushButton(self.framePositioningA)
+        self.resetPositionAButton.setObjectName(u"resetPositionAButton")
+        self.resetPositionAButton.setMaximumSize(QSize(50, 16777215))
+        self.resetPositionAButton.setIcon(icon7)
+        self.resetPositionAButton.setIconSize(QSize(12, 12))
+
+        self.gridLayout_3.addWidget(self.resetPositionAButton, 0, 2, 1, 1)
+
+        self.zRotationUnitPositionALabel = QLabel(self.framePositioningA)
+        self.zRotationUnitPositionALabel.setObjectName(u"zRotationUnitPositionALabel")
+
+        self.gridLayout_3.addWidget(self.zRotationUnitPositionALabel, 9, 2, 1, 1)
+
+        self.yTranslationPositionALabel = QLabel(self.framePositioningA)
+        self.yTranslationPositionALabel.setObjectName(u"yTranslationPositionALabel")
+
+        self.gridLayout_3.addWidget(self.yTranslationPositionALabel, 3, 0, 1, 1)
+
+        self.rotationPositionALabel = QLabel(self.framePositioningA)
+        self.rotationPositionALabel.setObjectName(u"rotationPositionALabel")
+        self.rotationPositionALabel.setMinimumSize(QSize(0, 25))
+        self.rotationPositionALabel.setMaximumSize(QSize(16777215, 25))
+
+        self.gridLayout_3.addWidget(self.rotationPositionALabel, 5, 1, 1, 1)
+
+        self.xRotationUnitPositionALabel = QLabel(self.framePositioningA)
+        self.xRotationUnitPositionALabel.setObjectName(u"xRotationUnitPositionALabel")
+        self.xRotationUnitPositionALabel.setMaximumSize(QSize(50, 16777215))
+
+        self.gridLayout_3.addWidget(self.xRotationUnitPositionALabel, 7, 2, 1, 1)
+
+        self.rotationPositionAIcon = QLabel(self.framePositioningA)
+        self.rotationPositionAIcon.setObjectName(u"rotationPositionAIcon")
+        self.rotationPositionAIcon.setMinimumSize(QSize(11, 11))
+        self.rotationPositionAIcon.setMaximumSize(QSize(11, 11))
+        self.rotationPositionAIcon.setPixmap(QPixmap(u":/icons/icons/rotate-right.svg"))
+        self.rotationPositionAIcon.setScaledContents(True)
+
+        self.gridLayout_3.addWidget(self.rotationPositionAIcon, 5, 0, 1, 1)
+
+        self.zTranslationUnitPositionALabel = QLabel(self.framePositioningA)
+        self.zTranslationUnitPositionALabel.setObjectName(u"zTranslationUnitPositionALabel")
+        self.zTranslationUnitPositionALabel.setMaximumSize(QSize(50, 16777215))
+
+        self.gridLayout_3.addWidget(self.zTranslationUnitPositionALabel, 4, 2, 1, 1)
+
+        self.xTranslationUnitPositionALabel = QLabel(self.framePositioningA)
+        self.xTranslationUnitPositionALabel.setObjectName(u"xTranslationUnitPositionALabel")
+        self.xTranslationUnitPositionALabel.setMaximumSize(QSize(50, 16777215))
+
+        self.gridLayout_3.addWidget(self.xTranslationUnitPositionALabel, 2, 2, 1, 1)
+
+        self.yRotationUnitPositionALabel = QLabel(self.framePositioningA)
+        self.yRotationUnitPositionALabel.setObjectName(u"yRotationUnitPositionALabel")
+        self.yRotationUnitPositionALabel.setMaximumSize(QSize(50, 16777215))
+
+        self.gridLayout_3.addWidget(self.yRotationUnitPositionALabel, 8, 2, 1, 1)
+
+        self.zTranslationPositionALabel = QLabel(self.framePositioningA)
+        self.zTranslationPositionALabel.setObjectName(u"zTranslationPositionALabel")
+
+        self.gridLayout_3.addWidget(self.zTranslationPositionALabel, 4, 0, 1, 1)
+
+        self.xRotationASlider = QSlider(self.framePositioningA)
+        self.xRotationASlider.setObjectName(u"xRotationASlider")
+        self.xRotationASlider.setMaximum(100)
+        self.xRotationASlider.setValue(50)
+        self.xRotationASlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_3.addWidget(self.xRotationASlider, 7, 1, 1, 1)
+
+        self.yRotationASlider = QSlider(self.framePositioningA)
+        self.yRotationASlider.setObjectName(u"yRotationASlider")
+        self.yRotationASlider.setValue(50)
+        self.yRotationASlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_3.addWidget(self.yRotationASlider, 8, 1, 1, 1)
+
+        self.zRotationASlider = QSlider(self.framePositioningA)
+        self.zRotationASlider.setObjectName(u"zRotationASlider")
+        self.zRotationASlider.setValue(50)
+        self.zRotationASlider.setOrientation(Qt.Orientation.Horizontal)
+
+        self.gridLayout_3.addWidget(self.zRotationASlider, 9, 1, 1, 1)
 
 
-        self.verticalLayout_33.addWidget(self.framePositioningValidation)
+        self.gridLayout_8.addWidget(self.framePositioningA, 0, 0, 1, 1)
+
+        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_8.addItem(self.verticalSpacer_5, 3, 0, 1, 1)
 
         self.scrollAreaPositioning.setWidget(self.scrollAreaWidgetContentsPositioning)
 
@@ -2209,24 +2236,8 @@ class Ui_Widget(object):
         self.subtitleResultsPage.setText(QCoreApplication.translate("Widget", u"Analyze temperature evolution and heat transfer", None))
         self.maintitlePositioningPage.setText(QCoreApplication.translate("Widget", u"Step 2: Positioning", None))
         self.subtitlePositioningPage.setText(QCoreApplication.translate("Widget", u"Position and orient both objects in 3D space", None))
-        self.xTranslationPositionALabel.setText(QCoreApplication.translate("Widget", u"x:", None))
-        self.yTranslationUnitPositionALabel.setText(QCoreApplication.translate("Widget", u"m", None))
-        self.yRotationPositionALabel.setText(QCoreApplication.translate("Widget", u"y:", None))
-        self.translationPositionALabel.setText(QCoreApplication.translate("Widget", u"Translation", None))
-        self.translationPositionAIcon.setText("")
-        self.positionObjectALabel.setText(QCoreApplication.translate("Widget", u"Object A", None))
-        self.xRotationPositionALabel.setText(QCoreApplication.translate("Widget", u"x:", None))
-        self.zRotationPositionALabel.setText(QCoreApplication.translate("Widget", u"z:", None))
-        self.resetPositionAButton.setText("")
-        self.zRotationUnitPositionALabel.setText(QCoreApplication.translate("Widget", u"0\u00b0", None))
-        self.yTranslationPositionALabel.setText(QCoreApplication.translate("Widget", u"y:", None))
-        self.rotationPositionALabel.setText(QCoreApplication.translate("Widget", u"Rotation", None))
-        self.xRotationUnitPositionALabel.setText(QCoreApplication.translate("Widget", u"0\u00b0", None))
-        self.rotationPositionAIcon.setText("")
-        self.zTranslationUnitPositionALabel.setText(QCoreApplication.translate("Widget", u"m", None))
-        self.xTranslationUnitPositionALabel.setText(QCoreApplication.translate("Widget", u"m", None))
-        self.yRotationUnitPositionALabel.setText(QCoreApplication.translate("Widget", u"0\u00b0", None))
-        self.zTranslationPositionALabel.setText(QCoreApplication.translate("Widget", u"z:", None))
+        self.validationPositioningLabel.setText(QCoreApplication.translate("Widget", u"Validation", None))
+        self.validationPositionButton.setText(QCoreApplication.translate("Widget", u" Check For Overlap", None))
         self.zRotationUnitPositionBLabel.setText(QCoreApplication.translate("Widget", u"0\u00b0", None))
         self.xRotationPositionBLabel.setText(QCoreApplication.translate("Widget", u"x:", None))
         self.xTranslationUnitPositionBLabel.setText(QCoreApplication.translate("Widget", u"m", None))
@@ -2245,8 +2256,24 @@ class Ui_Widget(object):
         self.zTranslationPositionBLabel.setText(QCoreApplication.translate("Widget", u"z:", None))
         self.yRotationUnitPositionBLabel.setText(QCoreApplication.translate("Widget", u"0\u00b0", None))
         self.zRotationPositionBLabel.setText(QCoreApplication.translate("Widget", u"z:", None))
-        self.validationPositioningLabel.setText(QCoreApplication.translate("Widget", u"Validation", None))
-        self.validationPositionButton.setText(QCoreApplication.translate("Widget", u" Check For Overlap", None))
+        self.xTranslationPositionALabel.setText(QCoreApplication.translate("Widget", u"x:", None))
+        self.yTranslationUnitPositionALabel.setText(QCoreApplication.translate("Widget", u"m", None))
+        self.yRotationPositionALabel.setText(QCoreApplication.translate("Widget", u"y:", None))
+        self.translationPositionALabel.setText(QCoreApplication.translate("Widget", u"Translation", None))
+        self.translationPositionAIcon.setText("")
+        self.positionObjectALabel.setText(QCoreApplication.translate("Widget", u"Object A", None))
+        self.xRotationPositionALabel.setText(QCoreApplication.translate("Widget", u"x:", None))
+        self.zRotationPositionALabel.setText(QCoreApplication.translate("Widget", u"z:", None))
+        self.resetPositionAButton.setText("")
+        self.zRotationUnitPositionALabel.setText(QCoreApplication.translate("Widget", u"0\u00b0", None))
+        self.yTranslationPositionALabel.setText(QCoreApplication.translate("Widget", u"y:", None))
+        self.rotationPositionALabel.setText(QCoreApplication.translate("Widget", u"Rotation", None))
+        self.xRotationUnitPositionALabel.setText(QCoreApplication.translate("Widget", u"0\u00b0", None))
+        self.rotationPositionAIcon.setText("")
+        self.zTranslationUnitPositionALabel.setText(QCoreApplication.translate("Widget", u"m", None))
+        self.xTranslationUnitPositionALabel.setText(QCoreApplication.translate("Widget", u"m", None))
+        self.yRotationUnitPositionALabel.setText(QCoreApplication.translate("Widget", u"0\u00b0", None))
+        self.zTranslationPositionALabel.setText(QCoreApplication.translate("Widget", u"z:", None))
         self.mainTitleViewLabel.setText(QCoreApplication.translate("Widget", u"3D Viewer", None))
         self.subTitleViewLabel.setText(QCoreApplication.translate("Widget", u"Click and drag to rotate", None))
         self.vtkViewerLabel.setText(QCoreApplication.translate("Widget", u"STL Mesh Viewer", None))
