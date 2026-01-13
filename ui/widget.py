@@ -1,7 +1,7 @@
 
 from PySide6.QtWidgets import QWidget, QFileDialog, QDialog, QVBoxLayout, QLabel, QProgressBar
 from PySide6 import QtWidgets
-from PySide6.QtCore import QTimer, Qt, QTimer
+from PySide6.QtCore import QTimer, QObject, QThread, Signal
 from PySide6.QtGui import QPixmap, QColor
 from ui.ui_widget import Ui_Widget 
 from controllers.stl_manager import STLManager
@@ -51,6 +51,9 @@ class Widget(QWidget, Ui_Widget):
         #self.validationPositionButton.clicked.connect(lambda: self.rotate_for_gif(steps=360, angle_per_step=2, interval_ms=30))
         
         self.generateMeshButton.clicked.connect(self.generate_tet_meshes)
+        # QThread placeholder
+        self.tetgen_thread = None
+        self.tetgen_worker = None
         
         # Define surface color (same for both)
         self.surface_color = (0.5647, 0.6314, 0.7255)  # #90a1b9
@@ -125,9 +128,7 @@ class Widget(QWidget, Ui_Widget):
         
     def set_busy_status_style(self):
         """Apply busy (working) style to status bar."""
-        self.statusLayout.setStyleSheet(
-            "background-color: #1e293b; border-color: #60a5fa;"
-        )
+        self.statusLayout.setStyleSheet("background-color: #1e293b; border-color: #60a5fa;")
         self.statusMessageLabel.setStyleSheet("color: #93c5fd;")
         self.statusIcon.setPixmap(QPixmap(":/icons/icons/rotate.svg"))
         
@@ -592,28 +593,54 @@ class Widget(QWidget, Ui_Widget):
                 self.update_status(f"Failed to add STL {stl_number} to Surf2TetMesh: {e}", success=False)
                 continue
 
-        # Generate tetrahedral meshes using TetGen
         self.start_status_animation("Generating FEM mesh")
-        try:
-            self.surf2tetmesh.generate_fem_mesh(self)
-            # update UI once after all meshes are done
+
+        # Create worker and thread
+        self.tetgen_thread = QThread()
+        self.tetgen_worker = TetGenWorker(self.surf2tetmesh, self)
+        self.tetgen_worker.moveToThread(self.tetgen_thread)
+
+        self.tetgen_thread.started.connect(self.tetgen_worker.run)
+        self.tetgen_worker.finished.connect(self.on_tetgen_finished)
+        self.tetgen_worker.finished.connect(self.tetgen_thread.quit)
+        self.tetgen_worker.finished.connect(self.tetgen_worker.deleteLater)
+        self.tetgen_thread.finished.connect(self.tetgen_thread.deleteLater)
+
+        self.tetgen_thread.start()
+
+    def on_tetgen_finished(self, success: bool, message: str):
+        """Handle completion of TetGen worker"""
+        # Stop animation and show final status
+        self.stop_status_animation(message, success=success)
+
+        if success:
+            # Update node/element labels
             self.surf2tetmesh.update_mesh_count_labels(self)
-            print("TetGen tetrahedral meshes generated for all STL meshes.")
-            self.stop_status_animation("Mesh generation completed", success=True)
-        except Exception as e:
-            print(f"Failed to generate tetrahedral meshes: {e}")                
-            self.stop_status_animation("Mesh generation failed", success=False)
-            return
 
-        # Switch to TetMesh viewer tab
-        self.viewerStackedWidget.setCurrentIndex(1)  # 0 = STL Viewer, 1 = TetMesh Viewer
+            # Switch to TetMesh viewer
+            self.viewerStackedWidget.setCurrentIndex(1)
 
-        # Display all generated tetrahedral meshes
-        try:
-            self.surf2tetmesh.display_tet_meshes()
-            print("Tet meshes displayed successfully.")
-            self.update_status("Tet meshes displayed successfully.", success=True)
-        except Exception as e:
-            print(f"Failed to display tetrahedral meshes: {e}")                
-            self.update_status(f"Failed to display tetrahedral meshes: {e}", success=False)
+            # Display all generated Tet meshes
+            try:
+                self.surf2tetmesh.display_tet_meshes()
+                print("Tet meshes displayed successfully.")
+            except Exception as e:
+                print(f"Failed to display Tet meshes: {e}")
     
+
+class TetGenWorker(QObject):
+    """Worker to generate TetGen meshes in a background thread."""
+    finished = Signal(bool, str)  # success flag, message
+
+    def __init__(self, surf2tetmesh: Surf2TetMesh, parent_widget: QWidget):
+        super().__init__()
+        self.surf2tetmesh = surf2tetmesh
+        self.parent_widget = parent_widget
+
+    def run(self):
+        """Called in a separate thread to generate TetGen meshes."""
+        try:
+            self.surf2tetmesh.generate_fem_mesh(self.parent_widget)
+            self.finished.emit(True, "Mesh generation completed")
+        except Exception as e:
+            self.finished.emit(False, f"Mesh generation failed: {e}")

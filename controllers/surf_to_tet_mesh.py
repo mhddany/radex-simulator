@@ -100,9 +100,7 @@ class Surf2TetMesh:
                 f"{n_nodes} nodes "
                 f"(maxvol={params['maxvolume']})"
             )
-
-        # update UI once after all meshes are done
-        self.update_mesh_count_labels(widget)
+       
     
     def update_mesh_count_labels(self, widget):
         """
